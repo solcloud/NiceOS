@@ -1,0 +1,12 @@
+base
+nano
+mc
+wget
+curl
+openssh
+rsync
+openbsd-netcat
+git
+docker
+docker-compose
+crun

@@ -1,0 +1,20 @@
+# <device>                                                         <mount point>       <type>          <options>                                             <dump>  <fsck>
+#
+UUID=4e696365-4f53-4e69-6365-4f534e696365                                 /              ext4      rw,noatime,nodiratime                                       0       1
+#/etc                                                                      /etc           bind      bind,ro,nodev,nosuid                                        0       0
+#/usr                                                                      /usr           bind      bind,ro,nodev                                               0       0
+#/run                                                                      /run           bind      bind,rw,nodev,nosuid                                        0       0
+#/var                                                                      /var           bind      bind,rw,nodev,nosuid                                        0       0
+#UUID=31c90b3d-20fd-4ef4-88e7-fec610c0f042                                 /data          ext4      rw,nodev,nosuid,noatime,nodiratime                          0       0
+#UUID=7f6be69a-49f5-4802-9451-d85a9066487a                                 /code          ext2      rw,nodev,nosuid,noatime,nodiratime                          0       0
+#UUID=32e7e3d2-7465-49b2-a3e9-f910a14ba521                                 /home          ext4      rw,nodev,nosuid,noatime,nodiratime                          0       0
+#/dev/mapper/home                                                          /home          ext4      rw,nodev,nosuid,noatime,nodiratime                          0       0
+#hugetlbfs                                                                 /dev/hugepages hugetlbfs mode=01770,gid=82,noauto,nosuid,noatime                     0       0
+# Change size and what mounts are available
+tmp                                                                       /tmp           tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=1g           0       0
+tmpfs                                                                     /run           tmpfs     nosuid,nodev,noatime,nodiratime,size=500m                   0       0
+devpts                                                                    /dev/pts       devpts    nosuid,nodev,noatime,nodiratime,mode=0660,gid=5             0       0
+shm                                                                       /dev/shm       tmpfs     nosuid,nodev,noatime,nodiratime,size=5g                     0       0
+mqueue                                                                    /dev/mqueue    tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=200m         0       0
+#
+# <device>                                                         <mount point>       <type>          <options>                                             <dump>  <fsck>

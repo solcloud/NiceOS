@@ -1,0 +1,340 @@
+[root@archiso ~]#
+[root@archiso ~]# lsmod
+Module                  Size  Used by
+nls_iso8859_1          16384  0
+nls_cp437              20480  0
+vfat                   24576  0
+fat                    86016  1 vfat
+ext4                  815104  2
+crc32c_generic         16384  0
+mbcache                16384  1 ext4
+jbd2                  139264  1 ext4
+ccm                    20480  0
+algif_aead             16384  0
+cbc                    16384  0
+des_generic            16384  0
+libdes                 24576  1 des_generic
+ecb                    16384  0
+algif_skcipher         16384  0
+cmac                   16384  0
+md4                    16384  0
+algif_hash             16384  0
+af_alg                 32768  3 algif_hash,algif_skcipher,algif_aead
+intel_rapl_msr         20480  0
+intel_rapl_common      32768  1 intel_rapl_msr
+x86_pkg_temp_thermal    20480  0
+intel_powerclamp       20480  0
+coretemp               20480  0
+kvm_intel             323584  0
+btusb                  69632  0
+btrtl                  24576  1 btusb
+btbcm                  20480  1 btusb
+kvm                   851968  1 kvm_intel
+btintel                32768  1 btusb
+bluetooth             741376  5 btrtl,btintel,btbcm,btusb
+snd_hda_codec_hdmi     73728  1
+snd_hda_codec_realtek   143360  1
+snd_hda_codec_generic    98304  1 snd_hda_codec_realtek
+irqbypass              16384  1 kvm
+pn544_mei              16384  0
+snd_hda_intel          57344  0
+crct10dif_pclmul       16384  1
+mei_phy                20480  1 pn544_mei
+ghash_clmulni_intel    16384  0
+joydev                 28672  0
+snd_intel_dspcfg       24576  1 snd_hda_intel
+pn544                  24576  1 pn544_mei
+rapl                   16384  0
+ofpart                 20480  0
+cmdlinepart            16384  0
+intel_spi_platform     16384  0
+dell_laptop            28672  0
+hci                    61440  2 mei_phy,pn544
+intel_cstate           20480  0
+iwlmvm                462848  0
+ledtrig_audio          16384  2 snd_hda_codec_generic,dell_laptop
+snd_hda_codec         167936  4 snd_hda_codec_generic,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec_realtek
+mac80211             1052672  1 iwlmvm
+wl                   6467584  0
+iTCO_wdt               16384  0
+intel_spi              24576  1 intel_spi_platform
+dell_wmi               20480  0
+libarc4                16384  1 mac80211
+snd_hda_core          106496  5 snd_hda_codec_generic,snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,snd_hda_codec_realtek
+ppdev                  24576  0
+ecdh_generic           16384  1 bluetooth
+ecc                    36864  1 ecdh_generic
+dell_smm_hwmon         24576  0
+iwlwifi               401408  1 iwlmvm
+nfc                   143360  2 pn544,hci
+dell_smbios            32768  2 dell_wmi,dell_laptop
+spi_nor                73728  1 intel_spi
+intel_pmc_bxt          16384  1 iTCO_wdt
+mtd                    81920  6 spi_nor,cmdlinepart,intel_spi,ofpart
+wmi_bmof               16384  0
+sparse_keymap          16384  1 dell_wmi
+intel_uncore          172032  0
+dcdbas                 20480  1 dell_smbios
+mousedev               24576  0
+iTCO_vendor_support    16384  1 iTCO_wdt
+mei_wdt                16384  0
+mei_hdcp               24576  0
+parport_pc             53248  0
+crc16                  16384  2 bluetooth,ext4
+psmouse               184320  0
+mei_me                 49152  3
+i2c_i801               36864  0
+dell_wmi_descriptor    20480  2 dell_wmi,dell_smbios
+pcspkr                 16384  0
+input_leds             16384  0
+evdev                  28672  5
+cfg80211              913408  4 wl,iwlmvm,iwlwifi,mac80211
+mei                   126976  8 mei_wdt,mei_hdcp,mei_phy,mei_me,pn544_mei
+parport                69632  2 parport_pc,ppdev
+mac_hid                16384  0
+snd_hwdep              16384  1 snd_hda_codec
+lpc_ich                28672  0
+snd_pcm               147456  4 snd_hda_codec_hdmi,snd_hda_intel,snd_hda_codec,snd_hda_core
+snd_timer              45056  1 snd_pcm
+snd                   114688  8 snd_hda_codec_generic,snd_hda_codec_hdmi,snd_hwdep,snd_hda_intel,snd_hda_codec,snd_hda_codec_realtek,snd_timer,snd_pcm
+i2c_smbus              20480  1 i2c_i801
+soundcore              16384  1 snd
+dell_rbtn              20480  1
+dell_smo8800           20480  0
+rfkill                 28672  7 nfc,bluetooth,dell_laptop,dell_rbtn,cfg80211
+ac                     16384  0
+pkcs8_key_parser       16384  0
+speakup_soft           16384  0
+speakup               135168  1 speakup_soft
+ip_tables              32768  0
+x_tables               53248  1 ip_tables
+overlay               139264  1
+squashfs               73728  1
+loop                   36864  3
+isofs                  49152  1
+cdrom                  77824  1 isofs
+uas                    32768  0
+usb_storage            81920  2 uas
+hid_generic            16384  0
+usbhid                 65536  0
+hid                   147456  2 usbhid,hid_generic
+i915                 2662400  2
+i2c_algo_bit           16384  1 i915
+drm_kms_helper        266240  1 i915
+syscopyarea            16384  1 drm_kms_helper
+sysfillrect            16384  1 drm_kms_helper
+sysimgblt              16384  1 drm_kms_helper
+fb_sys_fops            16384  1 drm_kms_helper
+cec                    73728  2 drm_kms_helper,i915
+rc_core                61440  1 cec
+xhci_pci               20480  0
+xhci_pci_renesas       20480  1 xhci_pci
+sdhci_pci              61440  0
+e1000e                299008  0
+xhci_hcd              286720  1 xhci_pci
+cqhci                  32768  1 sdhci_pci
+drm                   585728  3 drm_kms_helper,i915
+serio_raw              20480  0
+atkbd                  36864  0
+crc32_pclmul           16384  0
+libps2                 20480  2 atkbd,psmouse
+crc32c_intel           24576  4
+sdhci                  77824  1 sdhci_pci
+intel_gtt              24576  1 i915
+aesni_intel           372736  0
+ehci_pci               20480  0
+glue_helper            16384  1 aesni_intel
+crypto_simd            16384  1 aesni_intel
+mmc_core              188416  3 sdhci,cqhci,sdhci_pci
+ehci_hcd               98304  1 ehci_pci
+cryptd                 24576  2 crypto_simd,ghash_clmulni_intel
+agpgart                53248  2 intel_gtt,drm
+wmi                    36864  4 dell_wmi,wmi_bmof,dell_smbios,dell_wmi_descriptor
+battery                20480  0
+i8042                  32768  1 dell_laptop
+serio                  28672  6 serio_raw,atkbd,psmouse,i8042
+[root@archiso ~]# ^C
+
+
+
+[root@archiso ~]# lspci -v
+00:00.0 Host bridge: Intel Corporation Haswell-ULT DRAM Controller (rev 0b)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0
+    Capabilities: [e0] Vendor Specific Information: Len=0c <?>
+    Kernel driver in use: hsw_uncore
+lspci: Unable to load libkmod resources: error -2
+
+00:02.0 VGA compatible controller: Intel Corporation Haswell-ULT Integrated Graphics Controller (rev 0b) (prog-if 00 [VGA controller])
+    DeviceName:  Onboard IGD
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 49
+    Memory at f7800000 (64-bit, non-prefetchable) [size=4M]
+    Memory at e0000000 (64-bit, prefetchable) [size=256M]
+    I/O ports at f000 [size=64]
+    Expansion ROM at 000c0000 [virtual] [disabled] [size=128K]
+    Capabilities: [90] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [d0] Power Management version 2
+    Capabilities: [a4] PCI Advanced Features
+    Kernel driver in use: i915
+
+00:03.0 Audio device: Intel Corporation Haswell-ULT HD Audio Controller (rev 0b)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 52
+    Memory at f7e34000 (64-bit, non-prefetchable) [size=16K]
+    Capabilities: [50] Power Management version 2
+    Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+    Kernel driver in use: snd_hda_intel
+
+00:14.0 USB controller: Intel Corporation 8 Series USB xHCI HC (rev 04) (prog-if 30 [XHCI])
+    Subsystem: Dell Device 05cb
+    Flags: bus master, medium devsel, latency 0, IRQ 48
+    Memory at f7e20000 (64-bit, non-prefetchable) [size=64K]
+    Capabilities: [70] Power Management version 2
+    Capabilities: [80] MSI: Enable+ Count=1/8 Maskable- 64bit+
+    Kernel driver in use: xhci_hcd
+
+00:16.0 Communication controller: Intel Corporation 8 Series HECI #0 (rev 04)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 50
+    Memory at f7e3f000 (64-bit, non-prefetchable) [size=32]
+    Capabilities: [50] Power Management version 3
+    Capabilities: [8c] MSI: Enable+ Count=1/1 Maskable- 64bit+
+    Kernel driver in use: mei_me
+
+00:16.3 Serial controller: Intel Corporation 8 Series HECI KT (rev 04) (prog-if 02 [16550])
+    Subsystem: Dell Device 05cb
+    Flags: 66MHz, fast devsel, IRQ 19
+    I/O ports at f0e0 [size=8]
+    Memory at f7e3d000 (32-bit, non-prefetchable) [size=4K]
+    Capabilities: [c8] Power Management version 3
+    Capabilities: [d0] MSI: Enable- Count=1/1 Maskable- 64bit+
+    Kernel driver in use: serial
+
+00:19.0 Ethernet controller: Intel Corporation Ethernet Connection I218-LM (rev 04)
+    DeviceName:  Onboard LAN
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 46
+    Memory at f7e00000 (32-bit, non-prefetchable) [size=128K]
+    Memory at f7e3c000 (32-bit, non-prefetchable) [size=4K]
+    I/O ports at f080 [disabled] [size=32]
+    Capabilities: [c8] Power Management version 2
+    Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+    Capabilities: [e0] PCI Advanced Features
+    Kernel driver in use: e1000e
+
+00:1b.0 Audio device: Intel Corporation 8 Series HD Audio Controller (rev 04)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 53
+    Memory at f7e30000 (64-bit, non-prefetchable) [size=16K]
+    Capabilities: [50] Power Management version 3
+    Capabilities: [60] MSI: Enable+ Count=1/1 Maskable- 64bit+
+    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+    Capabilities: [100] Virtual Channel
+    Kernel driver in use: snd_hda_intel
+
+00:1c.0 PCI bridge: Intel Corporation 8 Series PCI Express Root Port 1 (rev e4) (prog-if 00 [Normal decode])
+    Flags: bus master, fast devsel, latency 0, IRQ 42
+    Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+    I/O behind bridge: [disabled]
+    Memory behind bridge: [disabled]
+    Prefetchable memory behind bridge: [disabled]
+    Capabilities: [40] Express Root Port (Slot-), MSI 00
+    Capabilities: [80] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [90] Subsystem: Dell Device 05cb
+    Capabilities: [a0] Power Management version 3
+    Kernel driver in use: pcieport
+
+00:1c.3 PCI bridge: Intel Corporation 8 Series PCI Express Root Port 4 (rev e4) (prog-if 00 [Normal decode])
+    Flags: bus master, fast devsel, latency 0, IRQ 43
+    Bus: primary=00, secondary=02, subordinate=02, sec-latency=0
+    I/O behind bridge: [disabled]
+    Memory behind bridge: f7d00000-f7dfffff [size=1M]
+    Prefetchable memory behind bridge: [disabled]
+    Capabilities: [40] Express Root Port (Slot+), MSI 00
+    Capabilities: [80] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [90] Subsystem: Dell Device 05cb
+    Capabilities: [a0] Power Management version 3
+    Capabilities: [100] Null
+    Capabilities: [200] L1 PM Substates
+    Kernel driver in use: pcieport
+
+00:1c.4 PCI bridge: Intel Corporation 8 Series PCI Express Root Port 5 (rev e4) (prog-if 00 [Normal decode])
+    Flags: bus master, fast devsel, latency 0, IRQ 44
+    Bus: primary=00, secondary=03, subordinate=03, sec-latency=0
+    I/O behind bridge: [disabled]
+    Memory behind bridge: f7c00000-f7cfffff [size=1M]
+    Prefetchable memory behind bridge: [disabled]
+    Capabilities: [40] Express Root Port (Slot+), MSI 00
+    Capabilities: [80] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [90] Subsystem: Dell Device 05cb
+    Capabilities: [a0] Power Management version 3
+    Capabilities: [100] Null
+    Capabilities: [200] L1 PM Substates
+    Kernel driver in use: pcieport
+
+00:1d.0 USB controller: Intel Corporation 8 Series USB EHCI #1 (rev 04) (prog-if 20 [EHCI])
+    Subsystem: Dell Device 05cb
+    Flags: bus master, medium devsel, latency 0, IRQ 21
+    Memory at f7e3b000 (32-bit, non-prefetchable) [size=1K]
+    Capabilities: [50] Power Management version 3
+    Capabilities: [58] Debug port: BAR=1 offset=00a0
+    Capabilities: [98] PCI Advanced Features
+    Kernel driver in use: ehci-pci
+
+00:1f.0 ISA bridge: Intel Corporation 8 Series LPC Controller (rev 04)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, medium devsel, latency 0
+    Capabilities: [e0] Vendor Specific Information: Len=0c <?>
+    Kernel driver in use: lpc_ich
+
+00:1f.2 SATA controller: Intel Corporation 8 Series SATA Controller 1 [AHCI mode] (rev 04) (prog-if 01 [AHCI 1.0])
+    Subsystem: Dell Device 05cb
+    Flags: bus master, 66MHz, medium devsel, latency 0, IRQ 45
+    I/O ports at f0d0 [size=8]
+    I/O ports at f0c0 [size=4]
+    I/O ports at f0b0 [size=8]
+    I/O ports at f0a0 [size=4]
+    I/O ports at f060 [size=32]
+    Memory at f7e3a000 (32-bit, non-prefetchable) [size=2K]
+    Capabilities: [80] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [70] Power Management version 3
+    Capabilities: [a8] SATA HBA v1.0
+    Kernel driver in use: ahci
+
+00:1f.3 SMBus: Intel Corporation 8 Series SMBus Controller (rev 04)
+    Subsystem: Dell Device 05cb
+    Flags: medium devsel, IRQ 17
+    Memory at f7e39000 (64-bit, non-prefetchable) [size=256]
+    I/O ports at f040 [size=32]
+    Kernel driver in use: i801_smbus
+
+02:00.0 Network controller: Intel Corporation Wireless 7260 (rev 73)
+    Subsystem: Intel Corporation Dual Band Wireless-AC 7260
+    Flags: bus master, fast devsel, latency 0, IRQ 51
+    Memory at f7d00000 (64-bit, non-prefetchable) [size=8K]
+    Capabilities: [c8] Power Management version 3
+    Capabilities: [d0] MSI: Enable+ Count=1/1 Maskable- 64bit+
+    Capabilities: [40] Express Endpoint, MSI 00
+    Capabilities: [100] Advanced Error Reporting
+    Capabilities: [140] Device Serial Number d8-fc-93-ff-ff-56-60-49
+    Capabilities: [14c] Latency Tolerance Reporting
+    Capabilities: [154] Vendor Specific Information: ID=cafe Rev=1 Len=014 <?>
+    Kernel driver in use: iwlwifi
+
+03:00.0 SD Host controller: O2 Micro, Inc. SD/MMC Card Reader Controller (rev 01) (prog-if 01)
+    Subsystem: Dell Device 05cb
+    Flags: bus master, fast devsel, latency 0, IRQ 47
+    Memory at f7c01000 (32-bit, non-prefetchable) [size=4K]
+    Memory at f7c00000 (32-bit, non-prefetchable) [size=2K]
+    Capabilities: [6c] Power Management version 3
+    Capabilities: [48] MSI: Enable+ Count=1/1 Maskable+ 64bit+
+    Capabilities: [80] Express Endpoint, MSI 00
+    Capabilities: [100] Virtual Channel
+    Capabilities: [200] Advanced Error Reporting
+    Capabilities: [230] Latency Tolerance Reporting
+    Capabilities: [240] L1 PM Substates
+    Kernel driver in use: sdhci-pci
+
+[root@archiso ~]#

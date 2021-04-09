@@ -1,0 +1,23 @@
+ENV_SUPATH      PATH=/bin
+ENV_PATH        PATH=/bin
+
+#
+# Delay in seconds before being allowed another attempt after a login failure
+#
+FAIL_DELAY              3
+#
+# Max time in seconds for login
+#
+LOGIN_TIMEOUT           30
+#
+# Should login be allowed if we can't cd to the home directory?
+# Default in no. explicit
+#
+DEFAULT_HOME    no
+
+UMASK           077
+
+PASS_MAX_DAYS   99999
+PASS_MIN_DAYS   0
+PASS_WARN_AGE   0
+ENCRYPT_METHOD  SHA512

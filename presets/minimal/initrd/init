@@ -1,0 +1,14 @@
+#!/bin/sh
+
+PATH=/bin
+
+busybox mount -t proc proc /proc -o nosuid,noexec,nodev
+busybox mount -t sysfs sys /sys -o nosuid,noexec,nodev
+busybox mount -t devtmpfs dev /dev
+
+busybox mount / -o remount,rw
+busybox --install /bin
+echo 0 > /proc/sys/kernel/printk
+
+echo "Welcome to init ram filesystem :)"
+exec sh

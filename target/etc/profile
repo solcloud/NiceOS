@@ -1,0 +1,46 @@
+#!/bin/sh
+
+umask 007
+
+export PATH='/bin'
+export PS1='\u@\h \w \$ '
+export EDITOR='nano'
+export LESS='-RI'
+export LESSHISTFILE='-'
+export PAGER='less'
+export SHELL='/bin/bash'
+export COLORTERM=truecolor
+export TERM=xterm-256color
+export TERMINAL=alacritty
+export MC_SKIN=julia256
+export HISTCONTROL=ignoreboth
+export NO_AT_BRIDGE=1
+export HISTSIZE=5123
+
+alias ls='ls -v --color=auto'
+alias ll='ls -alhF'
+alias l='ll'
+alias le='less'
+alias els='less'
+alias les='less'
+alias lel='less'
+alias grep='grep -i --color=auto'
+alias cp='cp -i'
+
+alias gco='git commit'
+alias ga='git add'
+alias gc='git checkout'
+alias gb='git branch'
+alias gs='git status'
+alias gp='git pull'
+alias gd='git diff'
+alias gn='git diff --staged'
+alias gl='git log --oneline --decorate --graph'
+alias gr='git restore --staged'
+alias gap='git add -p'
+alias grp='git restore --staged -p'
+
+function zipfile() {
+    tar "-zcvf $1 $2"
+}
+

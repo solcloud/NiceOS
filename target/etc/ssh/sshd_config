@@ -1,0 +1,7 @@
+ListenAddress 127.0.0.1
+PermitRootLogin no
+#Subsystem sftp /usr/lib/ssh/sftp-server -u 0007
+#AllowUsers code@127.0.0.1
+#PasswordAuthentication no
+GatewayPorts no
+AddressFamily inet

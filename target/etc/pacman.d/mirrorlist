@@ -1,0 +1,27 @@
+##
+## Artix Linux repository mirrorlist
+## Generated on 2020-06-14
+##
+
+# Artix mirrors
+
+Server = https://mirrors.dotsrc.org/artix-linux/repos/$repo/os/$arch
+Server = http://ftp.ntua.gr/pub/linux/artix-linux/$repo/os/$arch
+Server = https://artix.wheaton.edu/repos/$repo/os/$arch
+Server = https://mirror.clarkson.edu/artix-linux/repos/$repo/os/$arch
+Server = https://ftp.cc.uoc.gr/mirrors/linux/artixlinux/$repo/os/$arch
+Server = https://quantum-mirror.hu/mirrors/pub/artix-linux/$repo/os/$arch
+Server = https://artix.unixpeople.org/repos/$repo/os/$arch
+Server = https://artix.rw-net.de/repos/$repo/os/$arch
+Server = https://mirrors.tuna.tsinghua.edu.cn/artixlinux/$repo/os/$arch
+Server = http://www.nylxs.com/mirror/repos/$repo/os/$arch
+Server = https://ftp.sh.cvut.cz/artix-linux/$repo/os/$arch
+Server = https://mirrors.nettek.us/artix-linux/$repo/os/$arch
+Server = https://artix.cccp.io/$repo/os/$arch
+Server = https://mirror.linux.pizza/artix-linux/$repo/os/$arch
+Server = https://mirrors.cloud.tencent.com/artixlinux/$repo/os/$arch
+Server = http://mirrors.redcorelinux.org/artixlinux/$repo/os/$arch
+Server = https://eu-mirror.artixlinux.org/repos/$repo/os/$arch
+Server = https://us-mirror.artixlinux.org/$repo/os/$arch
+Server = https://mirror.maakpain.kro.kr/artix/$repo/os/$arch
+Server = http://mirror1.artixlinux.org/repos/$repo/os/$arch

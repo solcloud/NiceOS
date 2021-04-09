@@ -1,0 +1,6 @@
+background_opacity: 1.0
+
+colors:
+  primary:
+    background: '0x111111'
+

@@ -1,0 +1,1 @@
+../ghost/build_env.sh

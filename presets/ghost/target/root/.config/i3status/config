@@ -1,0 +1,51 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        output_format = "i3bar"
+        interval = 30
+        color_good = "#00FF00"
+        color_degraded = "#FFFF00"
+        color_bad = "#FF0000"
+}
+
+#order += "read_file uptime"
+#order += "volume master"
+order += "battery 0"
+order += "tztime local"
+
+tztime local {
+        format = "%A %d.%m.%Y %H:%M   "
+}
+
+read_file uptime {
+       path = "/proc/uptime"
+}
+
+volume master {
+       format = "♪ %volume"
+       format_muted = "🔇"
+       device = "default"
+       mixer = "Master"
+       mixer_idx = 0
+}
+
+battery 0 {
+        format = "%status %percentage"
+        format_down = ""
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "BATTERY UNKNOWN???"
+        status_full = ""
+        last_full_capacity = true # real capacity or 0-100
+        integer_battery_capacity = true
+        threshold_type = percentage
+        low_threshold = 15
+        path = "/sys/class/power_supply/BAT%d/uevent"
+}

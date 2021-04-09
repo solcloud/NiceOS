@@ -1,0 +1,66 @@
+#!/bin/sh
+
+set -e
+
+export PATH=/bin
+RANDOM_SEED_FILE=/var/random-seed
+umask 077
+
+function machine_halt () {
+    dd count=1 bs=512 if=/dev/urandom of="$RANDOM_SEED_FILE" > /dev/null 2>& 1 || true
+    sync
+    kall 15 || true
+    sleep 4
+    kall 9 || true
+    [ -x /bin/findmnt ] && for line in $(findmnt -o SOURCE | grep /dev/loop); do umount $line ; done || true
+    [ -x /bin/losetup ] && losetup -D || true
+    [ -x /etc/stop_services.sh ] && /etc/stop_services.sh || true
+    sync
+    mount -a -o remount,ro || true
+    mount / -o remount,ro || true # busybox cannot remount fstab rw/ro on -a (all) mounts, so force at least / if only busybox system
+}
+function machine_poweroff () {
+    machine_halt
+    kpow p
+}
+function machine_reboot () {
+    machine_halt
+    kpow r
+}
+
+mount -t proc -o nosuid,noexec,nodev  proc /proc
+mount -t sysfs -o nosuid,noexec,nodev sys /sys
+[ -c /dev/null ] || mount -t devtmpfs -o nosuid,mode=0755 dev /dev
+[ -d /sys/fs/cgroup/ ] && mount -t cgroup2 none /sys/fs/cgroup/ || true
+
+mkdir -p /dev/pts /dev/shm /dev/mqueue # busybox mount -a cannot use X-mount.mkdir, create manually
+mount -a -o remount
+echo 0 > /proc/sys/kernel/printk
+[ -x /etc/init/root_mounted.sh ] && /etc/init/root_mounted.sh || true
+mount -a -O no_netdev
+
+trap machine_reboot 12
+trap machine_poweroff 10
+
+if which iptables > /dev/null; then
+    [ -x /etc/iptables.sh ] && /etc/iptables.sh || true
+fi
+sysctl -q -e -p /etc/sysctl.conf
+[ -f "$RANDOM_SEED_FILE" ] && cat "$RANDOM_SEED_FILE" >> /dev/random || true
+cat /etc/hostname > /proc/sys/kernel/hostname
+[ -d /sys/class/net/lo ] && ip link set up dev lo || true
+
+setsid /etc/init/services.sh &
+
+LINE=$(cat /proc/cmdline | grep -q '=ttyS' && echo '/dev/console' || echo 'tty1')
+if [[ $LINE == 'tty1' ]]; then
+    for vt in 2; do
+        openvt -c $vt -- sh -c "while true; do clear ; busybox getty 0 tty$vt; done"
+    done
+fi
+
+while true; do
+    clear
+    busybox getty 0 $LINE &
+    wait $!
+done

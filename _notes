@@ -1,0 +1,15 @@
+Xorg :1 -terminate -nolisten tcp & sleep 2 ; DISPLAY=:1 termite
+
+Test:
+grafika: GPU acelerace, full hd, 144hz, Xorg, KMS load
+zvuk: speaker-test, firefox
+cpu: multi core, frequency, `7z b` Avr:      339   4696  15925  |     349   3925  13695 Tot:      344   4310  14810
+periferie: keyboard, mouse, mic
+
+# TODO
+kernel configy presetu jako incrementalni zmeny linux_src/scripts/kconfig/merge_config.sh a scripts/diffconfig #shouldbefun
+./scripts/config --set-val CONFIG_OPTION y
+https://github.com/perkint/kernelexpect
+
+cpu microcode, mitigace, performance test
+dbus,pulse,volumeicon lazy start https://wiki.archlinux.org/title/PulseAudio#Configuration_files

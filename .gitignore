@@ -1,0 +1,17 @@
+/_pass
+/build/busybox/
+/build/initramfs/
+/build/initramfs.cpio.gz
+/build/linux/
+
+/target/etc/fonts/
+/target/usr/
+/target/var/
+/target/boot/
+
+/presets/*/target/root/wg/*/env
+/presets/*/target/root/wg/*/local.config
+
+/storage/sda.img
+/storage/sdb.img
+/storage/temp/
