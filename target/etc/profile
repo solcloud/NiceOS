@@ -44,3 +44,6 @@ function zipfile() {
     tar "-zcvf $1 $2"
 }
 
+function serve_file() {
+    while true; do { echo -ne "HTTP/1.1 200 OK\r\n\r\n" ; cat "$1" ; } | nc -lnp 8080 ; done
+}
