@@ -45,7 +45,9 @@ trap machine_poweroff 10
 if which iptables > /dev/null; then
     [ -x /etc/iptables.sh ] && /etc/iptables.sh || true
 fi
-sysctl -q -e -p /etc/sysctl.conf
+if which sysctl > /dev/null; then
+    sysctl -q -e -p /etc/sysctl.conf
+fi
 [ -f "$RANDOM_SEED_FILE" ] && cat "$RANDOM_SEED_FILE" >> /dev/random || true
 cat /etc/hostname > /proc/sys/kernel/hostname
 [ -d /sys/class/net/lo ] && ip link set up dev lo || true
