@@ -8,8 +8,8 @@ export STORAGE=$BASE/storage
 export OPT=$STORAGE/temp/dwn
 
 export VIRTUAL_BOX_VMS_ROOT="$HOME/VirtualBox VMs"
-export ARTIX_ISO="/data/dwn/artix-base-openrc-20210426-x86_64.iso"
 export VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID=f8076108-303e-4ddb-9cfa-0fc5e81ef390
+export VM_MOUNT_ROOT=/tmp/nice_vm_root
 
 export LINUX_VERSION='5.14.6'
 export BUSYBOX_VERSION='1.33.1'

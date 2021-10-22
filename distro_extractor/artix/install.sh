@@ -29,3 +29,9 @@ echo "Cleaning installation"
 
 sync
 poweroff
+
+
+loadkeys cz-us-qwertz
+root:toor
+debootstrap --merged-usr --include="gcc,tar" chimaera /mnt
+
