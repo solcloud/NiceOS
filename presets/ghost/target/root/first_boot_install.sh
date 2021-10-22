@@ -15,8 +15,8 @@ USERS="dan daniel firefox storm code editor"
 for user in $USERS; do
     useradd -m -U -s /bin/bash $user && printf "$user\n$user" | passwd $user
     echo "" > "/home/$user/.bashrc"
-    echo "source /etc/environment" >> "/home/$user/.bashrc"
-    echo "source /etc/profile" >> "/home/$user/.bashrc"
+    echo ". /etc/environment" >> "/home/$user/.bashrc"
+    echo ". /etc/profile" >> "/home/$user/.bashrc"
     ln -sf "/home/$user/.bashrc" "/home/$user/.bash_profile"
 done
 
@@ -27,7 +27,7 @@ for user in dan; do
     cp /root/.xinitrc /home/$user/
     rm /home/$user/.bash_profile
     printf '
-source ~/.bashrc
+. ~/.bashrc
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then
     exec xinit

@@ -1,5 +1,5 @@
 #!/bin/sh
 
-source /etc/environment
-source /etc/profile
+. /etc/environment
+. /etc/profile
 umask 077

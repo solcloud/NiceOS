@@ -6,7 +6,7 @@ export PATH=/bin
 RANDOM_SEED_FILE=/var/random-seed
 umask 077
 
-function machine_halt () {
+machine_halt() {
     dd count=1 bs=512 if=/dev/urandom of="$RANDOM_SEED_FILE" > /dev/null 2>& 1 || true
     sync
     kall 15 || true
@@ -19,11 +19,11 @@ function machine_halt () {
     mount -a -o remount,ro || true
     mount / -o remount,ro || true # busybox cannot remount fstab rw/ro on -a (all) mounts, so force at least / if only busybox system
 }
-function machine_poweroff () {
+machine_poweroff() {
     machine_halt
     kpow p
 }
-function machine_reboot () {
+machine_reboot() {
     machine_halt
     kpow r
 }
