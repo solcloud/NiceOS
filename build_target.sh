@@ -40,6 +40,11 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
             ln -sf mcview pr
         } || true
 
+        # Bash pls
+        ls bash 2> /dev/null && {
+            ln -sf bash sh
+        }
+
         # Init specific stuff
         rm -f init
         rm -f initrc
