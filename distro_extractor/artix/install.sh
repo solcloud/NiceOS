@@ -10,16 +10,6 @@ artix-chroot /mnt /bin/bash -c '
 echo "Cleaning installation"
 {
     TARGET=""
-    # Cleanup some Arch files
-    # find $TARGET/lib/ -maxdepth 1 -mindepth 1 -type d
-
-    #rm -rf $TARGET/usr/lib/artix/
-    #rm -rf $TARGET/usr/lib/audit/
-    #rm -rf $TARGET/usr/lib/avahi/
-    #rm -rf $TARGET/usr/lib/openrc/
-    #rm -rf $TARGET/usr/lib/sysctl.d/
-
-    #rm -rf $TARGET/usr/share/man/
 
     rm -f $TARGET/usr/lib/udev/*.sh
     rm -f $TARGET/usr/bin/66-*
@@ -29,9 +19,3 @@ echo "Cleaning installation"
 
 sync
 poweroff
-
-
-loadkeys cz-us-qwertz
-root:toor
-debootstrap --merged-usr --include="gcc,tar" chimaera /mnt
-
