@@ -20,12 +20,14 @@ fi
 VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
 
 function boot_info_qemu() {
-	echo ""
+    echo "For future password prompt write $VM_PASS"
 }
+
+source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
 
 function ssh_install() {
 	scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P $2 $BASE/distro_extractor/$DISTRO/install.sh $NICE_PRESET_PATH/packages $VM_USER@$1:/tmp/
-	ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $VM_USER@$1 -p $2 'sudo /bin/bash /tmp/install.sh'
+	echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $VM_USER@$1 -p $2 'sudo --stdin bash /tmp/install.sh'
 }
 
 
@@ -110,15 +112,16 @@ function copy_to_nice_target() {
 	rm -rf $TARGET/usr/
 	sudo cp -a $VM_MOUNT_ROOT/usr/ $TARGET/
 
-	echo "Coping pacman database"
+	echo "Coping var/ directory"
 	rm -rf $TARGET/var/
-	sudo mkdir -p $TARGET/var/lib/
-	sudo cp -a $VM_MOUNT_ROOT/var/lib/pacman/ $TARGET/var/lib/
+	sudo cp -a $VM_MOUNT_ROOT/var/ $TARGET/var/
 
-	echo "Coping fonts configs"
-	rm -rf $TARGET/etc/fonts/
-	sudo mkdir -p $TARGET/etc/
-	sudo cp -a $VM_MOUNT_ROOT/etc/fonts/ $TARGET/etc/
+    if [ -r $VM_MOUNT_ROOT/etc/fonts/ ]; then
+        echo "Coping fonts configs"
+        rm -rf $TARGET/etc/fonts/
+        sudo mkdir -p $TARGET/etc/
+        sudo cp -a $VM_MOUNT_ROOT/etc/fonts/ $TARGET/etc/
+    fi
 
 	echo "Coping udev rules"
 	sudo cp $VM_MOUNT_ROOT/usr/lib/udev/rules.d/* $TARGET/etc/udev/rules.d/
@@ -131,12 +134,12 @@ function copy_to_nice_target() {
 	sudo sync
 	echo "Done, checking dirty files"
 	cd $BASE
+	git restore target/var/run target/usr/share/mc/mc.ini
 	git checkout target/var/run target/usr/share/mc/mc.ini
 	git status
 
 }
 
-source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
 if [[ -n "$1" && "$1" = "virtualbox" ]]; then
 	from_virtualbox
 else

@@ -8,8 +8,6 @@ debootstrap --merged-usr --arch=amd64 --include="$(cat /tmp/packages | xargs | s
 chroot /mnt /bin/bash -c '
 
 echo "Cleaning installation"
-{
-}
 '
 
 sync
