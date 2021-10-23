@@ -31,7 +31,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         # Overwrite some core utils
         # Bypass logind
         ln -sf busybox login
-        ln -f busybox hostname || true
+        ln -sf busybox hostname || true
 
         # Other
         ls mcedit 2> /dev/null && {

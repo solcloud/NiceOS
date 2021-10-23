@@ -3,7 +3,7 @@
 source ./_config.sh
 
 if [ -z $DISTRO ]; then
-	echo "You need to specify extracting distribution from $BASE/distro_extractor"
+	echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
 	ls "$BASE/distro_extractor" | xargs | sed 's/ / OR /g'
     echo "use \`export DISTRO=artix\` for example"
 	exit 1
@@ -18,7 +18,6 @@ if [ -z $DISTRO_ISO ]; then
 fi
 
 VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
-source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
 
 function boot_info_qemu() {
 	echo ""
@@ -137,6 +136,7 @@ function copy_to_nice_target() {
 
 }
 
+source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
 if [[ -n "$1" && "$1" = "virtualbox" ]]; then
 	from_virtualbox
 else
