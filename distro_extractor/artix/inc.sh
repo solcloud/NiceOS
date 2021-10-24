@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PM=arch
 VM_USER=artix
 VM_PASS=$VM_USER
 

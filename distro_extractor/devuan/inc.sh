@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PM=deb
 VM_USER=devuan
 VM_PASS=$VM_USER
 
