@@ -8,8 +8,8 @@ export TARGET_USER=dan
 export TARGET_GROUP=code
 export MAKE_NUM_OF_THREATS='6'
 
-export LINUX_VERSION='5.14.6'
-export BUSYBOX_VERSION='1.33.1'
+export LINUX_VERSION='5.14.18'
+export BUSYBOX_VERSION='1.34.1'
 
 export QEMU_NPROC=1
 export QEMU_RAM='4G'
