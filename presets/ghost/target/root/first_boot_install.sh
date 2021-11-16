@@ -65,7 +65,6 @@ Name=Firefox
 Exec=/usr/share/applications/scripts/run_firefox.sh
 
 Categories=Network
-MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;video/webm;
 Terminal=false
 StartupNotify=false
 Type=Application

@@ -2,27 +2,26 @@
 
 set -o pipefail
 
-# ///////////////////
+# //////// BASE PARAMS ///////////
 export BASE="/data/src/nice"
+export TARGET_USER=dan
+export TARGET_GROUP=code
+export MAKE_NUM_OF_THREATS='6'
+
+export LINUX_VERSION='5.14.6'
+export BUSYBOX_VERSION='1.33.1'
+
+export QEMU_NPROC=1
+export QEMU_RAM='4G'
+export DISK_SIZE_GB=6
+# ////////////////////////////////
+
 export STORAGE=$BASE/storage
 export OPT=$STORAGE/temp/dwn
 
 export VIRTUAL_BOX_VMS_ROOT="$HOME/VirtualBox VMs"
 export VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID=f8076108-303e-4ddb-9cfa-0fc5e81ef390
 export VM_MOUNT_ROOT=/tmp/nice_vm_root
-
-export LINUX_VERSION='5.14.6'
-export BUSYBOX_VERSION='1.33.1'
-
-export TARGET_USER=dan
-export TARGET_GROUP=code
-export MAKE_NUM_OF_THREATS='8'
-
-export QEMU_NPROC=1
-export QEMU_RAM='4G'
-export DISK_SIZE_GB=6
-# ///////////////////
-
 
 export MOUNT_PATH=$STORAGE/temp/mnt/nice_root
 export BUILDS=$BASE/build
