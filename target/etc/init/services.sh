@@ -9,7 +9,6 @@ else
 fi
 
 sleep 3 && /etc/init/network.sh > /dev/null 2>& 1 &
-busybox loadkmap < /etc/share/kmap/cz-qwertz.map
 
 [ -x /etc/start_services.sh ] && /etc/start_services.sh &
 
