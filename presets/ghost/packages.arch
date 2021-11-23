@@ -80,3 +80,4 @@ wpa_supplicant
 light
 intltool
 tree
+dos2unix
