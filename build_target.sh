@@ -67,6 +67,8 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         rm -f elogind*
         rm -f fancontrol
         rm -f findssl.sh
+        rm -f mesg talk talkd write wall
+        rm -f mkrfc2734
     popd
 }
 
