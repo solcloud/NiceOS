@@ -116,7 +116,9 @@ Type=Application
 popd
 
 
+chmod -R o-rwx /root/
 echo '127.0.0.1 virtual' >> /etc/hosts
+echo '140.82.121.3 github.com' >> /etc/hosts
 
 echo 'session         required       pam_limits.so' >> /etc/pam.d/other
 ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
