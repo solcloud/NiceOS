@@ -1,0 +1,3 @@
+interface=${2:-'wlan0'}
+wpa_supplicant -i "$interface" -c "/data/wpa/$1.conf" -B
+sh /etc/init/network.sh "$interface"
