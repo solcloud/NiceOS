@@ -28,4 +28,4 @@ make gui
 ## Promo
 Everybody likes screenshots right :)
 
-![screenshot](https://user-images.githubusercontent.com/74121353/145202802-1c6b08ad-8f7b-4c0f-a860-63e28a8776e4.png)
+![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
