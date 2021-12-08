@@ -24,3 +24,8 @@ DISTRO=artix DISTRO_ISO=/data/dwn/artix-base-openrc-20210426-x86_64.iso make ext
 make build
 make gui
 ```
+
+## Promo
+Everybody likes screenshots right :)
+
+![screenshot](https://user-images.githubusercontent.com/74121353/145202802-1c6b08ad-8f7b-4c0f-a860-63e28a8776e4.png)
