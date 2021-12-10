@@ -22,6 +22,7 @@ make $MAKEFLAGS busybox || {
         notify "Busybox build failed, but can use host static busybox, Ctrl-C to cancel... 10 sec for action"
         sleep 10
         cp -f /bin/busybox $BUSYBOX_SRC/busybox
+        echo "Used host static busybox"
     else
         echo "Busybox build failed"
         exit 1
