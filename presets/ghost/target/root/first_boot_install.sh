@@ -51,7 +51,7 @@ for user in $USERS; do
     chown -R $user:$user "/home/$user"
 done
 
-if lsmod | grep 'bochs-drm'; then
+if lsmod | grep 'bochs_drm'; then
     echo 'bindsym Mod1+t exec --no-startup-id $TERMINAL' >> /home/dan/.config/i3/config
 fi
 
