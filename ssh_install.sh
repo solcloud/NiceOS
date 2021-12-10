@@ -101,7 +101,7 @@ function mount_vm_disk_to_tmp() {
 
 function copy_to_nice_target() {
 
-    echo "Coping distro files to $TARGET"
+    echo "Copying distro files to $TARGET"
 
     mount_vm_disk_to_tmp
 
