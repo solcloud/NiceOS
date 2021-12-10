@@ -1,9 +1,8 @@
 CC=gcc
 CFLAGS=-Werror -Wall -Wextra -static -s -fdata-sections -ffunction-sections -Wl,--gc-sections -Os
-FILES=kall kpow reboot poweroff
+FILES=kpow reboot poweroff
 
 all:
-	$(CC) $(CFLAGS) -o build/kall src/kall.c
 	$(CC) $(CFLAGS) -o build/kpow src/kpow.c
 	$(CC) $(CFLAGS) -o build/reboot src/reboot.c
 	$(CC) $(CFLAGS) -o build/poweroff src/poweroff.c
