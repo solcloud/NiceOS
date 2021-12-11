@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 iptables -F -t nat
 iptables -F -t raw
 iptables -F -t mangle

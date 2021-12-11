@@ -89,6 +89,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
     for bin in $(find $TARGET/usr/bin/ -type f -exec file {} \; | grep 'text executable' | egrep -i -o -e "$TARGET/usr/bin/[-a-z0-9]+: " | sed 's/: //'); do
         chmod o+r $bin
     done
+    chmod o+r $TARGET/usr/bin/busybox
 
     chmod -R o-rwx $TARGET/root/
     [ $(find "$TARGET/bin/su" -type f) ] && chmod u+s "$TARGET/bin/su" || true

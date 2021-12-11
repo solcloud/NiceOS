@@ -3,7 +3,7 @@ echo "Starting installer"
 mkfs.ext4 -F /dev/sda
 mount /dev/sda /mnt/
 
-basestrap /mnt $(cat /tmp/packages.arch | xargs)
+basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
 
 artix-chroot /mnt /bin/bash -c '
 

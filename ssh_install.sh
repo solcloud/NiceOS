@@ -26,8 +26,8 @@ function boot_info_qemu() {
 source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
 
 function ssh_install() {
-    [ -r "$NICE_PRESET_PATH/packages.$PM" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.$PM)"
-    scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P $2 $BASE/distro_extractor/$DISTRO/install.sh $NICE_PRESET_PATH/packages.$PM $VM_USER@$1:/tmp/
+    [ -r "$NICE_PRESET_PATH/packages.${PM}.txt" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.${PM}.txt)"
+    scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P $2 $BASE/distro_extractor/$DISTRO/install.sh $NICE_PRESET_PATH/packages.${PM}.txt $VM_USER@$1:/tmp/
     echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $VM_USER@$1 -p $2 'sudo --stdin bash /tmp/install.sh'
 }
 

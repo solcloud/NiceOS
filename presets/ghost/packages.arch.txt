@@ -81,3 +81,4 @@ light
 intltool
 tree
 dos2unix
+usbutils

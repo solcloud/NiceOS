@@ -27,6 +27,9 @@ up:
 target:
 	./build_target.sh
 
+clean:
+	rm -rf target/ && git checkout target
+
 build:
 	./build.sh
 
