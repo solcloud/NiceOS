@@ -20,6 +20,9 @@ for user in $USERS; do
     ln -sf "/home/$user/.bashrc" "/home/$user/.bash_profile"
 done
 
+for user in firefox; do
+    usermod -aG audio $user
+done
 for user in dan; do
     usermod -aG tty,video,audio,input $user # Allow tty and Xorg (gpu,audio,input) login
     mkdir -p /home/$user/.config/
