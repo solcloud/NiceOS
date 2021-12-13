@@ -71,3 +71,5 @@ libdbus-glib-1-2
 suckless-tools
 xinput
 libgtk-3-dev
+libelf-dev
+gawk
