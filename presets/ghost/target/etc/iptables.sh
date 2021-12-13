@@ -21,8 +21,8 @@ iptables -A OUTPUT -p tcp -m multiport --dports 25,465 -j REJECT
 /etc/internet.sh allow "$ALLOWED_USERS"
 
 iptables -A OUTPUT -p udp --dport 53 -j REJECT # BLOCK outgoing udp DNS
-iptables -A OUTPUT -p tcp --dport 53 -j REJECT # BLOCK outgoing tcp DNS
 iptables -A INPUT -p udp --sport 53 -j DROP # BLOCK incoming udp DNS
+iptables -A OUTPUT -p tcp --dport 53 -j REJECT # BLOCK outgoing tcp DNS
 iptables -A INPUT -p tcp --sport 53 -j DROP # BLOCK incoming tcp DNS
 
 # Allow loopback traffic
