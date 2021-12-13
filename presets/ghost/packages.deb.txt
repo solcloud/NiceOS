@@ -7,6 +7,7 @@ kmod
 iproute2
 less
 kbd
+psmisc
 bash
 nano
 mc
@@ -19,7 +20,18 @@ openssh-server
 openssh-client
 git
 fontconfig
+fonts-noto-color-emoji
+fonts-jetbrains-mono
+fonts-dejavu
+fonts-roboto
 iptables
+wireguard-tools
+alsa-utils
+apulse
+libasound2-plugins
+volumeicon-alsa
+ffmpeg
+imagemagick
 make
 gcc
 termit
@@ -55,3 +67,7 @@ i3-wm
 i3lock
 i3status
 dunst
+libdbus-glib-1-2
+suckless-tools
+xinput
+libgtk-3-dev
