@@ -54,7 +54,7 @@ nss
 mailcap
 gcc
 i3status
-alacritty
+sakura
 rsync
 bison
 flex

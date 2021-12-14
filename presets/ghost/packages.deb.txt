@@ -34,7 +34,7 @@ ffmpeg
 imagemagick
 make
 gcc
-termit
+sakura
 rsync
 bison
 flex
