@@ -19,11 +19,13 @@ find $TARGET/ -type f -perm /2000 \
 find $TARGET/ -type f -perm -o=x \
   | grep -v "^$TARGET/usr/bin/" \
   | grep -v "^$TARGET/usr/lib/" \
+  | grep -v "^$TARGET/usr/libexec/" \
   | grep -v "^$TARGET/etc/ssl/update-certdata.sh" \
   | grep -v "^$TARGET/etc/init/" \
   | grep -v "^$TARGET/etc/profile" \
   | grep -v "^$TARGET/etc/share/" \
   | grep -v "^$TARGET/usr/share/" \
+  | grep -v "^$TARGET/var/lib/dpkg/" \
   && dd "Some unknown files has Other execute permission" || true
 
 echo "GOOD"
