@@ -5,7 +5,6 @@ source ./_config.sh
 
 echo "Building Busybox"
 
-mkdir -p $TARGET/usr/bin
 mkdir -p $BUSYBOX_BUILD
 cd $BUSYBOX_BUILD
 
@@ -29,5 +28,6 @@ make $MAKEFLAGS busybox || {
     fi
 }
 
+mkdir -p $TARGET/usr/bin
 cp -f $BUSYBOX_SRC/busybox $TARGET/bin/busybox
 chmod o+rx $TARGET/bin/busybox

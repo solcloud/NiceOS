@@ -36,8 +36,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         # Other
         ls mcedit 2> /dev/null && {
             ln -sf mcedit vi
-            ln -sf mcedit vim
-            ln -sf mcview pr
+            ln -sf mcedit v
         } || true
 
         # Bash pls
@@ -80,7 +79,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
     # Other perm in /etc
     pushd $TARGET/etc/
-        chmod o+r "shadow" # need for password verify without suid or daemon
+        chmod o+r "shadow" # need for password verify without suid or daemon, so beware of rainbows
         chmod -R o-r "ssh/"
     popd
 

@@ -57,9 +57,9 @@ export NICE_PRESET=$NICE_PRESET
 
 
 function dd() {
-	echo ${1:-'Error'}
-	echo "Exiting"
-	exit 201
+    echo ${1:-'Error'}
+    echo "Exiting"
+    exit 201
 }
 
 function notify() {
