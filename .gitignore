@@ -5,6 +5,7 @@
 /build/linux/
 
 /target/etc/fonts/
+/target/etc/alternatives/
 /target/usr/
 /target/var/
 /target/boot/

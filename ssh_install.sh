@@ -120,8 +120,15 @@ function copy_to_nice_target() {
     if [ -r $VM_MOUNT_ROOT/etc/fonts/ ]; then
         echo "Coping fonts configs"
         rm -rf $TARGET/etc/fonts/
-        sudo mkdir -p $TARGET/etc/
+        mkdir -p $TARGET/etc/
         sudo cp -a $VM_MOUNT_ROOT/etc/fonts/ $TARGET/etc/
+    fi
+
+    if [ -r $VM_MOUNT_ROOT/etc/alternatives/ ]; then
+        echo "Coping /etc/alternatives/"
+        rm -rf $TARGET/etc/alternatives/
+        mkdir -p $TARGET/etc/
+        sudo cp -a $VM_MOUNT_ROOT/etc/alternatives/ $TARGET/etc/
     fi
 
     echo "Coping udev rules"
