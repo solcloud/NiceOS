@@ -26,7 +26,7 @@ done
 for user in dan; do
     usermod -aG tty,video,audio,input $user # Allow tty and Xorg (gpu,audio,input) login
     mkdir -p /home/$user/.config/
-    cp -r /root/.config/{i3,i3status,mc,alacritty,volumeicon} /home/$user/.config/
+    cp -r /root/.config/{i3,i3status,mc,sakura,volumeicon} /home/$user/.config/
     cp /root/.xinitrc /home/$user/
     rm /home/$user/.bash_profile
     printf '
