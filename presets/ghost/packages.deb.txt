@@ -27,6 +27,7 @@ fonts-roboto
 iptables
 wireguard-tools
 alsa-utils
+pulseaudio
 apulse
 libasound2-plugins
 volumeicon-alsa
@@ -40,6 +41,8 @@ bison
 flex
 diffutils
 qemu-system-x86
+qemu-system-gui
+qemu-utils
 man-db
 exfat-utils
 dosfstools
@@ -76,3 +79,4 @@ gawk
 autoconf
 re2c
 libcurl4-openssl-dev
+libnotify-bin
