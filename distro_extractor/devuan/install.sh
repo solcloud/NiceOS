@@ -21,11 +21,6 @@ ln -s /usr/bin /usr/sbin
 pushd /usr/bin
     rm -f iptables
     ln -s iptables-legacy iptables
-
-
-    # currently debian has buggy kmod for me for loading self built modules (gcc, sign, compression, something - dont know for sure till 5.16 stable), use busybox version for now
-    mv kmod kmod.debian.bu
-    ln -s busybox kmod
 popd
 
 
