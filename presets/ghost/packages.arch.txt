@@ -82,3 +82,5 @@ intltool
 tree
 dos2unix
 usbutils
+autoconf
+re2c

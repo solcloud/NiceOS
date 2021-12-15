@@ -73,3 +73,6 @@ xinput
 libgtk-3-dev
 libelf-dev
 gawk
+autoconf
+re2c
+libcurl4-openssl-dev

@@ -130,3 +130,19 @@ echo "New password for daniel"
 passwd daniel
 echo "New password for dan"
 passwd dan
+
+# Install php
+echo "Installing php"
+mkdir /tmp/php_install
+/etc/internet.sh allow dns
+cp build_php.sh /tmp/php_install/
+cd /tmp/php_install
+chown -R dns /tmp/php_install/
+su -c "/bin/bash build_php.sh" dns || exit 1
+cd src
+cp -a target_root/usr/include/php/ /usr/include/
+chown -R 0:0 /usr/include/php/
+cp target_root/usr/bin/php /usr/bin/php7
+chmod o+x /usr/bin/php7
+/etc/internet.sh deny dns
+rm -rf /tmp/php_install
