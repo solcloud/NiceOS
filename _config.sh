@@ -44,12 +44,13 @@ export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
 
 export INITRAMFS_BUILD=$BUILDS/initramfs
 export SUPPORT_BUILD=$BUILDS/support
-export NICE_PRESET_PATH="$BASE/presets/$NICE_PRESET"
+export NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
+export NICE_PRESET_PATH="$NICE_PRESET_ROOT/$NICE_PRESET"
 export NICE_HAS_PRIMARY_DISK="1"
 export NICE_HAS_SECONDARY_DISK="0"
 
 if [ -z $NICE_PRESET ]; then
-    echo "You need to specify target preset from $NICE_PRESET_PATH"
+    echo "You need to specify preset from $NICE_PRESET_ROOT folder"
     echo "use \`export NICE_PRESET=minimal\` for example"
     exit 1
 fi
