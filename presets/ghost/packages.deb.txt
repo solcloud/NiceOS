@@ -80,3 +80,5 @@ autoconf
 re2c
 libcurl4-openssl-dev
 libnotify-bin
+ncal
+xxd
