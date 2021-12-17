@@ -26,6 +26,6 @@ make gui
 ```
 
 ## Promo
-Everybody likes screenshots right :)
+Everybody likes screenshots right 🙂 here is 👻
 
 ![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
