@@ -35,7 +35,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
         # Other
         ls mcedit 2> /dev/null && {
-            ln -sf mcedit vi
+            ln -s mcedit vi || true
             ln -sf mcedit v
         } || true
 
@@ -50,24 +50,12 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         rm -f linuxrc
 
         # Unused utilities
-        rm -f powertop
-        rm -f whatis apropos accessdb
-        rm -f addgnupghome applygnupgdefaults
-        rm -f alsabat* alsa-info* alsa_delay
-        rm -f arpd
+        rm -f addgnupghome applygnupgdefaults apropos accessdb
+        rm -f alsabat* alsa-info* alsa_delay avahi-* bshell bssh bvnc arpd
         rm -f audisp* audit* augenrules aulast* last lastb lastlog aureport ausearch autrace auvirt
-        rm -f avahi-* bshell bssh bvnc
-        rm -f bashbug
-        rm -f bd_*
-        rm -f cec-*
-        rm -f croco-*
-        rm -f ctrlaltdel
-        rm -f desktop-file-*
-        rm -f elogind*
-        rm -f fancontrol
-        rm -f findssl.sh
-        rm -f mesg talk talkd write wall
-        rm -f mkrfc2734 rarp rarpd
+        rm -f bashbug bd_* cec-* croco-* ctrlaltdel powertop whatis
+        rm -f desktop-file-* elogind* fancontrol findssl.sh
+        rm -f mesg talk talkd write wall mkrfc2734 rarp rarpd
     popd
 }
 
