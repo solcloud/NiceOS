@@ -5,7 +5,7 @@ umask 007
 export PATH='/bin'
 export PS1='\u@\h \w \$ '
 export EDITOR='nano'
-export LESS='-RI'
+export LESS='-Ri'
 export LESSHISTFILE='-'
 export PAGER='less'
 export SHELL='/bin/bash'
