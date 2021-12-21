@@ -4,7 +4,7 @@ umask 007
 
 export PATH='/bin'
 export PS1='\u@\h \w \$ '
-export EDITOR='nano'
+export EDITOR='vi'
 export LESS='-Ri'
 export LESSHISTFILE='-'
 export PAGER='less'
