@@ -25,6 +25,8 @@ make build
 make gui
 ```
 
+For extracting binaries from other distribution just look at _distro_extractor/_ folder. We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/data/dwn/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
+
 ## Promo
 Everybody likes screenshots right 🙂 here is my 👻
 
@@ -35,6 +37,7 @@ Everybody likes screenshots right 🙂 here is my 👻
 If you have own presets in different folder than default _presets/_ folder, you can use `NICE_PRESET_ROOT` variable, eg:
 
 ```bash
+cd /data/src/nice
 export NICE_PRESET_ROOT=/home/me/nice/my_presets
 export NICE_PRESET=my_custom_preset
 make build
