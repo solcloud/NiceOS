@@ -11,5 +11,5 @@ mqueue                                                                    /dev/m
 #/home                                                                    /home          bind      bind,rw,nodev,nosuid,noatime,nodiratime                     0       0
 #/etc                                                                     /etc           bind      bind,ro,nodev,nosuid,noatime,nodiratime                     0       0
 #/run                                                                     /run           bind      bind,rw,nodev,nosuid,noatime,nodiratime                     0       0
-#/usr                                                                     /usr           bind      bind,ro,nodev,noatime,nodiratime                     0       0
+#/usr                                                                     /usr           bind      bind,ro,nodev,noatime,nodiratime                            0       0
 #/var                                                                     /var           bind      bind,rw,nodev,nosuid,noatime,nodiratime                     0       0
