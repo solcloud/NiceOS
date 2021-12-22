@@ -44,9 +44,12 @@ alias gap='git add -p'
 alias grp='git restore --staged -p'
 
 zipfile() {
-    tar "-zcvf $1 $2"
+    target="$1"
+    shift
+    tar -zcvf "$target" "$@"
 }
 
 serve_file() {
+    echo "Serving '$1' on localhost:8080"
     while true; do { echo -ne "HTTP/1.1 200 OK\r\n\r\n" ; cat "$1" ; } | nc -lnp 8080 ; done
 }
