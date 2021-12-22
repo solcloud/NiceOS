@@ -2,7 +2,7 @@ EFI_DISK=$(findfs 'UUID=6E69-6365')
 ROOT_DEVICE=$(findfs 'UUID=4e696365-4f53-4e69-6365-4f534e696365')
 
 efibootmgr --create --label "NiceOS" \
-    --disk ${EFI_DISK::-1}  \
+    --disk ${EFI_DISK:-1}  \
     --part 1 \
     --loader /vmlinuz \
     --unicode 'initrd=\initrd' \
