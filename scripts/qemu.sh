@@ -25,7 +25,7 @@ fi
 if [ "$NICE_HAS_PRIMARY_DISK" = "1" ]; then
   OPTS="$OPTS -drive id=disk1,file=$STORAGE/sda.img,if=none,format=raw -device ide-hd,drive=disk1,bus=ahci.1"
 fi
-if [ "$NICE_HAS_SECONDARY_DISK" = "1" ]; then
+if [ "$NICE_HAS_SECONDARY_DISK" = "1" && -r "$STORAGE/sdb.img" ]; then
   OPTS="$OPTS -drive id=disk2,file=$STORAGE/sdb.img,if=none,format=raw -device ide-hd,drive=disk2,bus=ahci.2"
 fi
 
