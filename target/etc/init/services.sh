@@ -8,7 +8,7 @@ else
     busybox mdev -s
 fi
 
-sleep 3 && /etc/init/network.sh > /dev/null 2>& 1 &
+sleep 2 && /etc/init/network.sh > /dev/null 2>& 1 &
 
 [ -x /etc/start_services.sh ] && /etc/start_services.sh &
 
