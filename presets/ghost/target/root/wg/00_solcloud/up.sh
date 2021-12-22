@@ -9,7 +9,7 @@ ip link set $INTERFACE up
 
 OIFS=$IFS
 IFS=','
-for ip in IP_POOLS; do
+for ip in $IP_POOLS; do
     ip rou add $ip dev $INTERFACE
 done
 IFS=$OIFS
