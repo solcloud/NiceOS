@@ -1,6 +1,6 @@
 # NiceOS
 
-Operating system for users who wants to take full control of their system. You can do it, try it!
+Operating system with vanilla Linux kernel for users who wants to take full control of their system. You can do it, try it!
 
 ## Minimal example
 
@@ -25,7 +25,7 @@ Everybody likes screenshots right 🙂 here is my 👻
 
 ## Advance example
 
-bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (pacman) Pᗣᗧ•••MᗣN
+bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
 
 ```bash
 cd /data/src/nice
