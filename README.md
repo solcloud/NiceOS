@@ -8,12 +8,12 @@ git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
 $EDITOR _config.sh # read carefully and make modifications
 export NICE_PRESET=minimal # presets by default lives inside presets/ folder
-make download # download linux and busybox
+make download # download linux and busybox compressed archives
 make build
 make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 ```
 
-For more presets look at _presets/_ folder, there is _base_ preset and few my personal presets.
+For more presets look at _presets/_ folder, there is _base_ as a starting template and few my personal presets.
 
 Advanced example - bulding my main desktop system - _Ghost_ with binaries extracted from artix (pacman)
 
