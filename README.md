@@ -1,6 +1,6 @@
 # NiceOS
 
-A minimal example
+## Minimal example
 
 ```bash
 mkdir -p /data/src/nice # recommend hdd folder with few spare gigs
@@ -8,14 +8,20 @@ git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
 $EDITOR _config.sh # read carefully and make modifications
 export NICE_PRESET=minimal # presets by default lives inside presets/ folder
-make download # download linux and busybox compressed archives
+make download # download linux and busybox compressed releases
 make build
 make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 ```
 
-For more presets look at _presets/_ folder, there is _base_ as a starting template and few my personal presets.
+For more presets look at _presets/_ folder, there is _base_ as a starting template and few my personal presets
 
-Advanced example - bulding my main desktop system - _Ghost_ with binaries extracted from artix (pacman)
+## Promo
+Everybody likes screenshots right 🙂 here is my 👻
+
+![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
+
+## Advance example
+bulding my main desktop system - _Ghost 👻_ with binaries extracted from artix (pacman) Pᗣᗧ•••MᗣN
 
 ```bash
 cd /data/src/nice
@@ -26,11 +32,6 @@ make gui
 ```
 
 For extracting binaries from other distribution just look at _distro_extractor/_ folder. We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
-
-## Promo
-Everybody likes screenshots right 🙂 here is my 👻
-
-![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
 
 ## User's presets
 
