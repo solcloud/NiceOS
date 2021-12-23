@@ -1,5 +1,7 @@
 # NiceOS
 
+Operating system for users who wants to take full control of their system. You can do it, try it!
+
 ## Minimal example
 
 ```bash
@@ -16,12 +18,14 @@ make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 For more presets look at _presets/_ folder, there is _base_ as a starting template and few my personal presets
 
 ## Promo
+
 Everybody likes screenshots right 🙂 here is my 👻
 
 ![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
 
 ## Advance example
-bulding my main desktop system - _Ghost 👻_ with binaries extracted from artix (pacman) Pᗣᗧ•••MᗣN
+
+bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (pacman) Pᗣᗧ•••MᗣN
 
 ```bash
 cd /data/src/nice
