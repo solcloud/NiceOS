@@ -37,7 +37,7 @@ qemu-system-x86_64 -kernel "$KERNEL" \
   -usb \
   -device usb-tablet \
   -enable-kvm \
-  -soundhw hda \
+  -device intel-hda -device hda-duplex \
   -net user,hostfwd=tcp::2201-:22 -net nic \
   -cpu host \
   -smp $QEMU_NPROC \
