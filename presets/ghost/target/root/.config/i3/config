@@ -4,7 +4,7 @@
 #
 set $mod Mod1
 
-exec_always --no-startup-id ~/.config/i3/startup.sh
+exec_always --no-startup-id "~/.config/i3/startup.sh"
 exec --no-startup-id "pulseaudio -D --disallow-exit --exit-idle-time=-1"
 exec --no-startup-id "setxkbmap -layout cz"
 exec --no-startup-id "sleep 3 && volumeicon"
@@ -14,7 +14,7 @@ bindsym --border button1 [class="Firefox"] nop
 #bindsym --whole-window $mod+button3 [class="Firefox"] nop
 
 assign [class="jetbrains-phpstorm" window_type="normal"] 2
-assign [class="Sublime_text"] 3
+assign [class="Sublime_text" window_type="normal"] 3
 assign [title="Machine_Dev"] 10
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -35,7 +35,7 @@ floating_modifier $mod
 bindsym Mod1+Tab workspace back_and_forth
 
 # start a terminal
-bindsym Mod1+Return exec --no-startup-id $TERMINAL
+bindsym Mod1+Return exec --no-startup-id "$TERMINAL"
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -142,13 +142,13 @@ bindsym Mod1+Shift+r restart
 bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Sreen brightness controls
-bindsym Shift+XF86MonBrightnessUp exec light -A 15
-bindsym Shift+XF86MonBrightnessDown exec light -U 15
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym Shift+XF86MonBrightnessUp exec --no-startup-id "light -A 15"
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id "light -U 15"
+bindsym XF86MonBrightnessUp exec --no-startup-id "light -A 1"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 1"
 
 # Special keys actions
-bindsym XF86Sleep exec xset dpms force off
+bindsym XF86Sleep exec --no-startup-id "xset dpms force off"
 bindsym XF86TouchpadToggle exec device=$(xinput list --name-only | grep TouchPad) && xinput list-props "$device" | grep -E 'Device Enabled \([0-9]+\):\s+1' && xinput disable "$device" || xinput enable "$device"
 
 # resize window (you can also use the mouse for that)
@@ -190,7 +190,7 @@ bar {
         separator_symbol "  "
 
         # Take a screenshot by right clicking on the bar
-        bindsym --release button3 exec --no-startup-id import /tmp/screenshot.png
+        bindsym --release button3 exec --no-startup-id "import /tmp/screenshot.png"
 
         colors {
             background #000000

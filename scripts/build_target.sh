@@ -63,7 +63,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 {
     # Fix some file permissions
     chmod -R o+rX,o-w $TARGET/etc/
-    chmod -R o+rX $TARGET/usr/share/
+    chmod -R o+rX $TARGET/usr/share/ || true
 
     # Other perm in /etc
     pushd $TARGET/etc/
