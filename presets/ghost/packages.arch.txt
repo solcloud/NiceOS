@@ -24,7 +24,6 @@ ttf-roboto
 ttf-bitstream-vera
 ttf-droid
 ttf-croscore
-ttf-ibm-plex
 noto-fonts-emoji
 gtk3
 dbus-glib
