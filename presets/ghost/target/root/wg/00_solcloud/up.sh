@@ -15,5 +15,5 @@ done
 IFS=$OIFS
 
 
-iptables -I OUTPUT -o eth0 -p udp --destination $ENDPOINT_IP --dport $ENDPOINT_PORT -j ACCEPT
-iptables -I OUTPUT -o eth0 --destination $IP_POOLS -m owner --uid-owner daniel -j ACCEPT
+iptables -I OUTPUT -o $NET_INTERFACE -p udp --destination $ENDPOINT_IP --dport $ENDPOINT_PORT -j ACCEPT
+iptables -I OUTPUT -o $NET_INTERFACE --destination $IP_POOLS -m owner --uid-owner daniel -j ACCEPT
