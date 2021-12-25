@@ -93,8 +93,7 @@ function mount_vm_disk_to_tmp() {
 
     sudo umount $VM_MOUNT_ROOT/ 2> /dev/null
     LOOP=$(sudo losetup --nooverlap --show -f -P distro.img)
-    sudo rm -rf $VM_MOUNT_ROOT/
-    mkdir $VM_MOUNT_ROOT/
+    mkdir -p $VM_MOUNT_ROOT/
     sudo mount $LOOP $VM_MOUNT_ROOT/
     echo "Mount VM hdd loop $LOOP at $VM_MOUNT_ROOT"
 }
@@ -132,6 +131,7 @@ function copy_to_nice_target() {
     fi
 
     echo "Coping udev rules"
+    mkdir -p $TARGET/etc/udev/rules.d/
     sudo cp $VM_MOUNT_ROOT/usr/lib/udev/rules.d/* $TARGET/etc/udev/rules.d/
 
     echo "Changig ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
@@ -142,8 +142,8 @@ function copy_to_nice_target() {
     sudo sync
     echo "Done, checking dirty files"
     cd $BASE
-    git restore target/var/run target/usr/share/mc/mc.ini
-    git checkout target/var/run target/usr/share/mc/mc.ini
+    git restore target/var/run
+    git checkout target/var/run
     git status
 
 }
