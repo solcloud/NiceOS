@@ -13,3 +13,5 @@ https://github.com/perkint/kernelexpect
 
 cpu microcode, mitigace, performance test
 dbus,pulse,volumeicon lazy start https://wiki.archlinux.org/title/PulseAudio#Configuration_files
+
+first_boot_install allowlist binarek ostatni remove :)
