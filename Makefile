@@ -18,6 +18,9 @@ gui:
 sync:
 	./scripts/sync.sh
 
+check:
+	./scripts/check.sh
+
 download:
 	./scripts/download.sh
 
