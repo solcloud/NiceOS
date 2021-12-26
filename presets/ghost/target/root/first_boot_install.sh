@@ -125,6 +125,7 @@ echo '140.82.121.3 github.com' >> /etc/hosts
 
 echo 'session         required       pam_limits.so' >> /etc/pam.d/other
 ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
+echo 'load-module module-echo-cancel' >> /etc/pulse/default.pa
 
 echo "New password for daniel"
 passwd daniel
