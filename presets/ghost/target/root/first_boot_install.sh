@@ -137,7 +137,7 @@ mkdir /tmp/php_install
 /etc/internet.sh allow builder
 cp build_php.sh /tmp/php_install/
 cd /tmp/php_install
-chown -R dns /tmp/php_install/
+chown -R builder:bin /tmp/php_install/
 su -c "/bin/bash build_php.sh" builder || exit 1
 cd src
 cp -a target_root/usr/include/php/ /usr/include/
