@@ -50,8 +50,9 @@ make build
 
 ## Build dependencies
 
-For debian system you will probably need these packages
+For debian system you will probably need those packages
 
 ```bash
-sudo apt install -y git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget qemu-system-gui qemu-utils
+sudo apt install -y git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils # required
+sudo apt install -y qemu-system-gui qemu-utils # optional (for running in QEMU emulator)
 ```
