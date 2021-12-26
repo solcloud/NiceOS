@@ -47,3 +47,11 @@ export NICE_PRESET_ROOT=/home/me/nice/my_presets
 export NICE_PRESET=my_custom_preset
 make build
 ```
+
+## Build dependencies
+
+For debian system you will probably need these packages
+
+```bash
+sudo apt install -y git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget qemu-system-gui qemu-utils
+```
