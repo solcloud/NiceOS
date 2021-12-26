@@ -82,3 +82,5 @@ libcurl4-openssl-dev
 libnotify-bin
 ncal
 xxd
+libncurses-dev
+xclip
