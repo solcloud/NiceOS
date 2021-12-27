@@ -147,3 +147,5 @@ cp target_root/usr/bin/php /usr/bin/php7
 chmod o+x /usr/bin/php7
 /etc/internet.sh deny builder
 rm -rf /tmp/php_install
+
+sh reload_iptables.sh
