@@ -84,3 +84,4 @@ ncal
 xxd
 libncurses-dev
 xclip
+zstd
