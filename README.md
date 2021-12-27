@@ -4,6 +4,8 @@ Operating system with vanilla Linux kernel for users who wants to take full cont
 
 ## Minimal example
 
+You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnIu8)
+
 ```bash
 mkdir -p /data/src/nice # recommend hdd folder with few spare gigs
 git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
