@@ -73,7 +73,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
     # Add other read permission for text executable files inside bin
     chmod -R o-r $TARGET/usr/bin/ 2> /dev/null || true
-    for bin in $(find $TARGET/usr/bin/ -type f -exec file {} \; | grep 'text executable' | egrep -i -o -e "$TARGET/usr/bin/[-a-z0-9]+: " | sed 's/: //'); do
+    for bin in $(find $TARGET/usr/bin/ -type f -exec file {} \; | grep 'text executable' | egrep -i -o -e "$TARGET/usr/bin/[-a-z0-9._+]+: " | sed 's/: //'); do
         chmod o+r $bin
     done
     chmod o+r $TARGET/usr/bin/busybox
