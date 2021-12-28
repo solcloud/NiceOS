@@ -1,3 +1,10 @@
+depmod
+echo "You may need to reboot for modules depmod effect or force loading"
+echo "also you may need to rebuild kernel src at /usr/src/$(uname -r)/ using rebuild_and_reinstall.sh there"
+echo "or even delete whole source and untar from archive if your build cc and libc is too different than running environment"
+echo "Spawning shell so you can decide"
+sh
+
 echo "Enter root password"
 passwd
 
