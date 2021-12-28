@@ -126,6 +126,8 @@ Type=Application
 popd
 
 
+chmod a-w /home/dan/.config/sakura/sakura.conf
+chmod o+r /etc/environment
 chmod -R o-rwx /root/
 echo '127.0.0.1 virtual' >> /etc/hosts
 echo '140.82.121.3 github.com' >> /etc/hosts
