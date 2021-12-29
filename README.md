@@ -27,7 +27,9 @@ Everybody likes screenshots right 🙂 here is my 👻
 
 ## Advance example
 
-bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
+Bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
+
+You can watch me building ghost preset on [youtube](https://youtu.be/SNuNFt7kSIE)
 
 ```bash
 cd /data/src/nice
