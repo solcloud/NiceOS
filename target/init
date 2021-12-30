@@ -37,7 +37,7 @@ mkdir -p /dev/pts /dev/shm /dev/mqueue # busybox mount -a cannot use X-mount.mkd
 mount -a -o remount
 echo 0 > /proc/sys/kernel/printk
 [ -x /etc/init/root_mounted.sh ] && /etc/init/root_mounted.sh || true
-mount -a -O no_netdev
+mount -a -O no_netdev || ( echo "Warning: Some mountpoint failed to mount, sleeping for 6 sec" ; sleep 6 )
 
 trap machine_reboot 12
 trap machine_poweroff 10
