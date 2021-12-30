@@ -16,6 +16,7 @@ ln -s /code/solcloud/dev-stack/bin/dev-stack.sh /usr/bin/dev
 ln -s /tmp/ /var/tmp
 
 chmod 0600 /etc/ssh/ssh_host_ed25519_key
+chmod o+r /etc/resolv.conf
 chmod 0700 /home/code/
 chmod -R 0700 /home/code/.ssh/
 mkdir -p /code /data
