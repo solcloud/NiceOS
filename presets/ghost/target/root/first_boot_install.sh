@@ -127,6 +127,7 @@ popd
 
 
 chmod a-w /home/dan/.config/sakura/sakura.conf
+chmod 0600 /home/dan/.ssh/id_rsa
 chmod o+r /etc/environment
 chmod -R o-rwx /root/
 echo '127.0.0.1 virtual' >> /etc/hosts
