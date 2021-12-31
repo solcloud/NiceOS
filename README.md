@@ -17,7 +17,7 @@ make build
 make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 ```
 
-For more presets look at _presets/_ folder, there is _base_ as a starting template and few my personal presets
+For more presets look at [presets](presets/) folder, there is _base_ as a starting template and few my personal presets
 
 ## Promo
 
@@ -39,11 +39,11 @@ make build
 make gui
 ```
 
-For extracting binaries from other distribution just look at _distro_extractor/_ folder. We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
+For extracting binaries from other distribution just look at [distro_extractor](distro_extractor/) folder. We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
 
 ## User's presets
 
-If you have own presets in different folder than default _presets/_ folder, you can use `NICE_PRESET_ROOT` variable, eg:
+If you have own presets in different folder than default [presets](presets/) folder, you can use `NICE_PRESET_ROOT` variable, eg:
 
 ```bash
 cd /data/src/nice
