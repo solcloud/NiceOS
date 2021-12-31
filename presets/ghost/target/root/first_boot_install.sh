@@ -134,6 +134,10 @@ echo '127.0.0.1 virtual' >> /etc/hosts
 echo '140.82.121.3 github.com' >> /etc/hosts
 
 echo 'session         required       pam_limits.so' >> /etc/pam.d/other
+chmod g+rX /home/code
+mkdir -p /home/code/src/
+chown code:code /home/code/src/
+chmod g+rwXs /home/code/src/
 ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
 echo 'load-module module-echo-cancel' >> /etc/pulse/default.pa
 
