@@ -4,7 +4,7 @@ Operating system with vanilla Linux kernel for users who wants to take full cont
 
 ## Minimal example
 
-You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnIu8)
+You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnIu8) ▶️
 
 ```bash
 mkdir -p /data/src/nice # recommend hdd folder with few spare gigs
@@ -29,7 +29,7 @@ Everybody likes screenshots right 🙂 here is my 👻
 
 Bulding my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
 
-You can watch me building ghost preset on [youtube](https://youtu.be/SNuNFt7kSIE)
+You can watch me building ghost preset on [youtube](https://youtu.be/SNuNFt7kSIE) ▶️
 
 ```bash
 cd /data/src/nice
