@@ -8,6 +8,6 @@ Here are some inlcuded presets:
 - __[dev](dev/)__ - my development environment featuring docker, [youtube](https://youtu.be/cPaDJTJbgwQ)
 - __[ghost](ghost/)__ - my main desktop machine, [youtube](https://youtu.be/SNuNFt7kSIE)
 - __[leti](leti/)__ - my laptop machine
-- __[minimal](minimal/)__ - simple ram disk only kernel + busybox binaries, but you can add anything to it of course [youtube](https://youtu.be/4CH8b0HnIu8)
+- __[minimal](minimal/)__ - simple & fast ram disk only + kernel + busybox binaries, but you can add anything to it of course, use ldd or static, [youtube](https://youtu.be/4CH8b0HnIu8)
 
 Of course user can provide [own preset](https://github.com/solcloud/NiceOS#users-presets) using NICE_PRESET_ROOT variable
