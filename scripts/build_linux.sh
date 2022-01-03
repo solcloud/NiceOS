@@ -32,7 +32,7 @@ fi
 make INSTALL_HDR_PATH=$TARGET/usr INSTALL_MOD_STRIP=1 headers_install
 
 if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
-    # Coping only required directories after modules_prepare is boring (what drivers/ are required universally for future expansion) and disk space is cheap, grab whole source
+    # Copying only required directories after modules_prepare is boring (what drivers/ are required universally for future expansion) and disk space is cheap, grab whole source
     rsync --archive --delete --chmod=o-rwx "$LINUX_SRC/" "$TARGET/usr/src/$LINUX_VERSION/"
     # Cleanup not needed files from kernel source
     pushd "$TARGET/usr/src/$LINUX_VERSION"

@@ -108,23 +108,23 @@ function copy_to_nice_target() {
     notify "We need sudo for target copy"
 
     echo "Filling $TARGET directory"
-    echo "Coping usr/ directory"
+    echo "Copying usr/ directory"
     rm -rf $TARGET/usr/
     sudo cp -a $VM_MOUNT_ROOT/usr/ $TARGET/
 
-    echo "Coping var/ directory"
+    echo "Copying var/ directory"
     rm -rf $TARGET/var/
     sudo cp -a $VM_MOUNT_ROOT/var/ $TARGET/var/
 
     if [ -r $VM_MOUNT_ROOT/etc/fonts/ ]; then
-        echo "Coping fonts configs"
+        echo "Copying fonts configs"
         rm -rf $TARGET/etc/fonts/
         mkdir -p $TARGET/etc/
         sudo cp -a $VM_MOUNT_ROOT/etc/fonts/ $TARGET/etc/
     fi
 
     if [ -r $VM_MOUNT_ROOT/etc/alternatives/ ]; then
-        echo "Coping /etc/alternatives/"
+        echo "Copying /etc/alternatives/"
         rm -rf $TARGET/etc/alternatives/
         mkdir -p $TARGET/etc/
         sudo cp -a $VM_MOUNT_ROOT/etc/alternatives/ $TARGET/etc/
