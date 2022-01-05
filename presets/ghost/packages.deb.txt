@@ -83,5 +83,6 @@ libnotify-bin
 ncal
 xxd
 libncurses-dev
+libssl-dev
 xclip
 zstd
