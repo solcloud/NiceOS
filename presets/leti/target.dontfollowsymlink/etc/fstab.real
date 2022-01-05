@@ -1,0 +1,16 @@
+# <device>                                                         <mount point>       <type>          <options>                                             <dump>  <fsck>
+#
+UUID=4e696365-4f53-4e69-6365-4f534e696365                                 /              ext4      rw,noatime,nodiratime                                       0       1
+tmp                                                                       /tmp           tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=1g           0       0
+tmpfs                                                                     /run           tmpfs     nosuid,nodev,noatime,nodiratime,size=500m                   0       0
+devpts                                                                    /dev/pts       devpts    nosuid,nodev,noatime,nodiratime,mode=0660,gid=5             0       0
+shm                                                                       /dev/shm       tmpfs     nosuid,nodev,noatime,nodiratime,size=4g                     0       0
+mqueue                                                                    /dev/mqueue    tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=200m         0       0
+/etc                                                                      /etc           bind      bind,ro,nodev,nosuid                                        0       0
+/usr                                                                      /usr           bind      bind,ro,nodev                                               0       0
+/run                                                                      /run           bind      bind,rw,nodev,nosuid                                        0       0
+/var                                                                      /var           bind      bind,rw,nodev,nosuid                                        0       0
+UUID=8adbb2d9-237b-4537-8986-cc8fc290be1d                                 /data          ext4      rw,nodev,nosuid,noatime,nodiratime                          0       0
+/dev/mapper/home                                                          /home          ext4      rw,nodev,nosuid,noatime,nodiratime                          0       0
+#
+# <device>                                                         <mount point>       <type>          <options>                                             <dump>  <fsck>
