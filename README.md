@@ -57,6 +57,6 @@ make build
 For debian system you will probably need these packages
 
 ```bash
-sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libncurses-dev # required
+sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libssl-dev libncurses-dev # required
 sudo apt install qemu-system-gui qemu-utils # optional (for running and extracting in QEMU emulator)
 ```
