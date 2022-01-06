@@ -36,10 +36,6 @@ if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
     rsync --archive --delete --chmod=o-rwx "$LINUX_SRC/" "$TARGET/usr/src/$LINUX_VERSION/"
     # Cleanup not needed files from kernel source
     pushd "$TARGET/usr/src/$LINUX_VERSION"
-        for arch in ./arch/*/; do
-            [[ $arch = */x86/ ]] && continue
-            rm -rf "$arch"
-        done
         #rm -rf ./Documentation/
         #rm -rf ./drivers/
     popd
