@@ -6,7 +6,7 @@ set -o pipefail
 export BASE="/data/src/nice"
 export TARGET_USER=dan
 export TARGET_GROUP=code
-export MAKE_NUM_OF_THREATS='6'
+export MAKE_NUM_OF_THREADS='6'
 
 export LINUX_VERSION='5.10.89'
 export BUSYBOX_VERSION='1.34.1'
