@@ -28,7 +28,7 @@ export BUILDS=$BASE/build
 export TARGET=$BASE/target
 export DISK_FILE="$STORAGE/sda.img"
 
-export MAKEFLAGS="-j${MAKE_NUM_OF_THREATS}"
+export MAKEFLAGS="-j${MAKE_NUM_OF_THREADS}"
 [ -z $ORIG_PATH ] && export ORIG_PATH=$PATH || true
 export PATH=$ORIG_PATH
 unset LD_LIBRARY_PATH
