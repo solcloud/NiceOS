@@ -51,7 +51,7 @@ fi
     echo "Created $LOOP from $DISK_FILE"
 
     if [[ ! $(sudo blkid | grep "${LOOP}p1" | grep '"6E69-6365"') ]] ; then
-        echo "Formating partitions"
+        echo "Formatting partitions"
         sudo mkfs.fat -F32 ${LOOP}p1 -i '6E696365'
         sudo mkfs.ext4 -m 0 -F ${LOOP}p2 -U '4e696365-4f53-4e69-6365-4f534e696365'
     fi

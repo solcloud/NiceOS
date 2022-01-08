@@ -130,7 +130,7 @@ function copy_to_nice_target() {
         sudo cp -a $VM_MOUNT_ROOT/etc/alternatives/ $TARGET/etc/
     fi
 
-    echo "Changig ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
+    echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
     sudo chown -R $TARGET_USER:$TARGET_GROUP $TARGET
     rm -rf $TARGET/usr/lib/udev/rules.d/
 
