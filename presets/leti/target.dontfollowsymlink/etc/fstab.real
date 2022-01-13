@@ -3,7 +3,7 @@
 UUID=4e696365-4f53-4e69-6365-4f534e696365                                 /              ext4      rw,noatime,nodiratime                                       0       1
 tmp                                                                       /tmp           tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=1g           0       0
 tmpfs                                                                     /run           tmpfs     nosuid,nodev,noatime,nodiratime,size=500m                   0       0
-devpts                                                                    /dev/pts       devpts    nosuid,nodev,noatime,nodiratime,mode=0660,gid=5             0       0
+devpts                                                                    /dev/pts       devpts    nosuid,noatime,nodiratime,mode=0660,gid=5                   0       0
 shm                                                                       /dev/shm       tmpfs     nosuid,nodev,noatime,nodiratime,size=4g                     0       0
 mqueue                                                                    /dev/mqueue    tmpfs     nosuid,nodev,noatime,nodiratime,mode=1777,size=200m         0       0
 /etc                                                                      /etc           bind      bind,ro,nodev,nosuid                                        0       0
