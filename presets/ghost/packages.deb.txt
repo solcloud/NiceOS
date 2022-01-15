@@ -86,3 +86,4 @@ libncurses-dev
 libssl-dev
 xclip
 zstd
+redshift
