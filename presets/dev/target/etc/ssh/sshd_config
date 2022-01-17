@@ -2,4 +2,5 @@ ListenAddress 10.0.2.15
 AllowUsers code@10.0.2.2
 PasswordAuthentication no
 GatewayPorts yes
+X11Forwarding yes
 AcceptEnv=CHANGE_CWD

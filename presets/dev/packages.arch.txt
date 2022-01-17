@@ -10,3 +10,5 @@ git
 docker
 docker-compose
 crun
+xorg-xauth
+socat
