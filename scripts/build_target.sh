@@ -48,14 +48,6 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         rm -f init
         rm -f initrc
         rm -f linuxrc
-
-        # Unused utilities
-        rm -f addgnupghome applygnupgdefaults apropos accessdb
-        rm -f alsabat* alsa-info* alsa_delay avahi-* bshell bssh bvnc arpd
-        rm -f audisp* audit* augenrules aulast* last lastb lastlog aureport ausearch autrace auvirt
-        rm -f bashbug bd_* cec-* croco-* ctrlaltdel powertop whatis
-        rm -f desktop-file-* elogind* fancontrol findssl.sh
-        rm -f mesg talk talkd write wall mkrfc2734 rarp rarpd
     popd
 }
 
