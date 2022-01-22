@@ -6,7 +6,7 @@ if ! findmnt /boot; then
 fi
 
 TARGET=''
-LINUX_SRC=/usr/src/$(uname -r)
+LINUX_SRC="/usr/src/$(uname -r)"
 
 cd $LINUX_SRC
 
