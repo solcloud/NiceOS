@@ -10,7 +10,7 @@ cd $INITRAMFS_BUILD
 
 mkdir -p bin/ dev/ etc/ proc/ sys/ mnt/
 cp -f $BUSYBOX_SRC/busybox bin/busybox
-ln -sf busybox bin/sh
+ln -s busybox bin/sh 2> /dev/null || true
 chmod u+x init || dd "Init not found in $INITRAMFS_BUILD/init"
 
 echo "Creating initramfs cpio archive"
