@@ -29,5 +29,5 @@ make $MAKEFLAGS busybox || {
 }
 
 mkdir -p $TARGET/usr/bin
-cp -f $BUSYBOX_SRC/busybox $TARGET/bin/busybox
-chmod o+rx $TARGET/bin/busybox
+cp -f $BUSYBOX_SRC/busybox $TARGET/usr/bin/busybox
+chmod o+rx $TARGET/usr/bin/busybox
