@@ -1,0 +1,17 @@
+#!/bin/sh
+
+PATH=/bin
+
+busybox mount -t proc proc /proc -o nosuid,noexec,nodev
+busybox mount -t sysfs sys /sys -o nosuid,noexec,nodev
+busybox mount -t devtmpfs dev /dev # or busybox mdev -s if no kernel support for devfs
+
+root_disk=$(busybox findfs 'UUID=4e696365-4f53-4e69-6365-4f534e696365' || busybox echo -n 'no-nice-root-device-found')
+busybox mount -o ro $root_disk /mnt
+
+if busybox test -f /mnt/init; then
+  exec busybox switch_root /mnt /init
+else
+  busybox echo "Dropping to emergency shell"
+  exec sh
+fi

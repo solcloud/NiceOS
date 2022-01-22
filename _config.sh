@@ -16,6 +16,14 @@ export QEMU_RAM='4G'
 export DISK_SIZE_GB=6
 # ////////////////////////////////
 
+export NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
+if [ -z $NICE_PRESET ]; then
+    echo "You need to specify preset from $NICE_PRESET_ROOT folder"
+    echo "use \`export NICE_PRESET=minimal\` for example"
+    exit 1
+fi
+export NICE_PRESET=$NICE_PRESET
+
 export STORAGE=$BASE/storage
 export OPT=$STORAGE/temp/dwn
 
@@ -29,9 +37,6 @@ export TARGET=$BASE/target
 export DISK_FILE="$STORAGE/sda.img"
 
 export MAKEFLAGS="-j${MAKE_NUM_OF_THREADS}"
-[ -z $ORIG_PATH ] && export ORIG_PATH=$PATH || true
-export PATH=$ORIG_PATH
-unset LD_LIBRARY_PATH
 
 export LINUX="$OPT/linux-$LINUX_VERSION.tar.xz"
 export LINUX_BUILD="$BUILDS/linux"
@@ -44,17 +49,9 @@ export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
 
 export INITRAMFS_BUILD=$BUILDS/initramfs
 export SUPPORT_BUILD=$BUILDS/support
-export NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
-export NICE_PRESET_PATH="$NICE_PRESET_ROOT/$NICE_PRESET"
+
 export NICE_HAS_PRIMARY_DISK="1"
 export NICE_HAS_SECONDARY_DISK="0"
-
-if [ -z $NICE_PRESET ]; then
-    echo "You need to specify preset from $NICE_PRESET_ROOT folder"
-    echo "use \`export NICE_PRESET=minimal\` for example"
-    exit 1
-fi
-export NICE_PRESET=$NICE_PRESET
 
 
 function dd() {
@@ -75,9 +72,6 @@ if [ ! -f /bin/sudo ]; then
     }
 fi
 
-function load_target_toolchain() {
-    export PATH=$TARGET/usr/bin:$ORIG_PATH
-    export LD_LIBRARY_PATH=$TARGET/usr/lib
-}
 
+export NICE_PRESET_PATH="$NICE_PRESET_ROOT/$NICE_PRESET"
 [ -r "$NICE_PRESET_PATH/build_env.sh" ] && source "$NICE_PRESET_PATH/build_env.sh" || true
