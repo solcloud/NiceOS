@@ -4,19 +4,20 @@ source ./_config.sh
 
 OPTS=""
 APPEND='mitigations=off'
+
 if [[ -n "$1" && "$1" = "gui" ]]; then
 	OPTS="$OPTS"
 elif [[ -n "$1" && "$1" = "cmd" ]]; then
 	APPEND="$APPEND console=ttyS0 earlyprintk=serial"
 	OPTS="$OPTS -nographic"
 else
-	echo "Usage $0 cmd|gui [Y for target linux|*N for build linux]"
+	echo "Usage $0 cmd|gui [T for $BASE/target/boot | B* for $BUILDS ]"
   exit 1
 fi
 
 INITRD="$BUILDS/initramfs.cpio.gz"
 KERNEL="$LINUX_SRC/arch/x86_64/boot/bzImage"
-if [[ -n "$2" && "$2" = "Y" ]]; then
+if [[ -n "$2" && "$2" = "T" ]]; then
 	KERNEL="$TARGET/boot/vmlinuz"
 	INITRD="$TARGET/boot/initrd"
 fi

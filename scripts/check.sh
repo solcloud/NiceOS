@@ -3,7 +3,7 @@
 set -e
 source ./_config.sh
 
-echo -n "Checking file permissions...."
+echo -n "Checking $TARGET file permissions...."
 
 # SUID and GUID
 find $TARGET/ -type f -perm /4000 \
