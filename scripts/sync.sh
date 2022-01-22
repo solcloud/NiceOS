@@ -39,7 +39,7 @@ function unmount_paths() {
 
 notify "Need sudo for target disk setup"
 
-if [[ $(mount | grep "$MOUNT_PATH") ]] ; then
+if findmnt "$MOUNT_PATH"; then
     notify "$MOUNT_PATH already mounted, forcing unmount in 4 sec, Ctr-C to cancel"
     sleep 4
     unmount_paths

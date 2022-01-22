@@ -17,13 +17,12 @@ if [ -z $DISTRO_ISO ]; then
     exit 1
 fi
 
-VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
 
 function boot_info_qemu() {
     echo "For future password prompt write $VM_PASS"
 }
 
-source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit
+source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit 1
 
 function ssh_install() {
     [ -r "$NICE_PRESET_PATH/packages.${PM}.txt" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.${PM}.txt)"
@@ -39,7 +38,7 @@ function from_qemu() {
     qemu-system-x86_64 \
         -cdrom "$DISTRO_ISO" \
         -drive file='distro.img',format=raw \
-        -m $QEMU_RAM -enable-kvm -cpu host -smp 1 -net user,hostfwd=tcp::2201-:22 -net nic &
+        -m $QEMU_RAM -enable-kvm -cpu host -smp $QEMU_NPROC -net user,hostfwd=tcp::2201-:22 -net nic &
 
     boot_info
     boot_info_qemu
@@ -61,6 +60,7 @@ function from_qemu() {
 
 function from_virtualbox() {
 
+    VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
     echo "Startup virtual machine named '$DISTRO' saved at $VIRTUAL_BOX_VM_ROOT"
     echo "with distribution installation CD connected"
     echo "one hard disk connected (min 8GB), one bridged adapter network enabled"
@@ -101,13 +101,11 @@ function mount_vm_disk_to_tmp() {
 function copy_to_nice_target() {
 
     echo "Copying distro files to $TARGET"
-
     mount_vm_disk_to_tmp
 
-    # Fill target dir
     notify "We need sudo for target copy"
-
     echo "Filling $TARGET directory"
+
     echo "Copying usr/ directory"
     rm -rf $TARGET/usr/
     sudo cp -a $VM_MOUNT_ROOT/usr/ $TARGET/
@@ -132,11 +130,13 @@ function copy_to_nice_target() {
 
     echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
     sudo chown -R $TARGET_USER:$TARGET_GROUP $TARGET
+
+    echo "Removing $TARGET/usr/lib/udev/rules.d/"
     rm -rf $TARGET/usr/lib/udev/rules.d/
 
     sync
     sudo sync
-    echo "Done, checking dirty files"
+    echo "Done, checking git status"
     cd $BASE
     git restore target/var/run
     git checkout target/var/run
