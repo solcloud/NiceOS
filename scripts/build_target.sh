@@ -23,14 +23,13 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 {
     # Replace some gnu utils with busybox
     pushd $TARGET/bin/
-        # Provide busybox if no 'sh' a no core counterparts is available
+        # Provide busybox if no 'sh' and no core counterparts is available
         [ -f sh ] || for util in $(./busybox --list); do
             ln -s busybox $util 2> /dev/null || true
         done
 
         # Overwrite some core utils
-        # Bypass logind
-        ln -sf busybox login
+        ln -sf busybox login # bypass logind
         ln -sf busybox hostname || true
 
         # Other
