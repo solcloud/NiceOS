@@ -23,8 +23,7 @@ make $MAKEFLAGS busybox || {
         cp -f /bin/busybox $BUSYBOX_SRC/busybox
         echo "Used host static busybox"
     else
-        echo "Busybox build failed"
-        exit 1
+        dd "Busybox build failed"
     fi
 }
 
