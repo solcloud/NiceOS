@@ -8,6 +8,7 @@ sh
 echo "Enter root password"
 passwd
 
+echo 'cs_CZ.UTF-8 UTF-8' >> /etc/locale.gen
 locale-gen
 mkdir -p /var/cache/
 fc-cache # create /var/cache/fontconfig
