@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! findmnt /boot; then
     echo 'Mount /boot partition!'
@@ -6,7 +6,7 @@ if ! findmnt /boot; then
 fi
 
 TARGET=''
-LINUX_SRC="/usr/src/$(uname -r)"
+LINUX_SRC="/usr/src/xxLINUX_VERSIONxx"
 
 cd $LINUX_SRC
 
