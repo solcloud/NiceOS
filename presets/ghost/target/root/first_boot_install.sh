@@ -51,7 +51,7 @@ for user in dns; do
     printf "$user\n$user" | passwd $user
 done
 
-for user in dan daniel storm editor dns; do
+for user in dan daniel storm editor; do
     usermod -aG code $user
 done
 
@@ -64,6 +64,7 @@ done
 
 if lsmod | grep 'bochs'; then
     echo 'bindsym Mod1+t exec --no-startup-id $TERMINAL' >> /home/dan/.config/i3/config
+    sed 's/set $mod Mod1/set $mod Mod4/' /home/dan/.config/i3/config | sed 's/set $modSecondary Mod4/set $modSecondary Mod5/' > /home/dan/.config/i3/config
 fi
 
 # Desktop entries
@@ -113,7 +114,7 @@ Type=Application
 
     printf '[Desktop Entry]
 Name=Redshift
-Exec=/bin/redshift -x -P && /bin/redshift -l 50.2104:15.8252 -o
+Exec=/bin/redshift -x -P && /bin/redshift -l 50.2040:15.8249 -o
 
 Terminal=false
 StartupNotify=false

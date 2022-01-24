@@ -19,11 +19,13 @@ chmod 0600 /etc/ssh/ssh_host_ed25519_key
 chmod o+r /etc/resolv.conf
 chmod 0700 /home/code/
 chmod -R 0700 /home/code/.ssh/
+
 mkdir -p /code /data
 chmod o+rwX /code
 chmod o+rwX /data
-echo 'tag   /code    virtiofs    rw,_netdev,noatime,nodiratime  0   0' >> /etc/fstab
-echo '/dev/sdb   /data    ext4    rw,noatime,nodiratime  0   0' >> /etc/fstab
+
+echo 'tag        /code    virtiofs    rw,_netdev,noatime,nodiratime  0   0' >> /etc/fstab
+echo '/dev/sdb   /data    ext4        rw,noatime,nodiratime          0   0' >> /etc/fstab
 mount -a
 
 mkdir -p /data/images
