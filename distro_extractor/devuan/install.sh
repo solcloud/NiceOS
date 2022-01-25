@@ -13,7 +13,7 @@ apt-get update
 apt-get --fix-broken install -y
 apt-get --fix-missing install -y
 
-# get ridd off /sbin
+# get rid off /sbin
 mv /usr/sbin/* /usr/bin/
 rm /usr/sbin/*
 rmdir /usr/sbin/
