@@ -30,6 +30,8 @@ done
 
 for user in firefox; do
     usermod -aG audio $user
+    ln -s /data/desk "/home/$user/Desktop"
+    ln -s /data/dwn "/home/$user/Downloads"
 done
 for user in dan; do
     usermod -aG tty,video,audio,input $user # Allow tty and Xorg (gpu,audio,input) login
@@ -53,6 +55,7 @@ done
 
 for user in dan daniel storm editor; do
     usermod -aG code $user
+    ln -s /data/desk "/home/$user/Desktop"
 done
 
 usermod -u 7001 code
