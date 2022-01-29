@@ -6,7 +6,7 @@ mount /dev/sda /mnt/
 arch='amd64'
 debootstrap --variant=minbase --merged-usr --arch="$arch" --exclude="linux-image-$arch,linux-image-rt-$arch" --include="$(cat /tmp/packages.deb.txt | xargs | sed 's/ /,/g')" chimaera /mnt
 
-chroot /mnt /bin/bash -c '
+chroot /mnt /bin/sh -c '
 
 echo "Cleaning installation"
 apt-get update

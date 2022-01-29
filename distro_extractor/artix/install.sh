@@ -21,7 +21,7 @@ mount /dev/sda /mnt/
 
 basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
 
-artix-chroot /mnt /bin/bash -c '
+artix-chroot /mnt /bin/sh -c '
 
 echo "Cleaning installation"
 {
