@@ -1,0 +1,18 @@
+name: "Run tests"
+on: [push]
+
+jobs:
+  run_all_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Install dependencies"
+        timeout-minutes: 4
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libssl-dev libncurses-dev qemu-system-x86
+
+      - name: "Run test script"
+        timeout-minutes: 12
+        run: make test
