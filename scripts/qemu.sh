@@ -5,6 +5,7 @@ source ./.config.sh
 OPTS=""
 APPEND='mitigations=off'
 
+[ -r /dev/kvm ] && OPTS="$OPTS -enable-kvm -cpu host" || true
 if [[ -n "$1" && "$1" = "gui" ]]; then
 	OPTS="$OPTS"
 elif [[ -n "$1" && "$1" = "cmd" ]]; then
@@ -42,9 +43,7 @@ qemu-system-x86_64 -kernel "$KERNEL" \
   -device ahci,id=ahci \
   -usb \
   -device usb-tablet \
-  -enable-kvm \
   -device intel-hda -device hda-duplex \
   -net user,hostfwd=tcp::2201-:22 -net nic \
-  -cpu host \
   -smp "$QEMU_PROCESSOR_CORES" \
   -m "$QEMU_RAM" $OPTS
