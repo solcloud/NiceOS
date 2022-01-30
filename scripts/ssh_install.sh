@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./_config.sh
+source ./.config.sh
 
 if [ -z $DISTRO ]; then
     echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"

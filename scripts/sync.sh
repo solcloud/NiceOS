@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./_config.sh
+source ./.config.sh
 
 if [ "$NICE_HAS_PRIMARY_DISK" = "0" ]; then
     exit 0

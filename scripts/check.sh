@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./_config.sh
+source ./.config.sh
 
 echo -n "Checking $TARGET files permissions...."
 

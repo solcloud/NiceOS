@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./_config.sh
+source ./.config.sh
 
 OPTS=""
 APPEND='mitigations=off'

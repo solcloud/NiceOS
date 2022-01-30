@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./_config.sh
+source ./.config.sh
 
 # Linux
 LINUX_MAJOR_VERSION=$(echo $LINUX_VERSION | grep -o -E '^[1-9]+')
