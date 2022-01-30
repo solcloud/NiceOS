@@ -7,10 +7,10 @@ export BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 export TARGET_USER=$(id -u)
 export TARGET_GROUP=$(id -g)
 
-export MAKE_NUM_OF_THREADS=1
+export MAKE_NUM_OF_THREADS=2
 export QEMU_RAM='1G'
 export QEMU_PROCESSOR_CORES=1
-export DISK_SIZE_GB=6
+export DISK_SIZE_GB=1
 
 # ///// Load user custom config.sh if exists that overrides global params
 [ -r "$BASE/config.sh" ] && source "$BASE/config.sh"
