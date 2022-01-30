@@ -38,7 +38,7 @@ function from_qemu() {
     qemu-system-x86_64 \
         -cdrom "$DISTRO_ISO" \
         -drive file='distro.img',format=raw \
-        -m $QEMU_RAM -enable-kvm -cpu host -smp $QEMU_NPROC -net user,hostfwd=tcp::2201-:22 -net nic &
+        -m $QEMU_RAM -enable-kvm -cpu host -smp $QEMU_PROCESSOR_CORES -net user,hostfwd=tcp::2201-:22 -net nic &
 
     boot_info
     boot_info_qemu

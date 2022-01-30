@@ -1,14 +1,16 @@
-/_pass
+/.pass
+/config.sh
+
 /build/busybox/
 /build/initramfs/
 /build/initramfs.cpio.gz
 /build/linux/
 
-/target/etc/fonts/
+/target/boot/
 /target/etc/alternatives/
+/target/etc/fonts/
 /target/usr/
 /target/var/
-/target/boot/
 
 /presets/*/target/root/wg/*/env
 /presets/*/target/root/wg/*/local.config
