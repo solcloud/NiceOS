@@ -21,6 +21,7 @@ find "$TARGET/" -type f -perm -o=x \
   | grep -v "^$TARGET/usr/lib/" \
   | grep -v "^$TARGET/usr/libexec/" \
   | grep -v "^$TARGET/etc/ssl/update-certdata.sh" \
+  | grep -v "^$TARGET/etc/start_services.sh" \
   | grep -v "^$TARGET/etc/init/" \
   | grep -v "^$TARGET/etc/profile" \
   | grep -v "^$TARGET/etc/share/" \
