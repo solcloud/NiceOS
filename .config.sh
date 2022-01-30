@@ -71,7 +71,7 @@ function dd() {
 
 function notify() {
     echo "$1"
-    [ -x /bin/notify-send ] && /bin/notify-send "${1:-'Alert'}"
+    [ -x /bin/notify-send ] && /bin/notify-send "${1:-'Alert'}" || true
 }
 
 if [ ! -f /bin/sudo ]; then
