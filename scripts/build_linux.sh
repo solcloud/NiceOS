@@ -5,18 +5,18 @@ source ./.config.sh
 
 echo "Building Linux"
 
-mkdir -p $LINUX_BUILD
-cd $LINUX_BUILD
+mkdir -p "$LINUX_BUILD"
+cd "$LINUX_BUILD"
 
-[ -d $LINUX_SRC ] || {
-    tar -xvf $LINUX || dd "Missing linux kernel src $LINUX - try run 'make download'"
-    cd $LINUX_SRC
+[ -d "$LINUX_SRC" ] || {
+    tar -xvf "$LINUX" || dd "Missing linux kernel src $LINUX - try run 'make download'"
+    cd "$LINUX_SRC"
     make mrproper
 }
-cd $LINUX_SRC
+cd "$LINUX_SRC"
 
 echo "Building kernel"
-cp $NICE_PRESET_PATH/linux.config .config
+cp "$NICE_PRESET_PATH/linux.config" '.config'
 make olddefconfig # comment for interactive asking
 make $MAKEFLAGS vmlinux bzImage
 
@@ -25,11 +25,11 @@ if [ "$HAS_MODULES_SUPPORT" == "1" ]; then
     echo "Building kernel modules"
     make $MAKEFLAGS modules
     echo "Installing kernel modules"
-    make INSTALL_MOD_PATH=$TARGET/usr INSTALL_MOD_STRIP=1 modules_install
+    make INSTALL_MOD_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 modules_install
 fi
 
 echo "Installing kernel headers"
-make INSTALL_HDR_PATH=$TARGET/usr INSTALL_MOD_STRIP=1 headers_install
+make INSTALL_HDR_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 headers_install
 
 if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
     mkdir -p "$TARGET/usr/src"
@@ -40,15 +40,15 @@ if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
 
     # Update modules kernel src symlink
     if [ "$HAS_MODULES_SUPPORT" == "1" ]; then
-        pushd $TARGET/usr/lib/modules/$LINUX_VERSION/
+        pushd "$TARGET/usr/lib/modules/$LINUX_VERSION/"
             rm -f build source
-            ln -s ../../../src/$LINUX_VERSION/ build
-            ln -s ../../../src/$LINUX_VERSION/ source
+            ln -s "../../../src/$LINUX_VERSION/" 'build'
+            ln -s "../../../src/$LINUX_VERSION/" 'source'
         popd
     fi
 fi
 
 
-cp -f $LINUX_SRC/.config $TARGET/boot/kernel.config
-cp -f $LINUX_SRC/System.map $TARGET/boot/System.map
-cp -f $LINUX_SRC/arch/x86/boot/bzImage $TARGET/boot/vmlinuz
+cp -f "$LINUX_SRC/.config" "$TARGET/boot/kernel.config"
+cp -f "$LINUX_SRC/System.map" "$TARGET/boot/System.map"
+cp -f "$LINUX_SRC/arch/x86/boot/bzImage" "$TARGET/boot/vmlinuz"

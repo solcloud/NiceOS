@@ -5,18 +5,18 @@ source ./.config.sh
 
 echo "Building $TARGET"
 
-mkdir -p $TARGET/{boot,dev,sys,home,mnt,proc,run,tmp,var} $TARGET/usr/{bin,lib} $TARGET/var/{empty,log}
-chmod 0760 $TARGET/init
+mkdir -p "$TARGET"/{boot,dev,sys,home,mnt,proc,run,tmp,var} "$TARGET"/usr/{bin,lib} "$TARGET"/var/{empty,log}
+chmod 0760 "$TARGET/init"
 
 mkdir -p "$TARGET/usr/src"
 git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
 {
     # Replace some gnu utils with busybox
-    pushd $TARGET/bin/
+    pushd "$TARGET/bin/"
         # Provide busybox if no 'sh' and no core counterparts is available
         [ -f sh ] || for util in $(./busybox --list); do
-            ln -s busybox $util 2> /dev/null || true
+            ln -s busybox "$util" 2> /dev/null || true
         done
 
         # Overwrite some core utils
@@ -46,18 +46,18 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
     chmod -R o-rwx "$TARGET/root/"
 
     # Add other read permission for text executable files inside bin
-    chmod -R o-r $TARGET/usr/bin/ 2> /dev/null || true
-    for bin in $(find $TARGET/usr/bin/ -type f -exec file {} \; | grep 'text executable' | egrep -i -o -e "$TARGET/usr/bin/[-a-z0-9._+]+: " | sed 's/: //'); do
-        chmod o+r $bin
+    chmod -R o-r "$TARGET/usr/bin/" 2> /dev/null || true
+    for bin in $(find "$TARGET/usr/bin/" -type f -exec file {} \; | grep 'text executable' | grep -E -i -o -e "$TARGET/usr/bin/[-a-z0-9._+]+: " | sed 's/: //'); do
+        chmod o+r "$bin"
     done
-    chmod o+r $TARGET/usr/bin/busybox
+    chmod o+r "$TARGET/usr/bin/busybox"
 }
 
 {
     # Replace some $TARGET/usr files with our own build support
-    pushd $SUPPORT_BUILD
+    pushd "$SUPPORT_BUILD"
         for dir in *; do
-            pushd $dir
+            pushd "$dir"
                 ./build.sh
                 DESTDIR="$TARGET/usr" ./install.sh
             popd

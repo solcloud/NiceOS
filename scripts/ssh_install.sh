@@ -2,13 +2,13 @@
 
 source ./.config.sh
 
-if [ -z $DISTRO ]; then
+if [ -z "$DISTRO" ]; then
     echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
-    ls "$BASE/distro_extractor" | xargs | sed 's/ / OR /g'
+    ls "$BASE/distro_extractor" | sed 's/ / OR /g'
     echo "use \`export DISTRO=artix\` for example"
     exit 1
 fi
-if [ -z $DISTRO_ISO ]; then
+if [ -z "$DISTRO_ISO" ]; then
     echo "You need to specify distribution install iso path"
     echo "use \`export DISTRO_ISO=/data/dwn/artix-base-openrc-20210426-x86_64.iso\` for example"
     echo " or "
@@ -26,8 +26,8 @@ source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit 1
 
 function ssh_install() {
     [ -r "$NICE_PRESET_PATH/packages.${PM}.txt" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.${PM}.txt)"
-    scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P $2 $BASE/distro_extractor/$DISTRO/install.sh $NICE_PRESET_PATH/packages.${PM}.txt $VM_USER@$1:/tmp/
-    echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $VM_USER@$1 -p $2 'sudo --stdin bash /tmp/install.sh'
+    scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P "$2" "$BASE/distro_extractor/$DISTRO/install.sh" "$NICE_PRESET_PATH/packages.${PM}.txt" "$VM_USER@$1:/tmp/"
+    echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$VM_USER@$1" -p "$2" 'sudo --stdin bash /tmp/install.sh'
 }
 
 
@@ -38,13 +38,13 @@ function from_qemu() {
     qemu-system-x86_64 \
         -cdrom "$DISTRO_ISO" \
         -drive file='distro.img',format=raw \
-        -m $QEMU_RAM -enable-kvm -cpu host -smp $QEMU_PROCESSOR_CORES -net user,hostfwd=tcp::2201-:22 -net nic &
+        -m "$QEMU_RAM" -enable-kvm -cpu host -smp "$QEMU_PROCESSOR_CORES" -net user,hostfwd=tcp::2201-:22 -net nic &
 
     boot_info
     boot_info_qemu
 
     echo "If all done press enter here"
-    read WAIT
+    read
 
     ssh_install localhost 2201
 
@@ -69,9 +69,9 @@ function from_virtualbox() {
 
     echo "Type here local ip address of bridge network eth0 (inet brd) and hit enter"
     read IP_ADDRESS
-    echo $IP_ADDRESS
+    echo "$IP_ADDRESS"
 
-    ssh_install $IP_ADDRESS 22
+    ssh_install "$IP_ADDRESS" 22
 
     echo "Welcome back to user host shell"
     echo "Waiting for virtual machine to shutdown for max 60sec"
@@ -91,10 +91,10 @@ function from_virtualbox() {
 function mount_vm_disk_to_tmp() {
     notify "We need sudo for mounting"
 
-    sudo umount $VM_MOUNT_ROOT/ 2> /dev/null
+    sudo umount "$VM_MOUNT_ROOT/" 2> /dev/null
     LOOP=$(sudo losetup --nooverlap --show -f -P distro.img)
-    mkdir -p $VM_MOUNT_ROOT/
-    sudo mount $LOOP $VM_MOUNT_ROOT/
+    mkdir -p "$VM_MOUNT_ROOT/"
+    sudo mount "$LOOP" "$VM_MOUNT_ROOT/"
     echo "Mount VM hdd loop $LOOP at $VM_MOUNT_ROOT"
 }
 
@@ -107,37 +107,37 @@ function copy_to_nice_target() {
     echo "Filling $TARGET directory"
 
     echo "Copying usr/ directory"
-    rm -rf $TARGET/usr/
-    sudo cp -a $VM_MOUNT_ROOT/usr/ $TARGET/
+    rm -rf "$TARGET/usr/"
+    sudo cp -a "$VM_MOUNT_ROOT/usr/" "$TARGET/"
 
     echo "Copying var/ directory"
-    rm -rf $TARGET/var/
-    sudo cp -a $VM_MOUNT_ROOT/var/ $TARGET/var/
+    rm -rf "$TARGET/var/"
+    sudo cp -a "$VM_MOUNT_ROOT/var/" "$TARGET/var/"
 
-    if [ -r $VM_MOUNT_ROOT/etc/fonts/ ]; then
+    if [ -r "$VM_MOUNT_ROOT/etc/fonts/" ]; then
         echo "Copying fonts configs"
-        rm -rf $TARGET/etc/fonts/
-        mkdir -p $TARGET/etc/
-        sudo cp -a $VM_MOUNT_ROOT/etc/fonts/ $TARGET/etc/
+        rm -rf "$TARGET/etc/fonts/"
+        mkdir -p "$TARGET/etc/"
+        sudo cp -a "$VM_MOUNT_ROOT/etc/fonts/" "$TARGET/etc/"
     fi
 
-    if [ -r $VM_MOUNT_ROOT/etc/alternatives/ ]; then
+    if [ -r "$VM_MOUNT_ROOT/etc/alternatives/" ]; then
         echo "Copying /etc/alternatives/"
-        rm -rf $TARGET/etc/alternatives/
-        mkdir -p $TARGET/etc/
-        sudo cp -a $VM_MOUNT_ROOT/etc/alternatives/ $TARGET/etc/
+        rm -rf "$TARGET/etc/alternatives/"
+        mkdir -p "$TARGET/etc/"
+        sudo cp -a "$VM_MOUNT_ROOT/etc/alternatives/" "$TARGET/etc/"
     fi
 
     echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
-    sudo chown -R $TARGET_USER:$TARGET_GROUP $TARGET
+    sudo chown -R "$TARGET_USER":"$TARGET_GROUP" "$TARGET"
 
     echo "Removing $TARGET/usr/lib/udev/rules.d/"
-    rm -rf $TARGET/usr/lib/udev/rules.d/
+    rm -rf "$TARGET/usr/lib/udev/rules.d/"
 
     sync
     sudo sync
     echo "Done, checking git status"
-    cd $BASE
+    cd "$BASE"
     git restore target/var/run
     git checkout target/var/run
     git status
