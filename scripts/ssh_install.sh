@@ -4,7 +4,7 @@ source ./.config.sh
 
 if [ -z "$DISTRO" ]; then
     echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
-    ls "$BASE/distro_extractor" | sed 's/ / OR /g'
+    ls "$BASE/distro_extractor"
     echo "use \`export DISTRO=artix\` for example"
     exit 1
 fi
