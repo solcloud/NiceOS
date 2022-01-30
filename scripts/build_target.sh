@@ -5,20 +5,11 @@ source ./.config.sh
 
 echo "Building $TARGET"
 
-mkdir -p $TARGET/{boot,dev,sys,home,mnt,proc,run,tmp,var} $TARGET/usr/{bin,lib} $TARGET/var/log
+mkdir -p $TARGET/{boot,dev,sys,home,mnt,proc,run,tmp,var} $TARGET/usr/{bin,lib} $TARGET/var/{empty,log}
 chmod 0760 $TARGET/init
 
 mkdir -p "$TARGET/usr/src"
 git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
-
-{
-    # Create some files
-    pushd $TARGET
-        mkdir -p var/empty/ # SSH expect empty folder for chrooting
-        rm -rf var/empty/*
-    popd
-}
-
 
 {
     # Replace some gnu utils with busybox
@@ -30,37 +21,29 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
         # Overwrite some core utils
         ln -sf busybox login # bypass logind
-        ln -sf busybox hostname || true
+        ln -sf busybox hostname # override net-tools version or /proc/sys/kernel/hostname symlink for more universal solution
 
         # Other
-        ls mcedit 2> /dev/null && {
+        [ -x mcedit ] && {
             ln -s mcedit vi || true
             ln -sf mcedit v
-        } || true
+        }
 
         # Bash pls
-        ls bash 2> /dev/null && {
+        [ -f bash ] && {
             ln -sf bash sh
         }
 
-        # Init specific stuff
-        rm -f init
-        rm -f initrc
-        rm -f linuxrc
+        rm -f init # we have own init
     popd
 }
 
-
 {
     # Fix some file permissions
-    chmod -R o+rX,o-w $TARGET/etc/
-    chmod -R o+rX $TARGET/usr/share/ || true
-
-    # Other perm in /etc
-    pushd $TARGET/etc/
-        chmod o+r "shadow" # need for password verify without suid or daemon, so beware of rainbows
-        chmod -R o-r "ssh/"
-    popd
+    chmod -R o+rX,o-w "$TARGET/etc/"
+    chmod -R o-r "$TARGET/etc/ssh/" || true
+    chmod -R o+rX "$TARGET/usr/share/" || true
+    chmod -R o-rwx "$TARGET/root/"
 
     # Add other read permission for text executable files inside bin
     chmod -R o-r $TARGET/usr/bin/ 2> /dev/null || true
@@ -68,21 +51,16 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         chmod o+r $bin
     done
     chmod o+r $TARGET/usr/bin/busybox
-
-    chmod -R o-rwx $TARGET/root/
-    [ $(find "$TARGET/bin/su" -type f) ] && chmod u+s "$TARGET/bin/su" || true
 }
 
-
 {
-    # Replace some TARGET/usr files with our own build support
+    # Replace some $TARGET/usr files with our own build support
     pushd $SUPPORT_BUILD
         for dir in *; do
             pushd $dir
-                make NICE_BASE=$BASE $MAKEFLAGS
-                make NICE_BASE=$BASE DESTDIR="$TARGET/usr" install
+                ./build.sh
+                DESTDIR="$TARGET/usr" ./install.sh
             popd
         done
     popd
 }
-
