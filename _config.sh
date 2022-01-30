@@ -25,6 +25,7 @@ export VIRTUAL_BOX_VMS_ROOT=${VIRTUAL_BOX_VMS_ROOT:-"$HOME/VirtualBox VMs"}
 export VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID=${VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID:-'f8076108-303e-4ddb-9cfa-0fc5e81ef390'}
 
 export OPT=$STORAGE/temp/dwn
+mkdir -p "$OPT"
 export MAKEFLAGS="-j${MAKE_NUM_OF_THREADS}"
 export MOUNT_PATH=$STORAGE/temp/mnt/nice_root
 export DISK_FILE="$STORAGE/sda.img"

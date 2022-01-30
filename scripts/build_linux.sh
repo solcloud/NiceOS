@@ -9,7 +9,7 @@ mkdir -p $LINUX_BUILD
 cd $LINUX_BUILD
 
 [ -d $LINUX_SRC ] || {
-    tar -xvf $LINUX || dd "Missing linux kernel src $LINUX"
+    tar -xvf $LINUX || dd "Missing linux kernel src $LINUX - try run 'make download'"
     cd $LINUX_SRC
     make mrproper
 }

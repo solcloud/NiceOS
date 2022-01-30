@@ -9,7 +9,7 @@ mkdir -p $BUSYBOX_BUILD
 cd $BUSYBOX_BUILD
 
 ls $BUSYBOX_SRC > /dev/null || {
-    tar -xvf $BUSYBOX || dd "Missing busybox src $BUSYBOX"
+    tar -xvf $BUSYBOX || dd "Missing busybox src $BUSYBOX - try run 'make download'"
     cd $BUSYBOX_SRC
     make distclean
 }
