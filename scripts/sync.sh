@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./_config.sh
+source ./.config.sh
 
 if [ "$NICE_HAS_PRIMARY_DISK" = "0" ]; then
     exit 0
@@ -19,8 +19,8 @@ function unmount_paths() {
     if [ ! -f "$DISK_FILE" ] ; then
         echo "Creating hdd img $DISK_FILE"
 
-        if ! fallocate -l ${DISK_SIZE_GB}G $DISK_FILE; then
-            /bin/dd if=/dev/zero of=$DISK_FILE bs=1G seek=$DISK_SIZE_GB count=0 || exit 1
+        if ! fallocate -l "${DISK_SIZE_GB}G" "$DISK_FILE"; then
+            /bin/dd if=/dev/zero of="$DISK_FILE" bs=1G seek="$DISK_SIZE_GB" count=0 || exit 1
         fi
         printf "g
         n
@@ -32,7 +32,7 @@ function unmount_paths() {
 
 
         w
-        " | fdisk $DISK_FILE
+        " | fdisk "$DISK_FILE"
     fi
 
 }
@@ -50,15 +50,15 @@ fi
     LOOP=$(sudo losetup --nooverlap --show -f -P "$DISK_FILE")
     echo "Created $LOOP from $DISK_FILE"
 
-    if [[ ! $(sudo blkid | grep "${LOOP}p1" | grep '"6E69-6365"') ]] ; then
+    if ! sudo blkid | grep "${LOOP}p1" | grep -q '"6E69-6365"'; then
         echo "Formatting partitions"
-        sudo mkfs.fat -F32 ${LOOP}p1 -i '6E696365'
-        sudo mkfs.ext4 -m 0 -F ${LOOP}p2 -U '4e696365-4f53-4e69-6365-4f534e696365'
+        sudo mkfs.fat -F32 "${LOOP}p1" -i '6E696365'
+        sudo mkfs.ext4 -m 0 -F "${LOOP}p2" -U '4e696365-4f53-4e69-6365-4f534e696365'
     fi
 
     echo "Mounting $MOUNT_PATH"
     sudo mkdir -p "$MOUNT_PATH" || dd "Cannot create mount directory $MOUNT_PATH"
-    sudo mount ${LOOP}p2 "$MOUNT_PATH"
+    sudo mount "${LOOP}p2" "$MOUNT_PATH"
 
     echo "Syncing $TARGET to $MOUNT_PATH"
     sudo rsync --info=progress2 --exclude './boot/' --archive --delete --chmod=D0755,Fo-w --chown 0:0 "$TARGET/" "$MOUNT_PATH" || {
@@ -68,7 +68,7 @@ fi
 
     echo "Mounting $MOUNT_PATH/boot"
     sudo mkdir -p "$MOUNT_PATH/boot"
-    sudo mount ${LOOP}p1 "$MOUNT_PATH/boot"
+    sudo mount "${LOOP}p1" "$MOUNT_PATH/boot"
 
     echo "Syncing $TARGET/boot to $MOUNT_PATH/boot"
     sudo rsync --info=progress2 --recursive --times --delete "$TARGET/boot/" "$MOUNT_PATH/boot" || { # need separate non archive rsync for boot dir only because of permissions on FAT

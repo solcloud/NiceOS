@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./_config.sh
+source ./.config.sh
 
 rm -f "$DISK_FILE"
 

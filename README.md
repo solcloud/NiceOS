@@ -10,7 +10,7 @@ You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnI
 mkdir -p /data/src/nice # recommend hdd folder with few spare gigs
 git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
-$EDITOR _config.sh # read carefully and make modifications
+$EDITOR .config.sh # read carefully and make modifications
 export NICE_PRESET=minimal # presets by default lives inside presets/ folder
 make download # download linux and busybox compressed releases
 make build
