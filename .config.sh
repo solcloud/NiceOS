@@ -32,6 +32,8 @@ export DISK_FILE="$STORAGE/sda.img"
 export NICE_HAS_PRIMARY_DISK="1"
 export NICE_HAS_SECONDARY_DISK="0"
 export LINUX_COPY_SRC_TO_TARGET="0"
+export INITRAMFS_BUILD=$BUILDS/initramfs
+export SUPPORT_BUILD=$BUILDS/support
 
 # Find out preset
 NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
@@ -58,9 +60,6 @@ export LINUX_SRC=$LINUX_BUILD/linux-$LINUX_VERSION
 export BUSYBOX="$OPT/busybox-$BUSYBOX_VERSION.tar.bz2"
 export BUSYBOX_BUILD="$BUILDS/busybox"
 export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
-
-export INITRAMFS_BUILD=$BUILDS/initramfs
-export SUPPORT_BUILD=$BUILDS/support
 
 ###### Custom functions
 
