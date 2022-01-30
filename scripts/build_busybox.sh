@@ -16,6 +16,7 @@ ls $BUSYBOX_SRC > /dev/null || {
 cd $BUSYBOX_SRC
 
 cp $NICE_PRESET_PATH/busybox.config .config
+grep -q 'CONFIG_STATIC=y' .config || dd "CONFIG_STATIC=y is required for busybox"
 make $MAKEFLAGS busybox || {
     if ! [ -r "/lib64/libcrypt.a" ] && (file /bin/busybox | grep 'statically linked'); then
         notify "Busybox build failed, but can use host static busybox, Ctrl-C to cancel... 10 sec for action"
