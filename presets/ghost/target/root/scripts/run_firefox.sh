@@ -1,4 +1,4 @@
-printf 'firefox' | su -l -c "umask 002 ; DISPLAY=$DISPLAY ~/firefox/firefox" firefox
+printf 'firefox' | su -l -c "umask 002 ; DISPLAY=$DISPLAY ~/firefox/firefox $1" firefox
 
 # about:config changes
 # ui.context_menus.after_mouseup true - Right mouse button instantly clicks the first option in window managers

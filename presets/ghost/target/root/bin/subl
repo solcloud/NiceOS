@@ -1,0 +1,4 @@
+#!/bin/bash
+
+path=$(realpath "$1" 2>/dev/null || echo -n '')
+/usr/share/applications/scripts/run_sublime.sh "$path" > /dev/null 2>& 1 &
