@@ -13,7 +13,7 @@ exec --no-startup-id "pulseaudio -D --disallow-exit --exit-idle-time=-1"
 exec --no-startup-id "setxkbmap -layout cz"
 exec --no-startup-id "sleep 3 && volumeicon"
 
-for_window [class="Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 10px
+for_window [class="Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px
 bindsym --border button1 [class="Firefox"] nop
 #bindsym --whole-window $mod+button3 [class="Firefox"] nop
 
