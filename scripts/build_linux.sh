@@ -9,7 +9,7 @@ mkdir -p "$LINUX_BUILD"
 cd "$LINUX_BUILD"
 
 [ -d "$LINUX_SRC" ] || {
-    tar --checkpoint=300 -xf "$LINUX" || dd "Missing linux kernel src $LINUX - try run 'make download'"
+    tar --checkpoint=400 -xf "$LINUX" || dd "Missing linux kernel src $LINUX - try run 'make download'"
     cd "$LINUX_SRC"
     make mrproper
 }
@@ -38,7 +38,7 @@ if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
 
     sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh" > "$TARGET/usr/src/$LINUX_VERSION/rebuild_and_reinstall.sh"
 
-    # Update modules kernel src symlink
+    # Update modules kernel src symlink from absolute path to host into target relative path
     if [ "$HAS_MODULES_SUPPORT" == "1" ]; then
         pushd "$TARGET/usr/lib/modules/$LINUX_VERSION/"
             rm -f build source

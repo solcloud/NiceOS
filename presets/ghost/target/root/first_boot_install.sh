@@ -148,6 +148,7 @@ ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
 echo 'load-module module-echo-cancel' >> /etc/pulse/default.pa
 
 rm -rf /lib/udev/rules.d/
+rm -f /lib/udev/*.sh
 pushd /etc/udev/rules.d/
 rm $(grep -l '# Intentionally empty' * | xargs)
 popd

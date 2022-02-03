@@ -24,13 +24,7 @@ basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
 artix-chroot /mnt /bin/sh -c '
 
 echo "Cleaning installation"
-{
-    TARGET=""
 
-    rm -f $TARGET/usr/lib/udev/*.sh
-    rm -f $TARGET/usr/bin/66-*
-    rm -f $TARGET/usr/bin/s6-*
-}
 '
 
 sync

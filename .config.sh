@@ -2,7 +2,7 @@
 
 set -o pipefail
 
-# ////////////////////////////// BASE GLOBAL PARAMS //////////////////////////////
+# ////////////////////////////// BASE PARAMS /////////////////////////////////////
 export BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 export TARGET_USER=$(id -u)
 export TARGET_GROUP=$(id -g)
@@ -12,7 +12,7 @@ export QEMU_RAM='1G'
 export QEMU_PROCESSOR_CORES=1
 export DISK_SIZE_GB=1
 
-# ///// Load user custom config.sh if exists that overrides global params
+# ///// Load user custom config.sh if exists that overrides default params
 [ -r "$BASE/config.sh" ] && source "$BASE/config.sh"
 # ////////////////////////////////////////////////////////////////////////////////
 
@@ -52,13 +52,15 @@ fi
 # Load custom preset variables if exists
 [ -r "$NICE_PRESET_PATH/build_env.sh" ] && source "$NICE_PRESET_PATH/build_env.sh"
 
+
+# Linux and busybox configs
 [ -z $LINUX_VERSION ] && {
   echo "You need to specify LINUX_VERSION either globally ($BASE/config.sh) or in preset ($NICE_PRESET_PATH/build_env.sh)"
   exit 1
 }
 [ -z $BUSYBOX_VERSION ] && export BUSYBOX_VERSION='1.34.1'
 
-export LINUX="$OPT/linux-$LINUX_VERSION.tar.xz"
+export LINUX=${NICE_LINUX_ARCHIVE_PATH:-"$OPT/linux-$LINUX_VERSION.tar.xz"}
 export LINUX_BUILD="$BUILDS/linux"
 export LINUX_SRC=$LINUX_BUILD/linux-$LINUX_VERSION
 

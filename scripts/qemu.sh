@@ -5,7 +5,12 @@ source ./.config.sh
 OPTS=""
 APPEND='mitigations=off'
 
-[ -r /dev/kvm ] && OPTS="$OPTS -enable-kvm -cpu host" || true
+if [ -r /dev/kvm ]; then
+  OPTS="$OPTS -enable-kvm -cpu host"
+else
+  echo "Warning: '/dev/kvm' is not readable, fallbacking to emulation without kvm support"
+fi
+
 if [[ -n "$1" && "$1" = "gui" ]]; then
 	OPTS="$OPTS"
 elif [[ -n "$1" && "$1" = "cmd" ]]; then
