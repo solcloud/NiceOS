@@ -4,7 +4,7 @@ NiceOS can build completely different target image based on set of rules called 
 Before building you are required to select one preset using NICE_PRESET variable. 
 
 Here are some inlcuded presets:
-- __[base](base/)__ - starting point for custom preset, if you are not expert at kernel configuration start here, [github video](https://github.com/solcloud/NiceOS/runs/5007593969?check_suite_focus=true)
+- __[base](base/)__ - starting point for custom preset, if you are not expert at kernel configuration start here, [github action](https://github.com/solcloud/NiceOS/actions/workflows/test.yml)
 - __[dev](dev/)__ - my development environment featuring docker, [youtube](https://youtu.be/cPaDJTJbgwQ)
 - __[ghost](ghost/)__ - my main desktop machine, [youtube](https://youtu.be/SNuNFt7kSIE)
 - __[leti](leti/)__ - my laptop machine

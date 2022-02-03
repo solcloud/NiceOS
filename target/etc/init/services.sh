@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ $(ls /bin/udevd 2> /dev/null) ]]; then
+if [ -x /bin/udevd ]; then
     /etc/init/udev_refresh.sh
 else
     busybox mdev -s

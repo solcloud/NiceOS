@@ -11,3 +11,4 @@ make build
 make cmd
 
 rm target/etc/start_services.sh
+echo "Tests passed"

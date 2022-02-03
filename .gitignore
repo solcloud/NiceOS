@@ -15,6 +15,5 @@
 /presets/*/target/root/wg/*/env
 /presets/*/target/root/wg/*/local.config
 
-/storage/sda.img
-/storage/sdb.img
+/storage/*.img
 /storage/temp/
