@@ -44,6 +44,11 @@ if [ -z $NICE_PRESET ]; then
 fi
 export NICE_PRESET="$NICE_PRESET"
 export NICE_PRESET_PATH="$NICE_PRESET_ROOT/$NICE_PRESET"
+# Check for valid preset path
+if ! [ -r "$NICE_PRESET_PATH" ]; then
+    echo "Preset '$NICE_PRESET' not found in '$NICE_PRESET_ROOT"
+    exit 1
+fi
 # Load custom preset variables if exists
 [ -r "$NICE_PRESET_PATH/build_env.sh" ] && source "$NICE_PRESET_PATH/build_env.sh"
 
