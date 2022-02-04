@@ -21,7 +21,6 @@ fi
 function boot_info_qemu() {
     echo "For future password prompt write $VM_PASS"
 }
-
 source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit 1
 
 function ssh_install() {
@@ -30,15 +29,22 @@ function ssh_install() {
     echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$VM_USER@$1" -p "$2" 'sudo --stdin bash /tmp/install.sh'
 }
 
+function host_shell_wait() {
+    echo "Welcome back to user host shell"
+    echo "Waiting for virtual machine to shutdown for max 60sec"
+    for i in {1..20}
+    do
+        sleep 3
+        echo "Waiting..."
+        ps auxf | grep -- "$1" | grep -v grep > /dev/null || break
+    done
+}
 
 function from_qemu() {
-    cd "$OPT"
-    rm -f 'distro.img'
-    qemu-img create -f raw 'distro.img' 8G
+    qemu-img create -f raw "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" "${DISK_SIZE_GB}G"
     qemu-system-x86_64 \
-        -cdrom "$DISTRO_ISO" \
-        -drive file='distro.img',format=raw \
-        -m "$QEMU_RAM" -enable-kvm -cpu host -smp "$QEMU_PROCESSOR_CORES" -net user,hostfwd=tcp::2201-:22 -net nic &
+        -cdrom "$DISTRO_ISO" -drive file="$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH",format=raw -m "$QEMU_RAM" \
+        -net user,hostfwd=tcp::2201-:22 -net nic -enable-kvm -cpu host -smp "$QEMU_PROCESSOR_CORES" &
 
     boot_info
     boot_info_qemu
@@ -47,106 +53,33 @@ function from_qemu() {
     read
 
     ssh_install localhost 2201
-
-    echo "Welcome back to user host shell"
-    echo "Waiting for virtual machine to shutdown for max 60sec"
-    for i in {1..20}
-    do
-        sleep 3
-        echo "Waiting..."
-        ps auxf | grep -- "-cdrom $DISTRO_ISO" | grep -v grep > /dev/null || break
-    done
+    host_shell_wait "-cdrom $DISTRO_ISO"
 }
 
 function from_virtualbox() {
-
     VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
     echo "Startup virtual machine named '$DISTRO' saved at $VIRTUAL_BOX_VM_ROOT"
     echo "with distribution installation CD connected"
-    echo "one hard disk connected (min 8GB), one bridged adapter network enabled"
+    echo "one VDI hard disk connected (min ${DISK_SIZE_GB}GB), one bridged adapter network enabled"
     boot_info
-    echo "Run ip a | grep eth0 | grep inet"
 
+    echo "Run ip addr | grep eth0 | grep inet"
     echo "Type here local ip address of bridge network eth0 (inet brd) and hit enter"
     read IP_ADDRESS
     echo "$IP_ADDRESS"
 
     ssh_install "$IP_ADDRESS" 22
+    host_shell_wait "comment $DISTRO"
 
-    echo "Welcome back to user host shell"
-    echo "Waiting for virtual machine to shutdown for max 60sec"
-    for i in {1..20}
-    do
-        sleep 3
-        echo "Waiting..."
-        ps auxf | grep "comment $DISTRO" | grep -v grep > /dev/null || break
-    done
-
-    cd "$VIRTUAL_BOX_VM_ROOT" || dd "Cannot open '$VIRTUAL_BOX_VM_ROOT'"
-    echo "Extracting virtual disk to distro.img"
-    rm distro.img
-    VBoxManage clonehd --format RAW "${DISTRO}.vdi" distro.img
+    [ -r "$VIRTUAL_BOX_VM_ROOT/$DISTRO.vdi" ] || dd "Cannot find VDI '$VIRTUAL_BOX_VM_ROOT/$DISTRO.vdi'"
+    echo "Extracting virtual disk image"
+    VBoxManage clonehd --format RAW "$VIRTUAL_BOX_VM_ROOT/$DISTRO.vdi" "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH"
 }
 
-function mount_vm_disk_to_tmp() {
-    notify "We need sudo for mounting"
-
-    sudo umount "$VM_MOUNT_ROOT/" 2> /dev/null
-    LOOP=$(sudo losetup --nooverlap --show -f -P distro.img)
-    mkdir -p "$VM_MOUNT_ROOT/"
-    sudo mount "$LOOP" "$VM_MOUNT_ROOT/"
-    echo "Mount VM hdd loop $LOOP at $VM_MOUNT_ROOT"
-}
-
-function copy_to_nice_target() {
-
-    echo "Copying distro files to $TARGET"
-    mount_vm_disk_to_tmp
-
-    notify "We need sudo for target copy"
-    echo "Filling $TARGET directory"
-
-    echo "Copying usr/ directory"
-    rm -rf "$TARGET/usr/"
-    sudo cp -a "$VM_MOUNT_ROOT/usr/" "$TARGET/"
-
-    echo "Copying var/ directory"
-    rm -rf "$TARGET/var/"
-    sudo cp -a "$VM_MOUNT_ROOT/var/" "$TARGET/var/"
-
-    if [ -r "$VM_MOUNT_ROOT/etc/fonts/" ]; then
-        echo "Copying fonts configs"
-        rm -rf "$TARGET/etc/fonts/"
-        mkdir -p "$TARGET/etc/"
-        sudo cp -a "$VM_MOUNT_ROOT/etc/fonts/" "$TARGET/etc/"
-    fi
-
-    if [ -r "$VM_MOUNT_ROOT/etc/alternatives/" ]; then
-        echo "Copying /etc/alternatives/"
-        rm -rf "$TARGET/etc/alternatives/"
-        mkdir -p "$TARGET/etc/"
-        sudo cp -a "$VM_MOUNT_ROOT/etc/alternatives/" "$TARGET/etc/"
-    fi
-
-    echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
-    sudo chown -R "$TARGET_USER":"$TARGET_GROUP" "$TARGET"
-
-    echo "Removing $TARGET/usr/lib/udev/rules.d/"
-    rm -rf "$TARGET/usr/lib/udev/rules.d/"
-
-    sync
-    sudo sync
-    echo "Done, checking git status"
-    cd "$BASE"
-    git restore target/var/run
-    git checkout target/var/run
-    git status
-
-}
-
+rm -f "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH"
 if [[ -n "$1" && "$1" = "virtualbox" ]]; then
     from_virtualbox
 else
     from_qemu
 fi
-copy_to_nice_target
+"$BASE/scripts/extract.sh"

@@ -26,6 +26,7 @@ export VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID=${VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID:-'f
 
 export OPT=$STORAGE/temp/dwn
 mkdir -p "$OPT"
+export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH="$OPT/distro.img"
 export MAKEFLAGS="-j${MAKE_NUM_OF_THREADS}"
 export MOUNT_PATH=$STORAGE/temp/mnt/nice_root
 export DISK_FILE="$STORAGE/sda.img"
@@ -87,3 +88,6 @@ if [ ! -f /bin/sudo ]; then
         printf "$(cat $BASE/.pass)" | su -c "$COM" r
     }
 fi
+
+###### Checks
+[ -r "$TARGET" ] || dd "Target folder '$TARGET' is not readable"
