@@ -18,23 +18,11 @@ function unmount_paths() {
 {
     if [ ! -f "$DISK_FILE" ] ; then
         echo "Creating hdd img $DISK_FILE"
-
         if ! fallocate -l "${DISK_SIZE_GB}G" "$DISK_FILE"; then
             /bin/dd if=/dev/zero of="$DISK_FILE" bs=1G seek="$DISK_SIZE_GB" count=0 || exit 1
         fi
-        printf "g
-        n
-
-
-        +100M
-        n
-
-
-
-        w
-        " | fdisk "$DISK_FILE"
+        printf "g\nn\n\n\n+100M\nn\n\n\n\nw\n" | fdisk "$DISK_FILE"
     fi
-
 }
 
 notify "Need sudo for target disk setup"
