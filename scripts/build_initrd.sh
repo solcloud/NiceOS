@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-source ./.config.sh
+source ./.config.sh || exit 1
 
 echo "Building Initramfs"
 
