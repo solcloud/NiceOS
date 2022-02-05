@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -6,7 +6,7 @@ echo 'sleep 2 && cat /usr/test.txt && poweroff' > target/etc/start_services.sh
 chmod u+x target/etc/start_services.sh
 
 export NICE_PRESET=base
-sh -c '
+bash -c '
     source ./.config.sh || exit 1
     mkdir -p "$VM_MOUNT_ROOT/usr/"
     echo "Test file" > "$VM_MOUNT_ROOT/usr/test.txt"
