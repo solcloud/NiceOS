@@ -2,8 +2,8 @@
 
 source ./.config.sh || exit 1
 
-if ! ([ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ] || mountpoint -q "$VM_MOUNT_ROOT"); then
-    dd "Can only extract from already mounted '$VM_MOUNT_ROOT' OR from '$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH'"
+if ! ([ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ] || [ -d "$VM_MOUNT_ROOT" ]); then
+    dd "Can only extract from '$VM_MOUNT_ROOT' OR from '$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH'"
 fi
 
 if [ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ]; then
@@ -16,7 +16,7 @@ if [ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ]; then
 fi
 
 {
-    echo "Copying distro $VM_MOUNT_ROOT files to $TARGET"
+    echo "Copying files from $VM_MOUNT_ROOT to $TARGET"
     notify 'We need sudo for copying'
 
     echo "Copying usr/ directory"
