@@ -50,6 +50,4 @@ fi
 
 sync && sudo sync
 echo "Done, checking git status"
-git restore target/var/run
-git checkout target/var/run
 git status
