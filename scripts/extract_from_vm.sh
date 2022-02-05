@@ -82,4 +82,3 @@ if [[ -n "$1" && "$1" = "virtualbox" ]]; then
 else
     from_qemu
 fi
-"$BASE/scripts/extract.sh"
