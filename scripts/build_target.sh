@@ -12,7 +12,7 @@ mkdir -p "$TARGET/usr/src"
 git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 
 {
-    # Replace some gnu utils with busybox
+    # Replace some /bin programs
     pushd "$TARGET/bin/"
         # Provide busybox if no 'sh' and no core counterparts is available
         if ([ ! -x "sh" ] || [ "busybox" == "$(readlink sh)" ]); then

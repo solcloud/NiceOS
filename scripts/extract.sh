@@ -12,7 +12,7 @@ if [ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ]; then
     LOOP=$(sudo losetup --nooverlap --show -f -P "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH")
     mkdir -p "$VM_MOUNT_ROOT/"
     sudo mount "$LOOP" "$VM_MOUNT_ROOT/"
-    echo "Mount VM hdd loop $LOOP at $VM_MOUNT_ROOT"
+    echo "Mounted VM disk loop $LOOP at $VM_MOUNT_ROOT"
 fi
 
 {

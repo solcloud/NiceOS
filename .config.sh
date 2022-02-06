@@ -90,4 +90,4 @@ if [ ! -f /bin/sudo ]; then
 fi
 
 ###### Checks
-[ -r "$TARGET" ] || dd "Target folder '$TARGET' is not readable"
+[ -w "$TARGET" ] || dd "Target folder '$TARGET' is not writable"
