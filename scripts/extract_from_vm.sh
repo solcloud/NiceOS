@@ -5,23 +5,20 @@ source ./.config.sh || exit 1
 if [ -z "$DISTRO" ]; then
     echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
     ls "$BASE/distro_extractor"
-    echo "use \`export DISTRO=artix\` for example"
-    exit 1
+    dd "use \`export DISTRO=artix\` for example"
 fi
 if [ -z "$DISTRO_ISO" ]; then
     echo "You need to specify distribution install iso path"
     echo "use \`export DISTRO_ISO=/data/dwn/artix-base-openrc-20210426-x86_64.iso\` for example"
     echo " or "
-    echo "use \`export DISTRO_ISO=/data/dwn/devuan_chimaera_4.0.0_amd64_minimal-live.iso\` for example"
-    echo " ... "
-    exit 1
+    dd "use \`export DISTRO_ISO=/data/dwn/devuan_chimaera_4.0.0_amd64_minimal-live.iso\` for example"
 fi
 
 
 function boot_info_qemu() {
     echo "For future password prompt write $VM_PASS"
 }
-source "$BASE/distro_extractor/$DISTRO/inc.sh" || exit 1
+source "$BASE/distro_extractor/$DISTRO/inc.sh" || dd "File '$BASE/distro_extractor/$DISTRO/inc.sh' cannot be sourced"
 
 function ssh_install() {
     [ -r "$NICE_PRESET_PATH/packages.${PM}.txt" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.${PM}.txt)"

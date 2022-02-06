@@ -17,8 +17,7 @@ elif [[ -n "$1" && "$1" = "cmd" ]]; then
 	APPEND="$APPEND console=ttyS0 earlyprintk=serial"
 	OPTS="$OPTS -nographic"
 else
-	echo "Usage $0 cmd|gui [T for $BASE/target/boot | B* for $BUILDS ]"
-  exit 1
+	dd "Usage $0 cmd|gui [T for $BASE/target/boot | B* for $BUILDS ]"
 fi
 
 INITRD="$BUILDS/initramfs.cpio.gz"
@@ -35,8 +34,7 @@ fi
 if [[ "$NICE_HAS_SECONDARY_DISK" = "1" ]]; then
   if ! [ -r "$STORAGE/sdb.img" ]; then
     echo "Preset has secondary disk option enable but '$STORAGE/sdb.img' is not readable"
-    echo "Create it for example by running 'qemu-img create -f raw storage/sdb.img 8G'"
-    exit 1
+    dd "Create it for example by running 'qemu-img create -f raw storage/sdb.img 8G'"
   fi
   OPTS="$OPTS -drive id=disk2,file=$STORAGE/sdb.img,if=none,format=raw -device ide-hd,drive=disk2,bus=ahci.2"
 fi
