@@ -70,16 +70,15 @@ export BUSYBOX_BUILD="$BUILDS/busybox"
 export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
 
 ###### Custom functions
-
-function dd() {
-    echo ${1:-'Error'}
-    echo "Exiting"
-    exit 201
-}
-
 function notify() {
     echo "$1"
     [ -x /bin/notify-send ] && /bin/notify-send "${1:-'Alert'}" || true
+}
+
+function dd() {
+    notify "${1:-'Error'}"
+    echo "Exiting"
+    exit 201
 }
 
 if [ ! -f /bin/sudo ]; then
