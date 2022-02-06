@@ -9,9 +9,9 @@ busybox mount -t devtmpfs dev /dev
 root_disk=$(busybox findfs 'UUID=4e696365-4f53-4e69-6365-4f534e696365' || busybox echo -n 'no-nice-root-device-found')
 busybox mount -o ro $root_disk /mnt
 
-if busybox test -f /mnt/init; then
+if busybox test -x /mnt/init; then
   exec busybox switch_root /mnt /init
 else
-  busybox echo "Dropping to emergency shell"
+  busybox echo "Dropping to emergency shell. There is no executable /mnt/init"
   exec sh
 fi

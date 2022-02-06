@@ -28,7 +28,7 @@ machine_reboot() {
     kpow r
 }
 
-mount -t proc -o nosuid,noexec,nodev  proc /proc
+mount -t proc -o nosuid,noexec,nodev proc /proc
 mount -t sysfs -o nosuid,noexec,nodev sys /sys
 [ -c /dev/null ] || mount -t devtmpfs -o nosuid,mode=0755 dev /dev
 [ -d /sys/fs/cgroup/ ] && mount -t cgroup2 none /sys/fs/cgroup/ || true
@@ -37,7 +37,7 @@ mkdir -p /dev/pts /dev/shm /dev/mqueue # busybox mount -a cannot use X-mount.mkd
 mount -a -o remount
 echo 0 > /proc/sys/kernel/printk
 [ -x /etc/init/root_mounted.sh ] && /etc/init/root_mounted.sh || true
-mount -a -O no_netdev || ( echo "Warning: Some mountpoint failed to mount, sleeping for 6 sec" ; sleep 6 )
+mount -a -O no_netdev || ( echo "Warning: Some mount point(s) failed to mount, sleeping for 6 sec" ; sleep 6 )
 
 trap machine_reboot 12
 trap machine_poweroff 10

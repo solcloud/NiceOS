@@ -72,7 +72,9 @@ export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
 ###### Custom functions
 function notify() {
     echo "$1"
-    [ -x /bin/notify-send ] && /bin/notify-send "${1:-'Alert'}" || true
+    if which notify-send &> /dev/null; then
+        notify-send "${1:-'Alert'}"
+    fi
 }
 
 function dd() {
@@ -81,7 +83,7 @@ function dd() {
     exit 201
 }
 
-if [ ! -f /bin/sudo ]; then
+if ! which sudo &> /dev/null; then
     function sudo() {
         COM="$@"
         printf "$(cat $BASE/.pass)" | su -c "$COM" r
