@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ff "-private-window $1"
