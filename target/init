@@ -42,12 +42,10 @@ mount -a -O no_netdev || ( echo "Warning: Some mount point(s) failed to mount, s
 trap machine_reboot 12
 trap machine_poweroff 10
 
-if which iptables > /dev/null; then
+if [ -x /bin/iptables ]; then
     [ -x /etc/iptables.sh ] && /etc/iptables.sh || true
 fi
-if which sysctl > /dev/null; then
-    sysctl -q -e -p /etc/sysctl.conf
-fi
+[ -x /bin/sysctl ] && sysctl -q -e -p /etc/sysctl.conf || true
 [ -f "$RANDOM_SEED_FILE" ] && cat "$RANDOM_SEED_FILE" >> /dev/random || true
 cat /etc/hostname > /proc/sys/kernel/hostname
 [ -d /sys/class/net/lo ] && ip link set up dev lo || true
