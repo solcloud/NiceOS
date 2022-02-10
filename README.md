@@ -9,10 +9,10 @@ Operating system with vanilla Linux kernel for users who wants to take full cont
 You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnIu8) ▶️
 
 ```bash
-mkdir -p /data/src/nice # recommend hdd folder with few spare gigs
+mkdir -p /data/src/nice # recommend HDD folder with few spare gigs
 git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
-$EDITOR .config.sh # read carefully and make modifications
+$EDITOR .config.sh # read carefully and make modifications inside config.sh
 export NICE_PRESET=minimal # presets by default lives inside presets/ folder
 make download # download linux and busybox compressed releases
 make build
@@ -47,7 +47,7 @@ For extracting binaries from other distribution just look at [distro_extractor](
 For overwriting default config variables you can use git ignored `config.sh` file at project root, eg:
 
 ```bash
-cat config.sh
+$ cat config.sh
 export QEMU_RAM='3G'
 export TARGET_GROUP=code
 export MAKE_NUM_OF_THREADS=6
