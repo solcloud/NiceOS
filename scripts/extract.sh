@@ -43,9 +43,6 @@ fi
 
     echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
     sudo chown -R "$TARGET_USER":"$TARGET_GROUP" "$TARGET"
-
-    echo "Removing $TARGET/usr/lib/udev/rules.d/"
-    rm -rf "$TARGET/usr/lib/udev/rules.d/"
 }
 
 sync && sudo sync
