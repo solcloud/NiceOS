@@ -2,17 +2,16 @@
 
 set -e
 
-echo 'sleep 2 && cat /usr/test.txt && poweroff' > target/etc/start_services.sh
+export NICE_PRESET=base
+export VM_MOUNT_ROOT=/tmp/extract_stub
+export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH=/tmp/not-exists.noimg
+
+cp storage/test_service.sh target/etc/start_services.sh
 chmod u+x target/etc/start_services.sh
 
-export NICE_PRESET=base
-bash -c '
-    source ./.config.sh || exit 1
-    mkdir -p "$VM_MOUNT_ROOT/usr/"
-    echo "Test file" > "$VM_MOUNT_ROOT/usr/test.txt"
-'
-
 echo "::group::Test extract"
+mkdir -p "$VM_MOUNT_ROOT/usr/"
+echo "Test file" > "$VM_MOUNT_ROOT/usr/test.txt"
 ./scripts/extract.sh
 echo "::endgroup::"
 

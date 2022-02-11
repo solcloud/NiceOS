@@ -19,15 +19,14 @@ export DISK_SIZE_GB=1
 export STORAGE=${STORAGE:-"$BASE/storage"}
 export BUILDS=${BUILDS:-"$STORAGE/build"}
 export TARGET=${TARGET:-"$BASE/target"}
+export OPT=$STORAGE/temp/dwn && mkdir -p "$OPT"
 
 export VM_MOUNT_ROOT=${VM_MOUNT_ROOT:-'/tmp/nice_vm_root'}
 export VIRTUAL_BOX_VMS_ROOT=${VIRTUAL_BOX_VMS_ROOT:-"$HOME/VirtualBox VMs"}
 export VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID=${VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID:-'f8076108-303e-4ddb-9cfa-0fc5e81ef390'}
 export MAKEFLAGS=${NICE_MAKE_FLAGS:-"-j${MAKE_NUM_OF_THREADS}"}
+export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH=${NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH:-"$OPT/distro.img"}
 
-export OPT=$STORAGE/temp/dwn
-mkdir -p "$OPT"
-export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH="$OPT/distro.img"
 export MOUNT_PATH=$STORAGE/temp/mnt/nice_root
 export DISK_FILE="$STORAGE/sda.img"
 export NICE_HAS_PRIMARY_DISK="1"
@@ -86,6 +85,7 @@ function dd() {
 if ! which sudo &> /dev/null; then
     function sudo() {
         COM="$@"
+        #( echo "Sudo command:" && echo "$COM" && sleep 10 ) > /dev/stderr
         printf "$(cat $BASE/.pass)" | su -c "$COM" r
     }
 fi
