@@ -33,9 +33,7 @@ make INSTALL_HDR_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 headers_install
 
 if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
     mkdir -p "$TARGET/usr/src"
-    # Copying only required directories after modules_prepare is boring (what drivers/ are required universally for future expansion) and disk space is cheap, grab whole source
     rsync --archive --delete --chmod=o-rwx "$LINUX_SRC/" "$TARGET/usr/src/$LINUX_VERSION/"
-
     sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh" > "$TARGET/usr/src/$LINUX_VERSION/rebuild_and_reinstall.sh"
 
     # Update modules kernel src symlink from absolute path to host into target relative path

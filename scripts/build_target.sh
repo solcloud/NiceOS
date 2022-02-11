@@ -25,17 +25,12 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         ln -sf busybox login # bypass logind
         ln -sf busybox hostname # override net-tools version or /proc/sys/kernel/hostname symlink for more universal solution
 
-        # Other
-        [ -x mcedit ] && {
+        [ -x mcedit ] && { # mcedit if no vi
             ln -s mcedit vi || true
-            ln -sf mcedit v
         }
-
-        # Bash pls
-        [ -f bash ] && {
+        [ -f bash ] && { # bash pls
             ln -sf bash sh
         }
-
         rm -f init # we have own init
     popd
 }
