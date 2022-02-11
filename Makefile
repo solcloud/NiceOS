@@ -1,4 +1,4 @@
-.PHONY: target build build_%
+.PHONY: target
 
 all:
 	@echo "make build|linux|busybox|initrd|target|ssh|sync|download|up|extract|vbox|cmd|gui"
