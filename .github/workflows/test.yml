@@ -12,14 +12,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: "Install dependencies"
-        timeout-minutes: 2
+        timeout-minutes: 1
         run: |
           sudo apt-get install -y \
             git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 \
             xz-utils dosfstools libssl-dev libncurses-dev qemu-system-x86
 
       - name: "Run make test"
-        timeout-minutes: 9
+        timeout-minutes: 7
         run: |
           echo 'export MAKE_NUM_OF_THREADS=$(($(nproc) + 1))' > config.sh
           make test
