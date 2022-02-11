@@ -37,7 +37,7 @@ build:
 	./scripts/build.sh
 
 test:
-	./run_tests.sh
+	./scripts/run_tests.sh
 
 ssh:
 	@ssh -p 2201 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o LogLevel=Error r@localhost
