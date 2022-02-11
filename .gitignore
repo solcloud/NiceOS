@@ -1,11 +1,6 @@
 /.pass
 /config.sh
 
-/build/busybox/
-/build/initramfs/
-/build/initramfs.cpio.gz
-/build/linux/
-
 /target/boot/
 /target/etc/alternatives/
 /target/etc/fonts/
@@ -16,4 +11,8 @@
 /presets/*/target/root/wg/*/local.config
 
 /storage/*.img
+/storage/build/busybox/
+/storage/build/initramfs/
+/storage/build/initramfs.cpio.gz
+/storage/build/linux/
 /storage/temp/

@@ -17,7 +17,7 @@ export DISK_SIZE_GB=1
 # ////////////////////////////////////////////////////////////////////////////////
 
 export STORAGE=${STORAGE:-"$BASE/storage"}
-export BUILDS=${BUILDS:-"$BASE/build"}
+export BUILDS=${BUILDS:-"$STORAGE/build"}
 export TARGET=${TARGET:-"$BASE/target"}
 
 export VM_MOUNT_ROOT=${VM_MOUNT_ROOT:-'/tmp/nice_vm_root'}
