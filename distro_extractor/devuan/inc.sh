@@ -10,6 +10,6 @@ function boot_info() {
     echo "After boot"
     echo "Login as root:toor"
     echo "Set keytable if desirable (eg 'loadkeys cz-us-qwertz')"
-    echo "Run dhclient"
-    echo "Run usermod -aG sudo $VM_USER"
+    echo "Run 'dhclient'"
+    echo "Run 'usermod -aG sudo $VM_USER'"
 }

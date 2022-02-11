@@ -12,8 +12,8 @@ function boot_info() {
 }
 
 function boot_info_qemu() {
-    echo "Run sudo -s"
-    echo "Run ssh-keygen -A"
-    echo "Run /bin/sshd"
+    echo "Run 'sudo -s'"
+    echo "Run 'ssh-keygen -A'"
+    echo "Run '/bin/sshd'"
     echo "For future password prompt write $VM_PASS"
 }

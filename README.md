@@ -35,7 +35,7 @@ You can watch me building ghost preset on [youtube](https://youtu.be/SNuNFt7kSIE
 
 ```bash
 export NICE_PRESET=ghost
-DISTRO=artix DISTRO_ISO=/data/dwn/artix-base-openrc-20210726-x86_64.iso make extract
+DISTRO=artix DISTRO_ISO=/data/dwn/artix-base-openrc-20220123-x86_64.iso make extract
 make build
 make gui
 ```
