@@ -6,7 +6,7 @@ Operating system with vanilla Linux kernel for users who wants to take full cont
 
 ## Minimal example
 
-You can watch me building minimal preset on [youtube](https://youtu.be/4CH8b0HnIu8) ▶️
+You can watch me building minimal preset on [youtube](https://youtu.be/H09xbSGKjZw) ▶️
 
 ```bash
 mkdir -p /data/src/nice # recommend HDD folder with few spare gigs
