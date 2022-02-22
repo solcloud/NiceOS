@@ -40,7 +40,7 @@ function host_shell_wait() {
 function from_qemu() {
     qemu-img create -f raw "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" "${DISK_SIZE_GB}G"
     qemu-system-x86_64 \
-        -cdrom "$DISTRO_ISO" -drive file="$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH",format=raw -m "$QEMU_RAM" \
+        -cdrom "$DISTRO_ISO" -drive file="$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH",format=raw,cache=unsafe -m "$QEMU_RAM" \
         -net user,hostfwd=tcp::2201-:22 -net nic -enable-kvm -cpu host -smp "$QEMU_PROCESSOR_CORES" &
 
     boot_info
