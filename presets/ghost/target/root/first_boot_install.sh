@@ -61,14 +61,15 @@ done
 usermod -u 7001 code
 groupmod -g 7001 code
 
+if lsmod | grep 'bochs'; then
+    echo 'bindsym Mod1+t exec --no-startup-id $TERMINAL' >> /home/dan/.config/i3/config
+    sed 's/set $mod Mod1/set $mod Mod4/' /home/dan/.config/i3/config | sed 's/set $modSecondary Mod4/set $modSecondary Mod5/' > config.temp.in
+    mv config.temp.in /home/dan/.config/i3/config
+fi
+
 for user in $USERS; do
     chown -R $user:$user "/home/$user"
 done
-
-if lsmod | grep 'bochs'; then
-    echo 'bindsym Mod1+t exec --no-startup-id $TERMINAL' >> /home/dan/.config/i3/config
-    sed 's/set $mod Mod1/set $mod Mod4/' /home/dan/.config/i3/config | sed 's/set $modSecondary Mod4/set $modSecondary Mod5/' > /home/dan/.config/i3/config
-fi
 
 # Desktop entries
 rm -rf /usr/local/share/*
