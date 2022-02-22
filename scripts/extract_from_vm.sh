@@ -9,7 +9,7 @@ if [ -z "$DISTRO" ]; then
 fi
 if [ -z "$DISTRO_ISO" ]; then
     echo "You need to specify distribution install iso path"
-    echo "use \`export DISTRO_ISO=/data/dwn/artix-base-openrc-20210426-x86_64.iso\` for example"
+    echo "use \`export DISTRO_ISO=/data/dwn/artix-base-openrc-20220123-x86_64.iso\` for example"
     echo " or "
     dd "use \`export DISTRO_ISO=/data/dwn/devuan_chimaera_4.0.0_amd64_minimal-live.iso\` for example"
 fi
