@@ -1,6 +1,6 @@
 echo "Starting installer"
 
-mkfs.ext4 -F /dev/sda
+mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
 arch='amd64'

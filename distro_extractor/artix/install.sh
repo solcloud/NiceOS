@@ -16,7 +16,7 @@ echo "Populating keys from archlinux"
 pacman-key --populate archlinux
 
 
-mkfs.ext4 -F /dev/sda
+mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
 basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
