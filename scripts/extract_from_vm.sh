@@ -2,6 +2,7 @@
 
 source ./.config.sh || exit 1
 
+HYPERVISOR=${HYPERVISOR:-'qemu'}
 if [ -z "$DISTRO" ]; then
     echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
     ls "$BASE/distro_extractor"
@@ -57,7 +58,7 @@ function from_virtualbox() {
     VIRTUAL_BOX_VM_ROOT="$VIRTUAL_BOX_VMS_ROOT/$DISTRO"
     echo "Startup virtual machine named '$DISTRO' saved at $VIRTUAL_BOX_VM_ROOT"
     echo "with distribution installation CD connected"
-    echo "one VDI hard disk connected (min ${DISK_SIZE_GB}GB), one bridged adapter network enabled"
+    echo "one VDI hard disk connected (${DISK_SIZE_GB}GB), one bridged adapter network enabled"
     boot_info
 
     echo "Run ip addr | grep eth0 | grep inet"
@@ -74,7 +75,7 @@ function from_virtualbox() {
 }
 
 rm -f "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH"
-if [[ -n "$1" && "$1" = "virtualbox" ]]; then
+if [[ "$HYPERVISOR" == "virtualbox" ]]; then
     from_virtualbox
 else
     from_qemu
