@@ -17,11 +17,11 @@ function unmount_paths() {
 
 {
     if [ ! -f "$DISK_FILE" ] ; then
-        echo "Creating hdd img $DISK_FILE"
+        echo "Creating disk image $DISK_FILE"
         if ! fallocate -l "${DISK_SIZE_GB}G" "$DISK_FILE"; then
             /bin/dd if=/dev/zero of="$DISK_FILE" bs=1G seek="$DISK_SIZE_GB" count=0 || dd "Unable to create '$DISK_FILE' with $DISK_SIZE_GB GB"
         fi
-        printf "g\nn\n\n\n+100M\nn\n\n\n\nw\n" | fdisk "$DISK_FILE"
+        printf "g\nn\n\n\n+100M\nn\n\n\n\nw\n" | fdisk "$DISK_FILE" # GPT with 2 partitions, first: 100M, second: rest of disk, defaults sector sizes
     fi
 }
 

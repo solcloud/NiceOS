@@ -4,7 +4,6 @@ set -e
 source ./.config.sh || exit 1
 
 echo "Building Linux"
-
 mkdir -p "$LINUX_BUILD"
 cd "$LINUX_BUILD"
 

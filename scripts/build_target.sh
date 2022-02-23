@@ -4,7 +4,6 @@ set -e
 source ./.config.sh || exit 1
 
 echo "Building $TARGET"
-
 mkdir -p "$TARGET"/{boot,dev,sys,home,mnt,proc,run,tmp,var} "$TARGET"/usr/{bin,lib} "$TARGET"/var/{empty,log}
 chmod 0760 "$TARGET/init"
 

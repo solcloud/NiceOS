@@ -1,7 +1,7 @@
 .PHONY: target
 
 all:
-	@echo "make build|linux|busybox|initrd|target|ssh|sync|download|up|extract|vbox|cmd|gui"
+	@echo "make build|linux|busybox|initrd|target|ssh|sync|test|check|clean|download|up|extract|vbox|cmd|gui"
 
 extract:
 	./scripts/extract_from_vm.sh && ./scripts/extract.sh

@@ -4,7 +4,6 @@ set -e
 source ./.config.sh || exit 1
 
 echo "Building Busybox"
-
 mkdir -p "$BUSYBOX_BUILD"
 cd "$BUSYBOX_BUILD"
 
