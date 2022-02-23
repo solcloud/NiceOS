@@ -5,7 +5,7 @@ suite='chimaera'
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
-debootstrap --cache-dir=/tmp --variant=minbase --merged-usr --arch="$arch" "$suite" /mnt
+debootstrap --variant=minbase --merged-usr --arch="$arch" "$suite" /mnt
 cat /tmp/packages.deb.txt | xargs > /mnt/tmp/packages
 chroot /mnt /bin/sh -c '
 apt-get update
