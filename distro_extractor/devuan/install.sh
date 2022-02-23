@@ -1,13 +1,12 @@
 echo "Starting installer"
+arch='amd64'
+suite='chimaera'
 
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
-arch='amd64'
-suite='chimaera'
 debootstrap --cache-dir=/tmp --variant=minbase --merged-usr --arch="$arch" "$suite" /mnt
 cat /tmp/packages.deb.txt | xargs > /mnt/tmp/packages
-
 chroot /mnt /bin/sh -c '
 apt-get update
 apt-get --fix-broken install --assume-yes
@@ -27,4 +26,5 @@ ln -s /usr/bin/iptables-legacy /usr/bin/iptables
 '
 
 sync
+umount /mnt/
 poweroff

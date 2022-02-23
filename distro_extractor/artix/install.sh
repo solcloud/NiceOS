@@ -20,12 +20,11 @@ mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
 basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
-
 artix-chroot /mnt /bin/sh -c '
-
 echo "Cleaning installation"
 
 '
 
 sync
+umount /mnt/
 poweroff
