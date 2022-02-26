@@ -47,7 +47,7 @@ function from_qemu() {
     boot_info
     boot_info_qemu
 
-    echo "If all done press enter here"
+    echo "Press enter here"
     read
 
     ssh_install localhost 2201
