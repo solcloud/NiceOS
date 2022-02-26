@@ -1,5 +1,4 @@
-CC=gcc
-CFLAGS=-Werror -Wall -Wextra -static -s -fdata-sections -ffunction-sections -Wl,--gc-sections -Os
+CFLAGS=-Werror -Wall -Wextra -static -Os
 FILES=kpow reboot poweroff
 
 all:
