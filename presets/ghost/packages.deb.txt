@@ -36,6 +36,7 @@ imagemagick
 make
 gcc
 sakura
+lxterminal
 rsync
 bison
 flex

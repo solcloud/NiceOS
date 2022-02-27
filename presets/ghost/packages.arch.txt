@@ -54,6 +54,7 @@ mailcap
 gcc
 i3status
 sakura
+lxterminal
 rsync
 bison
 flex
