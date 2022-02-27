@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PM=deb
+source distro_extractor/debian-based/inc.sh || exit 1
+
 VM_USER=devuan
 VM_PASS=$VM_USER
 

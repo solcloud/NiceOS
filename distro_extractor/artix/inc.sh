@@ -17,3 +17,8 @@ function boot_info_qemu() {
     echo "Run '/bin/sshd'"
     echo "For future password prompt write $VM_PASS"
 }
+
+function distro_install_command() {
+    packages=$(cat "$NICE_PRESET_PATH/packages.${PM}.txt" | xargs)
+    echo "pacman -Sy --noconfirm $packages"
+}

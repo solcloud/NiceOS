@@ -4,7 +4,7 @@ all:
 	@echo "make build|linux|busybox|initrd|target|ssh|sync|test|check|clean|download|up|extract|vbox|cmd|gui"
 
 extract:
-	./scripts/extract_from_vm.sh && ./scripts/extract.sh
+	./scripts/extract_signpost.sh
 
 vbox:
 	./scripts/vbox_disk_generate.sh

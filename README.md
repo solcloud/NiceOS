@@ -40,7 +40,7 @@ make build
 make gui
 ```
 
-For extracting binaries from other distribution just look at [distro_extractor](distro_extractor/) folder. We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
+For extracting binaries from other distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`. For more extract methods run `make extract`.
 
 ## User's config
 
