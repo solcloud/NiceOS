@@ -22,6 +22,9 @@ Also, many distributions provide mirrors at different geographical places and UR
 ---
 
 
+- Arch (https://archlinux.org/)
+  - vm `DISTRO=arch DISTRO_ISO=/path/to/archlinux-2022.02.01-x86_64.iso make extract`
+  - rootfs `DISTRO=arch DISTRO_ROOTFS=/path/to/archlinux-bootstrap-2022.02.01-x86_64.tar.gz make extract`
 - Artix (https://artixlinux.org/)
   - vm `DISTRO=artix DISTRO_ISO=/path/to/artix-base-openrc-20220123-x86_64.iso make extract`
 - Debian (https://www.debian.org/)
