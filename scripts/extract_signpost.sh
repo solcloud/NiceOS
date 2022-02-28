@@ -25,10 +25,9 @@ elif [ -n "$DISTRO_ROOTFS" ]; then
     requires_distro_variable
     export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH=/tmp/nice-not-exists.noimg
     export VM_MOUNT_ROOT="$STORAGE/temp/extract/rootfs_$(date +%s)" && mkdir -p "$VM_MOUNT_ROOT"
-    tar --checkpoint=100 -xf "$DISTRO_ROOTFS" -C "$VM_MOUNT_ROOT"
+    notify "We need sudo for untar rootfs"
+    sudo tar --checkpoint=100 -xf "$DISTRO_ROOTFS" -C "$VM_MOUNT_ROOT"
     ./scripts/extract_from_chroot.sh
-    ./scripts/extract.sh
-    sudo rm -rf "$VM_MOUNT_ROOT"
 
 elif [ -n "$DEBOOTSTRAP_SUITE" ]; then
     which debootstrap > /dev/null || dd "Debootstrap binary not found"
@@ -36,7 +35,7 @@ elif [ -n "$DEBOOTSTRAP_SUITE" ]; then
     export VM_MOUNT_ROOT="$STORAGE/temp/extract/debootstrap_$(date +%s)" && mkdir -p "$VM_MOUNT_ROOT"
     export NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH=/tmp/nice-not-exists.noimg
     notify "We need sudo for debootstrap and cleanup"
-    sudo debootstrap --variant=minbase --merged-usr --arch="${ARCH:-amd64}" --include="$(cat "$NICE_PRESET_PATH/packages.deb.txt" | xargs | sed 's/ /,/g')" "$DEBOOTSTRAP_SUITE" "$VM_MOUNT_ROOT" "$DEBOOTSTRAP_MIRROR" "$DEBOOTSTRAP_SCRIPT"
+    sudo debootstrap --variant=minbase --merged-usr --arch="${NICE_ARCH:-amd64}" --include="$(cat "$NICE_PRESET_PATH/packages.deb.txt" | xargs | sed 's/ /,/g')" "$DEBOOTSTRAP_SUITE" "$VM_MOUNT_ROOT" "$DEBOOTSTRAP_MIRROR" "$DEBOOTSTRAP_SCRIPT"
     ./scripts/extract.sh
     sudo rm -rf "$VM_MOUNT_ROOT"
 

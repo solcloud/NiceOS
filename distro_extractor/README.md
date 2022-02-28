@@ -4,8 +4,8 @@ NiceOS do not provide package manager. Instead, it uses other distributions pack
 
 Currently, we support **3** extract methods:
 - Virtual machine (**vm**)
-  - our recommended method for extracting
-  - you need virtual machine provider (_QEMU_ or _VirtualBox_) and distribution install _ISO_
+  - **our recommended method for extracting**
+  - you need virtual machine provider (_QEMU_ or _VirtualBox_) and distribution installation _ISO_
 - Root file system (**rfs**)
   - installing by extracting distribution _rootfs_ into temp folder and perform _chroot_ install there 
 - Debootstrap (**deb**)
@@ -18,7 +18,7 @@ NiceOS support out of the box these distributions (alphabetical order):
 ---
 **NOTE:**
 Always check firstly for latest version for your architecture and desired flavour on distribution homepage or use your specific version instead of example one.
-Also, many distributions provide mirrors at different geographical places and URLs - try to use closest and fastest mirror for you.
+Also, many distributions provide mirrors at different geographical places and URLs - try to use closest and fastest mirror for you. And always check downloaded files signature.
 ---
 
 
