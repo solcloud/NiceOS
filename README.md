@@ -6,7 +6,7 @@ Operating system with vanilla Linux kernel for users who wants to take full cont
 
 ## Minimal example
 
-You can watch me building minimal preset on [youtube](https://youtu.be/H09xbSGKjZw) ▶️
+You can watch me building minimal preset on [YouTube](https://youtu.be/H09xbSGKjZw) ▶️
 
 ```bash
 mkdir -p /data/src/nice # recommend HDD folder with few spare gigs
@@ -31,7 +31,7 @@ Everybody likes screenshots right 🙂 here is my 👻
 
 Building my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
 
-You can watch me building ghost preset on [youtube](https://youtu.be/SNuNFt7kSIE) ▶️
+You can watch me building ghost preset on [YouTube](https://youtu.be/SNuNFt7kSIE) ▶️
 
 ```bash
 export NICE_PRESET=ghost
@@ -40,7 +40,7 @@ make build
 make gui
 ```
 
-For extracting binaries from other distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`. For more extract methods run `make extract`.
+For extracting binaries from other distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`.
 
 ## User's config
 
