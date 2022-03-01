@@ -1,6 +1,6 @@
 ## Extracting packages from other distributions
 
-NiceOS do not provide package manager. Instead, it uses other distributions package managers.
+NiceOS do not provide package manager. Instead, it uses other distributions package managers. You just need to choose one distribution that you like the most and use suitable extract method.
 
 Currently, we support **3** extract methods:
 - Virtual machine (**vm**)
@@ -19,6 +19,7 @@ NiceOS support out of the box these distributions (alphabetical order):
 **NOTE:**
 Always check firstly for latest version for your architecture and desired flavour on distribution homepage or use your specific version instead of example one.
 Also, many distributions provide mirrors at different geographical places and URLs - try to use closest and fastest mirror for you. And always check downloaded files signature.
+
 ---
 
 

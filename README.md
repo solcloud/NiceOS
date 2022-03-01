@@ -29,7 +29,7 @@ Everybody likes screenshots right 🙂 here is my 👻
 
 ## Advance example
 
-Building my main desktop system - _Ghost_ 👻 with binaries extracted from artix (Pᗣᗧ•••MᗣN)
+Building my main desktop system - _Ghost_ 👻 with binaries extracted from Artix (Pᗣᗧ•••MᗣN)
 
 You can watch me building ghost preset on [YouTube](https://youtu.be/SNuNFt7kSIE) ▶️
 
@@ -40,7 +40,7 @@ make build
 make gui
 ```
 
-For extracting binaries from other distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`.
+For extracting binaries from different distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 You just need to pick **one** that suits you best. For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
 
 ## User's config
 
