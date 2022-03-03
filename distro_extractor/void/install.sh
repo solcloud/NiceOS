@@ -9,10 +9,6 @@ cp /var/db/xbps/keys/* /mnt/var/db/xbps/keys/
 arch='x86_64'
 repository='https://alpha.de.repo.voidlinux.org/current'
 XBPS_ARCH=$arch xbps-install --yes -S -r /mnt -R "$repository" $(cat /tmp/packages.xbps.txt | xargs)
-chroot /mnt /bin/sh -c '
-echo "Cleaning installation"
-
-'
 
 sync
 umount /mnt/

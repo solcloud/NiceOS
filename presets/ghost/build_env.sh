@@ -2,4 +2,4 @@
 
 export LINUX_VERSION='5.15.21'
 export LINUX_COPY_SRC_TO_TARGET="1"
-export DISK_SIZE_GB=5
+export DISK_SIZE_GB=6
