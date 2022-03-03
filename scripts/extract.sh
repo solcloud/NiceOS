@@ -2,8 +2,8 @@
 
 source ./.config.sh || exit 1
 
-if ! ([ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ] || [ -d "$VM_MOUNT_ROOT" ]); then
-    dd "Can only extract from '$VM_MOUNT_ROOT' OR from '$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH'"
+if ! ([ -n "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ] || [ -d "$VM_MOUNT_ROOT" ]); then
+    dd "Can only extract from '$VM_MOUNT_ROOT' OR from 'NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH'"
 fi
 
 if [ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ]; then

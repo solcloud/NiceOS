@@ -12,6 +12,7 @@ elif [ "1" == $(ls "$VM_MOUNT_ROOT" | wc -l) ]; then
     # Rootfs has been pack in one folder
     export VM_MOUNT_ROOT="$VM_MOUNT_ROOT/$(ls "$VM_MOUNT_ROOT")"
 fi
+[ -e "$VM_MOUNT_ROOT/etc" ] || dd "Cannot find '$VM_MOUNT_ROOT/etc'"
 
 notify "We need sudo for bind mounting, chroot and cleanup"
 sudo cp /etc/resolv.conf "$VM_MOUNT_ROOT/etc/"
