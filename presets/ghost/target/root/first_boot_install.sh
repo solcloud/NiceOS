@@ -132,6 +132,7 @@ chmod 0600 /home/dan/.ssh/id_rsa
 chmod o+r /etc/environment
 chmod -R o-rwx /root/
 chmod -R o+rX /etc/X11/
+chmod -R o+r /etc/pulse/
 chmod -R o+r /usr/share/
 echo '127.0.0.1 virtual' >> /etc/hosts
 echo '140.82.121.3 github.com' >> /etc/hosts

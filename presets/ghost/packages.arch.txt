@@ -30,7 +30,6 @@ dbus-glib
 libx11
 libpulse
 libnotify
-libglvnd
 iptables
 xorg-server
 xorg-xinit

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 title_match="Terminal_main_scratchpad"
-if i3-msg [title="$title_match"] scratchpad show; then
+if i3-msg [title="$title_match" floating] scratchpad show; then
     exit 0
 fi
 
