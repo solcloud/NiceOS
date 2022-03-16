@@ -18,7 +18,7 @@ function unmount_paths() {
 {
     if [ ! -f "$DISK_FILE" ] ; then
         echo "Creating disk image $DISK_FILE"
-        if ! fallocate -l "${DISK_SIZE_GB}G" "$DISK_FILE"; then
+        if ! fallocate -l "${DISK_SIZE_GB}G" "$DISK_FILE"; then # some systems has buggy or no fallocate at all so try dd if it fails
             /bin/dd if=/dev/zero of="$DISK_FILE" bs=1G seek="$DISK_SIZE_GB" count=0 || dd "Unable to create '$DISK_FILE' with $DISK_SIZE_GB GB"
         fi
         printf "g\nn\n\n\n+100M\nn\n\n\n\nw\n" | fdisk "$DISK_FILE" # GPT with 2 partitions, first: 100M, second: rest of disk, defaults sector sizes
@@ -49,7 +49,7 @@ fi
     sudo mount "${LOOP}p2" "$MOUNT_PATH"
 
     echo "Syncing $TARGET to $MOUNT_PATH"
-    sudo rsync --info=progress2 --exclude './boot/' --archive --delete --chmod=D0755,Fo-w --chown 0:0 "$TARGET/" "$MOUNT_PATH" || {
+    sudo rsync --info=progress2 --exclude '/boot/' --archive --delete --chmod=D0755,Fo-w --chown 0:0 "$TARGET/" "$MOUNT_PATH" || {
         unmount_paths
         dd "Rsync to $MOUNT_PATH failed"
     }
@@ -65,8 +65,8 @@ fi
     }
 
     # Replace some presets TARGET specific files
-    [ -d "$NICE_PRESET_PATH/target" ] && sudo rsync --info=progress2 --archive --copy-links --copy-unsafe-links --chmod=D0755,Fo-w --chown 0:0 "$NICE_PRESET_PATH/target/" "$MOUNT_PATH" || true
-    [ -d "$NICE_PRESET_PATH/target.dontfollowsymlink" ] && sudo rsync --info=progress2 --links --archive --chmod=D0755,Fo-w --chown 0:0 "$NICE_PRESET_PATH/target.dontfollowsymlink/" "$MOUNT_PATH" || true
+    [ -d "$NICE_PRESET_PATH/target" ] && sudo rsync --info=progress2 --archive --ignore-times --copy-links --copy-unsafe-links --chmod=D0755,Fo-w --chown 0:0 "$NICE_PRESET_PATH/target/" "$MOUNT_PATH" || true
+    [ -d "$NICE_PRESET_PATH/target.dontfollowsymlink" ] && sudo rsync --info=progress2 --links --archive --ignore-times --chmod=D0755,Fo-w --chown 0:0 "$NICE_PRESET_PATH/target.dontfollowsymlink/" "$MOUNT_PATH" || true
 
     # NICE_PRESET as hostname and in hosts
     echo "$NICE_PRESET" > "$OPT/_sync.tmp.in"

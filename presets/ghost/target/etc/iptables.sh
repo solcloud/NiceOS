@@ -8,7 +8,7 @@ ALLOWED_SSH_USERS="dan daniel"
 
 # Drop invalid packets on INPUT
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
-# Allow INPUT established, related sessions
+# Allow INPUT established sessions
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
 # ICMP
@@ -31,10 +31,10 @@ iptables -A OUTPUT -o lo -j ACCEPT
 
 # Allow ssh
 iptables -A INPUT -p tcp --dport $LOCAL_SSH_PORT -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -p tcp --sport $LOCAL_SSH_PORT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 for user in $ALLOWED_SSH_USERS; do
     iptables -A OUTPUT -p tcp -m multiport --dports $SSH_PORTS -m owner --uid-owner $user -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 done
-iptables -A OUTPUT -p tcp --sport $LOCAL_SSH_PORT -m conntrack --ctstate ESTABLISHED -j ACCEPT
 
 # Allow local http server
 iptables -A INPUT -p tcp --dport $LOCAL_HTTP_PORT -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT

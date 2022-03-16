@@ -9,9 +9,9 @@ unzip
 openssh
 git
 xclip
-mesa
 i3-wm
 i3lock
+i3status
 dmenu
 dunst
 fontconfig
@@ -36,11 +36,9 @@ xorg-server
 xorg-xinit
 xorg-xrandr
 xorg-xprop
-xorg-xcalc
 xorg-fonts-100dpi
 xorg-xset
 xorg-xinput
-xorg-xev
 wireguard-tools
 alsa-utils
 pulseaudio-alsa
@@ -52,9 +50,7 @@ nspr
 nss
 mailcap
 gcc
-i3status
-sakura
-lxterminal
+xfce4-terminal
 rsync
 bison
 flex
@@ -73,7 +69,6 @@ strace
 socat
 lsof
 traceroute
-edk2-ovmf
 htop
 cryptsetup
 wpa_supplicant

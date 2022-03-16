@@ -2,7 +2,7 @@
 
 set -e
 
-PHP_VERSION='7.4.26'
+PHP_VERSION='7.4.28'
 
 git clone --depth=1 'https://github.com/php/php-src.git' -b "php-$PHP_VERSION" "src"
 cd "src"

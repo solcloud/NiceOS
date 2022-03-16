@@ -1,6 +1,6 @@
 # NiceOS
 
-Operating system with vanilla Linux kernel for users who wants to take full control of their system. You can do it, try it!
+Operating system with vanilla Linux kernel for users who wants to take full control of their system. You can do it, try it and make NiceOS your last Linux distribution ever!
 
 [![Run tests](https://github.com/solcloud/NiceOS/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/solcloud/NiceOS/actions/workflows/test.yml)
 

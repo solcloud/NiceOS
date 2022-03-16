@@ -84,8 +84,7 @@ nspr
 nss
 gcc
 i3status
-sakura
-lxterminal
+xfce4-terminal
 rsync
 bison
 flex

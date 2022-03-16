@@ -1,9 +1,4 @@
 depmod
-echo "You may need to reboot for modules depmod effect or force loading"
-echo "also you may need to rebuild kernel src at /usr/src/$(uname -r)/ using rebuild_and_reinstall.sh there"
-echo "or even delete whole source and untar from archive if your build cc and libc is too different than running environment"
-echo "Spawning shell so you can decide"
-sh
 
 echo "Enter root password"
 passwd
@@ -36,7 +31,7 @@ done
 for user in dan; do
     usermod -aG tty,video,audio,input $user # Allow tty and Xorg (gpu,audio,input) login
     mkdir -p /home/$user/.config/
-    cp -r /root/.config/{dunst,i3,i3status,mc,sakura,volumeicon} /home/$user/.config/
+    cp -r /root/.config/{dunst,i3,i3status,mc,xfce4,volumeicon} /home/$user/.config/
     cp /root/.xinitrc /home/$user/
     rm /home/$user/.bash_profile
     printf '
@@ -132,11 +127,12 @@ Type=Application
 popd
 
 
-chmod a-w /home/dan/.config/sakura/sakura.conf
+chmod a-w /home/dan/.config/xfce4/terminal/terminalrc
 chmod 0600 /home/dan/.ssh/id_rsa
 chmod o+r /etc/environment
 chmod -R o-rwx /root/
 chmod -R o+rX /etc/X11/
+chmod -R o+r /usr/share/
 echo '127.0.0.1 virtual' >> /etc/hosts
 echo '140.82.121.3 github.com' >> /etc/hosts
 
@@ -146,7 +142,6 @@ mkdir -p /home/code/src/
 chown code:code /home/code/src/
 chmod g+rwXs /home/code/src/
 ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
-echo 'load-module module-echo-cancel' >> /etc/pulse/default.pa
 
 rm -rf /lib/udev/rules.d/
 rm -f /lib/udev/*.sh

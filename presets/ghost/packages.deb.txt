@@ -35,8 +35,7 @@ ffmpeg
 imagemagick
 make
 gcc
-sakura
-lxterminal
+xfce4-terminal
 rsync
 bison
 flex
