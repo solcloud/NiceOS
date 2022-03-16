@@ -17,7 +17,7 @@ cd "$BUSYBOX_SRC"
 cp "$NICE_PRESET_PATH/busybox.config" '.config'
 grep -q 'CONFIG_STATIC=y' '.config' || dd "CONFIG_STATIC=y is required for busybox"
 
-if ! [ -r "/lib64/libcrypt.a" ] && (file /bin/busybox | grep 'statically linked'); then # arch removes static libcrypt
+if [ ! -r "/lib64/libcrypt.a" ] && (file /bin/busybox | grep 'statically linked'); then # arch removes static libcrypt
     notify "Using host static busybox"
     cp -f /bin/busybox "$BUSYBOX_SRC/busybox"
 else
