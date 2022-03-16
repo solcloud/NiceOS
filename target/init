@@ -33,6 +33,12 @@ mount -t sysfs -o nosuid,noexec,nodev sys /sys
 [ -c /dev/null ] || mount -t devtmpfs -o nosuid,mode=0755 dev /dev
 [ -d /sys/fs/cgroup/ ] && mount -t cgroup2 none /sys/fs/cgroup/ || true
 
+{ # Link /dev/std{in,out,err}
+    ln -s /proc/self/fd /dev/fd
+    ln -s fd/0          /dev/stdin
+    ln -s fd/1          /dev/stdout
+    ln -s fd/2          /dev/stderr
+} 2>/dev/null || true
 mkdir -p /dev/pts /dev/shm /dev/mqueue # busybox mount -a cannot use X-mount.mkdir, create manually
 mount -a -o remount
 echo 0 > /proc/sys/kernel/printk
