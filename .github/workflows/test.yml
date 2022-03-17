@@ -4,6 +4,13 @@ on:
     branches: [master]
   pull_request:
     branches: [master]
+  paths-ignore:
+    - '**.md'
+    - 'distro_extractor/**'
+    - 'presets/dev/**'
+    - 'presets/ghost/**'
+    - 'presets/leti/**'
+    - 'presets/minimal/**'
 
 jobs:
   make_test:
