@@ -34,11 +34,11 @@ Also, many distributions provide mirrors at different geographical places and UR
   - vm: `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://packages.devuan.org/merged' make extract`
 - Linux Mint (https://www.linuxmint.com/)
-  - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
+  - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
 - MX Linux (https://mxlinux.org/)
-  - deb: `DEBOOTSTRAP_SUITE=bullseye DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='http://mxrepo.com/mx/repo/' make extract`
+  - deb: `DEBOOTSTRAP_SUITE=bullseye DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://mxrepo.com/mx/repo/' make extract`
 - Pop!_OS (https://system76.com/pop/)
-  - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='http://apt.pop-os.org/release' make extract`
+  - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://apt.pop-os.org/release' make extract`
 - Ubuntu (https://ubuntu.com/)
   - rfs: `DISTRO=debian-based DISTRO_ROOTFS=/path/to/ubuntu-base-21.10-base-amd64.tar.gz make extract`
   - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://archive.ubuntu.com/ubuntu' make extract`
