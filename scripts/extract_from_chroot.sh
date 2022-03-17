@@ -22,7 +22,7 @@ sudo mount --bind /proc "$VM_MOUNT_ROOT/proc"
 sudo mount --bind /dev "$VM_MOUNT_ROOT/dev"
 
 [[ $(type -t chroot_pre_hook) == 'function' ]] && chroot_pre_hook || true
-sudo chroot "$VM_MOUNT_ROOT" /bin/sh -c "'$command'"
+sudo chroot "$VM_MOUNT_ROOT" /bin/sh -c "/bin/env -i PATH=/bin sh -c '$command'"
 
 sudo umount -l "$VM_MOUNT_ROOT/dev"
 sudo umount -l "$VM_MOUNT_ROOT/proc"
