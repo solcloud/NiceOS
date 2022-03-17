@@ -42,6 +42,8 @@ make gui
 
 For extracting binaries from different distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 You just need to pick **one** that suits you best. For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
 
+After successful `make build` you have raw disk image file in `storage/sda.img` that you can burn to real disk and boot from it or use `make gui` to run that image in QEMU virtual emulator.
+
 ## User's config
 
 For overwriting default config variables you can use git ignored `config.sh` file at project root, eg:
