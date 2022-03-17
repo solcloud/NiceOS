@@ -35,6 +35,8 @@ Also, many distributions provide mirrors at different geographical places and UR
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://packages.devuan.org/merged' make extract`
 - Linux Mint (https://www.linuxmint.com/)
   - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
+- MX Linux (https://mxlinux.org/)
+  - deb: `DEBOOTSTRAP_SUITE=bullseye DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='http://mxrepo.com/mx/repo/' make extract`
 - Pop!_OS (https://system76.com/pop/)
   - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='http://apt.pop-os.org/release' make extract`
 - Ubuntu (https://ubuntu.com/)
