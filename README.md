@@ -40,7 +40,7 @@ make build
 make gui
 ```
 
-For extracting binaries from different distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 You just need to pick **one** that suits you best. For example if you prefer _debian_ binaries over _arch_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
+For extracting binaries from different distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 You just need to pick **one** that suits you best. For example if you prefer _devuan_ binaries over _artix_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
 
 After successful `make build` you have raw disk image file in `storage/sda.img` that you can _burn_ to real disk and boot from it or use `make gui` to run that image in _QEMU_ virtual emulator. If you do not want to use _QEMU_, you can run `make vbox` which will convert raw image to virtual disk image file (_.vdi_), that can be used in _VirtualBox_ for example.
 
@@ -50,7 +50,7 @@ For overwriting default config variables you can use git ignored `config.sh` fil
 
 ```bash
 $ cat config.sh
-export QEMU_RAM='3G'
+export QEMU_RAM=3G
 export TARGET_GROUP=code
 export MAKE_NUM_OF_THREADS=6
 ```
@@ -68,9 +68,11 @@ export NICE_PRESET=my_custom_preset
 make build
 ```
 
+If you publish your presets to _GitHub_ do not forget to use _niceos_ tag on your repository.
+
 ## Build dependencies
 
-For debian system you will probably need these packages
+For debian based system you will probably need these packages:
 
 ```bash
 sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libssl-dev libncurses-dev # required
