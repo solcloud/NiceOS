@@ -1,6 +1,6 @@
-## Extracting packages from other distributions
+## Extracting packages from other distributions :rocket:
 
-NiceOS do not provide package manager. Instead, it uses other distributions package managers. You just need to choose one distribution that you like the most and use suitable extract method.
+NiceOS do not provide package manager :tm:. Instead, it uses other distributions package managers. You just need to choose **one** distribution that you like the most and use suitable extract method.
 
 Currently, we support **3** extract methods:
 - Virtual machine (**vm**)
@@ -11,12 +11,12 @@ Currently, we support **3** extract methods:
 - Debootstrap (**deb**)
   - for debian based distributions using _debootstrap_ binary
 
-## Supported distributions
+## Supported distributions :signal_strength:
 
-NiceOS support out of the box these distributions (alphabetical order):
+NiceOS support out of the box these distributions (alphabetical order) :+1::
 
 ---
-**NOTE:**
+**:spiral_notepad: NOTE:**
 Always check firstly for latest version for your architecture and desired flavour on distribution homepage or use your specific version instead of example one.
 Also, many distributions provide mirrors at different geographical places and URLs - try to use closest and fastest mirror for you. And always check downloaded files signature.
 
@@ -24,10 +24,10 @@ Also, many distributions provide mirrors at different geographical places and UR
 
 
 - Arch (https://archlinux.org/)
-  - vm `DISTRO=arch DISTRO_ISO=/path/to/archlinux-2022.02.01-x86_64.iso make extract`
-  - rfs `DISTRO=arch DISTRO_ROOTFS=/path/to/archlinux-bootstrap-2022.02.01-x86_64.tar.gz make extract`
+  - vm: `DISTRO=arch DISTRO_ISO=/path/to/archlinux-2022.02.01-x86_64.iso make extract`
+  - rfs: `DISTRO=arch DISTRO_ROOTFS=/path/to/archlinux-bootstrap-2022.02.01-x86_64.tar.gz make extract`
 - Artix (https://artixlinux.org/)
-  - vm `DISTRO=artix DISTRO_ISO=/path/to/artix-base-openrc-20220123-x86_64.iso make extract`
+  - vm: `DISTRO=artix DISTRO_ISO=/path/to/artix-base-openrc-20220123-x86_64.iso make extract`
 - Debian (https://www.debian.org/)
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://deb.debian.org/debian/' make extract`
 - Devuan (https://www.devuan.org/)
