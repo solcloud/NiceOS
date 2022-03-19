@@ -2,10 +2,9 @@
 
 source ./.config.sh || exit 1
 
-IMAGE_PATH="$VIRTUAL_BOX_VMS_ROOT/nice/nice.vdi"
-echo "Using virtual disk $IMAGE_PATH with UUID $VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID"
+IMAGE_PATH="$VIRTUAL_BOX_VMS_ROOT/niceOS.vdi"
+echo "Using virtual disk '$IMAGE_PATH' with UUID '$VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID'"
 sleep 2
 
-./scripts/sync.sh
-rm "$IMAGE_PATH"
+rm -f "$IMAGE_PATH"
 VBoxManage convertfromraw "$STORAGE/sda.img" "$IMAGE_PATH" --uuid "$VIRTUAL_BOX_NICE_VIRTUAL_HDD_UUID"

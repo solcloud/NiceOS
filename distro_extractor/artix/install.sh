@@ -1,3 +1,5 @@
+mkfs.ext4 -m 0 -F /dev/sda
+mount /dev/sda /mnt/
 echo "Starting installer"
 
 # Add archlinux mirrorlist 2021-06-09 https://wiki.artixlinux.org/Main/Repositories#Arch_repositories
@@ -15,9 +17,6 @@ Include = /etc/pacman.d/mirrorlist-arch
 echo "Populating keys from archlinux"
 pacman-key --populate archlinux
 
-
-mkfs.ext4 -m 0 -F /dev/sda
-mount /dev/sda /mnt/
 
 basestrap /mnt $(cat /tmp/packages.arch.txt | xargs)
 artix-chroot /mnt /bin/sh -c '

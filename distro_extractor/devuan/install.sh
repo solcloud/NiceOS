@@ -1,9 +1,9 @@
-echo "Starting installer"
 arch='amd64'
 suite='chimaera'
 
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
+echo "Starting installer"
 
 debootstrap --variant=minbase --merged-usr --arch="$arch" "$suite" /mnt
 cat /tmp/packages.deb.txt | xargs > /mnt/tmp/packages
