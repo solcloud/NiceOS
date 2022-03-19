@@ -57,6 +57,7 @@ function from_virtualbox() {
 
     [ -r "$VIRTUAL_BOX_VM_ROOT/nice_$DISTRO.vdi" ] || dd "Cannot find VDI '$VIRTUAL_BOX_VM_ROOT/nice_$DISTRO.vdi'"
     echo "Extracting virtual disk image"
+    VBoxManage closemedium "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" &> /dev/null
     VBoxManage clonehd --format RAW "$VIRTUAL_BOX_VM_ROOT/nice_$DISTRO.vdi" "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH"
 }
 
