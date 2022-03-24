@@ -25,7 +25,7 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
         ln -sf busybox hostname # override net-tools version or /proc/sys/kernel/hostname symlink for more universal solution
 
         [ -x mcedit ] && { # mcedit if no vi
-            ln -s mcedit vi || true
+            ln -s mcedit vi 2> /dev/null || true
         }
         [ -f bash ] && { # bash pls
             ln -sf bash sh
@@ -37,8 +37,8 @@ git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
 {
     # Fix some file permissions
     chmod -R o+rX,o-w "$TARGET/etc/"
-    chmod -R o-r "$TARGET/etc/ssh/" || true
-    chmod -R o+rX "$TARGET/usr/share/" || true
+    chmod -R o-r "$TARGET/etc/ssh/" 2> /dev/null || true
+    chmod -R o+rX "$TARGET/usr/share/" 2> /dev/null || true
     chmod -R o-rwx "$TARGET/root/"
 
     # Add other read permission for text executable files inside bin
