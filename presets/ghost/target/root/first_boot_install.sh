@@ -27,6 +27,9 @@ for user in firefox; do
     usermod -aG audio $user
     ln -s /data/desk "/home/$user/Desktop"
     ln -s /data/dwn "/home/$user/Downloads"
+    ln -s /tmp "/home/$user/tmp"
+    mkdir -p "/home/$user/.config/"
+    cp -r /root/.config/dunst/ "/home/$user/.config/"
 done
 for user in dan; do
     usermod -aG tty,video,audio,input $user # Allow tty and Xorg (gpu,audio,input) login

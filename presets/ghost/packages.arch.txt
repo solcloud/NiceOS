@@ -42,7 +42,7 @@ wireguard-tools
 alsa-utils
 pulseaudio-alsa
 volumeicon
-ffmpeg
+ffmpeg4.4
 imagemagick
 make
 nspr

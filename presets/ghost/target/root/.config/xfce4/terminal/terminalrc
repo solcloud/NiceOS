@@ -26,6 +26,7 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
+TitleInitial=
 TitleMode=TERMINAL_TITLE_HIDE
 ShortcutsNoMenukey=TRUE
 ShortcutsNoMnemonics=TRUE

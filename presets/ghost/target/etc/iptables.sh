@@ -4,7 +4,7 @@ LOCAL_SSH_PORT=22
 LOCAL_HTTP_PORT=8080
 SSH_PORTS=22,2201,2202
 ALLOWED_USERS="firefox" # DNS,HTTP(S),WEBSOCKET
-ALLOWED_SSH_USERS="dan daniel"
+ALLOWED_SSH_USERS="dan daniel code"
 
 # Drop invalid packets on INPUT
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
