@@ -30,11 +30,11 @@ fi
 echo "Installing kernel headers"
 make INSTALL_HDR_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 headers_install
 
+mkdir -p "$TARGET/usr/src"
+sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh" > "$TARGET/usr/src/rebuild_and_reinstall_linux.sh"
 if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
     echo "Copying Linux source folder to $TARGET/usr/src/$LINUX_VERSION/"
-    mkdir -p "$TARGET/usr/src"
     rsync --info=progress2 --archive --delete --chmod=o-rwx "$LINUX_SRC/" "$TARGET/usr/src/$LINUX_VERSION/"
-    sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh" > "$TARGET/usr/src/$LINUX_VERSION/rebuild_and_reinstall.sh"
 
     # Update modules kernel src symlink from absolute path to host into target relative path
     if [ "$HAS_MODULES_SUPPORT" == "1" ]; then

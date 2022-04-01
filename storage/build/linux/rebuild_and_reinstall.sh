@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if ! findmnt /boot; then
     echo 'Mount /boot partition!'
     exit 1
