@@ -37,6 +37,8 @@ for user in dan; do
     cp -r /root/.config/{dunst,i3,i3status,mc,xfce4,volumeicon} /home/$user/.config/
     cp /root/.xinitrc /home/$user/
     rm /home/$user/.bash_profile
+    echo "alias dmd='dev machine down'" >> /home/$user/.bashrc
+    echo 'trap ec ERR' >> /home/$user/.bashrc
     printf '
 . ~/.bashrc
 
@@ -135,6 +137,7 @@ chmod 0600 /home/dan/.ssh/id_rsa
 chmod o+r /etc/environment
 chmod -R o-rwx /root/
 chmod -R o+rX /etc/X11/
+chmod -R o+rX /etc/mc/
 chmod -R o+r /etc/pulse/
 chmod -R o+r /usr/share/
 echo '127.0.0.1 virtual' >> /etc/hosts

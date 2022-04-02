@@ -13,10 +13,10 @@ exec --no-startup-id "pulseaudio -D --disallow-exit --exit-idle-time=-1"
 exec --no-startup-id "setxkbmap -layout cz"
 exec --no-startup-id "sleep 3 && volumeicon"
 
-for_window [class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px[class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px[class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px
+for_window [class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px[class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px[class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 6px
 bindsym --border button1 [class="(?i)Firefox"] nop
 #bindsym --whole-window $mod+button3 [class="(?i)Firefox"] nop
-bindsym $mod+Shift+r [class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 8px
+bindsym $mod+Shift+r [class="(?i)Firefox" instance="Navigator" window_role="browser" window_type="normal"] move --no-auto-back-and-forth container to workspace 1, floating enable, resize set 1380px 1048px, move position center, move down 6px
 
 for_window [title="Terminal_main_scratchpad"] floating enable, resize set 1100px 450px, move down 250px, border pixel 2
 assign [class="jetbrains-phpstorm" window_type="normal"] 2
@@ -102,7 +102,7 @@ bindsym $mod+Shift+p move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+s exec --no-startup-id "~/.config/i3/scratchpad.sh &> /dev/null"
-bindsym $mod+Shift+s scratchpad show
+bindsym $mod+Shift+s [title="^(?!Terminal_main_scratchpad$)"] scratchpad show
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

@@ -58,3 +58,7 @@ serve_file() {
     echo "Serving '$1' on localhost:8080"
     while true; do { echo -ne "HTTP/1.1 200 OK\r\n\r\n" ; cat "$1" ; } | nc -lnp 8080 ; done
 }
+
+ec() {
+    echo -e "\e[1;31mExit code: $?\e[m\n"
+}
