@@ -32,20 +32,6 @@ make INSTALL_HDR_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 headers_install
 
 mkdir -p "$TARGET/usr/src"
 sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh" > "$TARGET/usr/src/rebuild_and_reinstall_linux.sh"
-if [ "$LINUX_COPY_SRC_TO_TARGET" = "1" ]; then
-    echo "Copying Linux source folder to $TARGET/usr/src/$LINUX_VERSION/"
-    rsync --info=progress2 --archive --delete --chmod=o-rwx "$LINUX_SRC/" "$TARGET/usr/src/$LINUX_VERSION/"
-
-    # Update modules kernel src symlink from absolute path to host into target relative path
-    if [ "$HAS_MODULES_SUPPORT" == "1" ]; then
-        pushd "$TARGET/usr/lib/modules/$LINUX_VERSION/"
-            rm -f build source
-            ln -s "../../../src/$LINUX_VERSION/" 'build'
-            ln -s "../../../src/$LINUX_VERSION/" 'source'
-        popd
-    fi
-fi
-
 
 cp -f "$LINUX_SRC/.config" "$TARGET/boot/kernel.config"
 cp -f "$LINUX_SRC/System.map" "$TARGET/boot/System.map"
