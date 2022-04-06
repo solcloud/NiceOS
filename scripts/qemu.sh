@@ -8,7 +8,7 @@ APPEND='mitigations=off'
 if [ -r /dev/kvm ]; then
   OPTS="$OPTS -enable-kvm -cpu host"
 else
-  echo "Warning: '/dev/kvm' is not readable, fallbacking to emulation without kvm support"
+  echo "Warning: '/dev/kvm' is not readable, fallbacking to emulation without KVM support"
 fi
 
 if [[ -n "$1" && "$1" = "gui" ]]; then
@@ -34,7 +34,7 @@ fi
 if [[ "$NICE_HAS_SECONDARY_DISK" = "1" ]]; then
   if ! [ -r "$STORAGE/sdb.img" ]; then
     echo "Preset has secondary disk option enable but '$STORAGE/sdb.img' is not readable"
-    dd "Create it for example by running 'qemu-img create -f raw storage/sdb.img 8G'"
+    dd "Create it for example by running 'qemu-img create -f raw $STORAGE/sdb.img 8G'"
   fi
   OPTS="$OPTS -drive id=disk2,file=$STORAGE/sdb.img,if=none,format=raw -device ide-hd,drive=disk2,bus=ahci.2"
 fi

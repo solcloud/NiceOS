@@ -7,8 +7,8 @@
 /target/usr/
 /target/var/
 
-/presets/*/target/root/wg/*/env
-/presets/*/target/root/wg/*/local.config
+/presets/ghost/target/root/wg/*/env
+/presets/ghost/target/root/wg/*/local.config
 
 /storage/*.img
 /storage/build/busybox/

@@ -7,7 +7,7 @@ function requires_distro_variable() {
     if [ -z "$DISTRO" ]; then
         echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
         ls -I 'README.md' "$BASE/distro_extractor"
-        dd "use \`export DISTRO=artix\` for example"
+        dd "use 'export DISTRO=artix' for example"
     fi
 }
 
@@ -41,5 +41,5 @@ elif [ -n "$DEBOOTSTRAP_SUITE" ]; then
 else
     echo "You need to provide extract method. Use one of:"
     echo "'DISTRO_ISO' OR 'DISTRO_ROOTFS' OR 'DEBOOTSTRAP_SUITE'"
-    dd "For example use \`export DISTRO_ISO=/data/dwn/artix-base-openrc-20220123-x86_64.iso\`"
+    dd "For example use 'export DISTRO_ISO=/data/dwn/artix-base-openrc-20220123-x86_64.iso'"
 fi

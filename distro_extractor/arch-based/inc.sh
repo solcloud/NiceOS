@@ -8,7 +8,7 @@ function distro_install_command() {
     # Disable pacman checking free space
     echo -n 'sed -i "s/CheckSpace/#CheckSpace/" /etc/pacman.conf && '
 
-    # Add default server and initialize keys
+    # Add default server and initialize keys TODO: reflector
     echo -n 'echo "Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch" >> "/etc/pacman.d/mirrorlist" && '
     echo -n "pacman-key --init && pacman-key --populate archlinux && pacman -Sy --noconfirm $packages"
 }

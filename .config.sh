@@ -3,7 +3,7 @@
 set -o pipefail
 
 # ////////////////////////////// BASE PARAMS /////////////////////////////////////
-export BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+export BASE=$(pwd)
 export TARGET_USER=$(id -u)
 export TARGET_GROUP=$(id -g)
 
@@ -38,7 +38,7 @@ export SUPPORT_BUILD=$BUILDS/support
 NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
 if [ -z $NICE_PRESET ]; then
     echo "You need to specify preset from $NICE_PRESET_ROOT folder"
-    echo "use \`export NICE_PRESET=minimal\` for example"
+    echo "use 'export NICE_PRESET=minimal' for example"
     exit 1
 fi
 export NICE_PRESET="$NICE_PRESET"

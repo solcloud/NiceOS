@@ -16,32 +16,32 @@ if [ -r "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" ]; then
 fi
 
 {
-    echo "Copying files from $VM_MOUNT_ROOT to $TARGET"
+    echo "Copying files from '$VM_MOUNT_ROOT' to '$TARGET'"
     notify 'We need sudo for copying'
 
-    echo "Copying usr/ directory"
+    echo "Copying: usr/"
     rm -rf "$TARGET/usr/"
     sudo cp -a "$VM_MOUNT_ROOT/usr/" "$TARGET/"
 
-    echo "Copying var/ directory"
+    echo "Copying: var/"
     rm -rf "$TARGET/var/"
     sudo cp -a "$VM_MOUNT_ROOT/var/" "$TARGET/var/"
 
     if [ -r "$VM_MOUNT_ROOT/etc/fonts/" ]; then
-        echo "Copying fonts configs"
+        echo "Copying: etc/fonts/"
         rm -rf "$TARGET/etc/fonts/"
         mkdir -p "$TARGET/etc/"
         sudo cp -a "$VM_MOUNT_ROOT/etc/fonts/" "$TARGET/etc/"
     fi
 
     if [ -r "$VM_MOUNT_ROOT/etc/alternatives/" ]; then
-        echo "Copying /etc/alternatives/"
+        echo "Copying: etc/alternatives/"
         rm -rf "$TARGET/etc/alternatives/"
         mkdir -p "$TARGET/etc/"
         sudo cp -a "$VM_MOUNT_ROOT/etc/alternatives/" "$TARGET/etc/"
     fi
 
-    echo "Changing ownership of $TARGET recursively to $TARGET_USER:$TARGET_GROUP"
+    echo "Changing ownership of '$TARGET' recursively to '$TARGET_USER:$TARGET_GROUP'"
     sudo chown -R "$TARGET_USER":"$TARGET_GROUP" "$TARGET"
 }
 

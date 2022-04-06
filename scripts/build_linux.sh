@@ -8,7 +8,7 @@ mkdir -p "$LINUX_BUILD"
 cd "$LINUX_BUILD"
 
 [ -d "$LINUX_SRC" ] || {
-    tar --checkpoint=400 -xf "$LINUX" || dd "Missing linux kernel src $LINUX - try run 'make download'"
+    tar --checkpoint=400 -xf "$LINUX" || dd "Missing Linux kernel src $LINUX - try run 'make download'"
     cd "$LINUX_SRC"
     make mrproper
 }

@@ -1,6 +1,6 @@
 # NiceOS
 
-Operating system with vanilla Linux kernel for users who wants to take full control of their system. You can do it, try it and make NiceOS your last Linux distribution ever!
+Operating system with vanilla Linux kernel for users who want to take full control of their system. You can do it, try it and make NiceOS your last Linux distribution ever!
 
 [![Run tests](https://github.com/solcloud/NiceOS/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/solcloud/NiceOS/actions/workflows/test.yml)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PL6McYun7ERj4ZfT3DPlDtbWWIUaYXphrh)
@@ -17,7 +17,7 @@ git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
 $EDITOR .config.sh # read carefully and make modifications inside config.sh
 export NICE_PRESET=minimal # presets by default lives inside presets/ folder
-make download # download linux and busybox compressed releases
+make download # download Linux and BusyBox compressed releases
 make build
 make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 ```
@@ -43,9 +43,9 @@ make build
 make gui
 ```
 
-For extracting binaries from different distribution just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every linux distro ever made 😉 You just need to pick **one** that suits you best. For example if you prefer _devuan_ binaries over _artix_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
+For extracting binaries from different distribution, just read [supported distributions](distro_extractor/README.md). We virtually provide extract recipes for every Linux distro ever made 😉. You just need to pick **one** that suits you best. For example, if you prefer _Devuan_ binaries over _Artix_ just use something like `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract` instead.
 
-After successful `make build` you have raw disk image file in `storage/sda.img` that you can _burn_ to real disk and boot from it or use `make gui` to run that image in _QEMU_ virtual emulator. If you do not want to use _QEMU_, you can run `make vbox` which will convert raw image to virtual disk image file (_.vdi_), that can be used in _VirtualBox_ for example. [Windows video](https://youtu.be/1cmmtuIoW7o) ▶
+After successful `make build` you have a raw disk image file in `storage/sda.img` that you can _burn_ to real disk and boot from it or use `make gui` to run that image in _QEMU_ virtual emulator. If you do not want to use _QEMU_, you can run `make vbox` which will convert raw image to virtual disk image file (_.vdi_), that can be used in _VirtualBox_ for example. [Windows video](https://youtu.be/1cmmtuIoW7o) ▶
 
 ## User's config
 

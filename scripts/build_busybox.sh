@@ -3,12 +3,12 @@
 set -e
 source ./.config.sh || exit 1
 
-echo "Building Busybox"
+echo "Building BusyBox"
 mkdir -p "$BUSYBOX_BUILD"
 cd "$BUSYBOX_BUILD"
 
 [ -d "$BUSYBOX_SRC" ] || {
-    tar --checkpoint=200 -xf "$BUSYBOX" || dd "Missing busybox src $BUSYBOX - try run 'make download'"
+    tar --checkpoint=200 -xf "$BUSYBOX" || dd "Missing BusyBox src $BUSYBOX - try run 'make download'"
     cd "$BUSYBOX_SRC"
     make distclean
 }

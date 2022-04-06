@@ -10,5 +10,5 @@ i3-msg [title="$title_match" floating] move container to workspace current, focu
 i3-msg [title="$title_match" floating] scratchpad show && exit 0
 
 $TERMINAL --title="$title_match" &
-sleep 0.2s
+sleep 0.3s
 i3-msg -- [title="$title_match"] move scratchpad, scratchpad show
