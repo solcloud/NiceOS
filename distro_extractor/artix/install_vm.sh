@@ -1,6 +1,8 @@
+echo "Starting installer"
+. /tmp/nice_os_settings.sh || exit 1
+
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
-echo "Starting installer"
 
 # Add archlinux mirrorlist 2021-06-09 https://wiki.artixlinux.org/Main/Repositories#Arch_repositories
 echo "Adding archlinux repositories"
