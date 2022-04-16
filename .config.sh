@@ -49,12 +49,12 @@ if ! [ -r "$NICE_PRESET_PATH" ]; then
     exit 1
 fi
 # Load custom preset variables if exists
-[ -r "$NICE_PRESET_PATH/build_env.sh" ] && source "$NICE_PRESET_PATH/build_env.sh"
+[ -r "$NICE_PRESET_PATH/config.sh" ] && source "$NICE_PRESET_PATH/config.sh"
 
 
 # Linux and busybox configs
 [ -z $LINUX_VERSION ] && {
-  echo "You need to specify LINUX_VERSION either globally ($BASE/config.sh) or in preset ($NICE_PRESET_PATH/build_env.sh)"
+  echo "You need to specify LINUX_VERSION either globally ($BASE/config.sh) or in preset ($NICE_PRESET_PATH/config.sh)"
   exit 1
 }
 [ -z $BUSYBOX_VERSION ] && export BUSYBOX_VERSION='1.34.1'
