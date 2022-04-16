@@ -34,8 +34,10 @@ elif [ -n "$DEBOOTSTRAP_SUITE" ]; then
 
     export VM_MOUNT_ROOT="$STORAGE/temp/extract/debootstrap_$(date +%s)" && mkdir -p "$VM_MOUNT_ROOT"
     notify "We need sudo for debootstrap and cleanup"
-    sudo debootstrap --variant=minbase --merged-usr --arch="${NICE_ARCH:-amd64}" --include="$(cat "$NICE_PRESET_PATH/packages.deb.txt" | xargs | sed 's/ /,/g')" "$DEBOOTSTRAP_SUITE" "$VM_MOUNT_ROOT" "$DEBOOTSTRAP_MIRROR" "$DEBOOTSTRAP_SCRIPT"
+    [ -n "$NICE_ARCH" ] && arch="--foreign --arch='$NICE_ARCH'" || true
+    sudo debootstrap --variant=minbase --merged-usr $arch --include="$(cat "$NICE_PRESET_PATH/packages.deb.txt" | xargs | sed 's/ /,/g')" "$DEBOOTSTRAP_SUITE" "$VM_MOUNT_ROOT" "$DEBOOTSTRAP_MIRROR" "$DEBOOTSTRAP_SCRIPT"
     ./scripts/extract.sh
+    [ -n "$arch" ] && echo "Copying second stage debootstrap" && rm -rf "$TARGET/debootstrap/" && sudo cp -a "$VM_MOUNT_ROOT/debootstrap/" "$TARGET/" || true
     sudo rm -rf "$VM_MOUNT_ROOT"
 
 else

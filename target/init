@@ -58,7 +58,7 @@ cat /etc/hostname > /proc/sys/kernel/hostname
 
 setsid /etc/init/services.sh &
 
-LINE=$(cat /proc/cmdline | grep -q '=ttyS' && echo '/dev/console' || echo 'tty1')
+LINE=$(grep -q 'console=tty' /proc/cmdline && echo '/dev/console' || echo 'tty1')
 if [[ $LINE == 'tty1' ]]; then
     for vt in 2; do
         openvt -c $vt -- sh -c "while true; do clear ; busybox getty 0 tty$vt; done"

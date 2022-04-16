@@ -17,17 +17,9 @@ cd "$LINUX_SRC"
 echo "Building kernel"
 cp "$NICE_PRESET_PATH/linux.config" '.config'
 make olddefconfig # comment for interactive asking
-make $MAKEFLAGS vmlinux bzImage
+make $MAKEFLAGS
 
-HAS_MODULES_SUPPORT=$(source ./.config ; [ "y" == "$CONFIG_MODULES" ] && echo -n "1" || echo -n "0")
-if [ "$HAS_MODULES_SUPPORT" == "1" ]; then
-    echo "Building kernel modules"
-    make $MAKEFLAGS modules
-    echo "Installing kernel modules"
-    make INSTALL_MOD_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 modules_install
-fi
-
-echo "Installing kernel headers"
+grep -q '^CONFIG_MODULES=y$' .config && make INSTALL_MOD_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 modules_install || true
 make INSTALL_HDR_PATH="$TARGET/usr" INSTALL_MOD_STRIP=1 headers_install
 
 mkdir -p "$TARGET/usr/src"
@@ -35,4 +27,5 @@ sed "s/xxLINUX_VERSIONxx/$LINUX_VERSION/" "$LINUX_BUILD/rebuild_and_reinstall.sh
 
 cp -f "$LINUX_SRC/.config" "$TARGET/boot/kernel.config"
 cp -f "$LINUX_SRC/System.map" "$TARGET/boot/System.map"
-cp -f "$LINUX_SRC/arch/x86/boot/bzImage" "$TARGET/boot/vmlinuz"
+cp -f "$LINUX_SRC/arch/${ARCH:-x86}/boot/"*Image "$TARGET/boot/vmlinuz"
+[ -r "$LINUX_SRC/arch/${ARCH:-x86}/boot/dts/" ] && rm -rf "$TARGET/boot/dts/" && cp -r "$LINUX_SRC/arch/${ARCH:-x86}/boot/dts/" "$TARGET/boot/" || true

@@ -36,6 +36,9 @@ clean:
 build:
 	./scripts/build.sh
 
+it:
+	make download && make extract && make build
+
 test:
 	./scripts/run_tests.sh
 

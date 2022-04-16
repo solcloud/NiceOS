@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -e
 source ./.config.sh || exit 1
 
 IMAGE_PATH="$VIRTUAL_BOX_VMS_ROOT/niceOS.vdi"
