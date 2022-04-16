@@ -20,6 +20,7 @@ export HISTSIZE=5123
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias v='vi'
 alias ls='ls -v --color=auto'
 alias ll='ls -alhF'
 alias l='ll'
