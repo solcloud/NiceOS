@@ -71,7 +71,7 @@ export NICE_PRESET=my_custom_preset
 make build
 ```
 
-If you publish your presets to _GitHub_, do not forget to use [niceos](https://github.com/topics/niceos) tag on your repository.
+If you publish your presets to _GitHub_, do not forget to use [niceos](https://github.com/topics/niceos) tag on your repository. [Raspberry Pi video](https://youtu.be/3LGnqtkq2Ak) ▶
 
 ## Build dependencies
 
