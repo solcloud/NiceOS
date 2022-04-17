@@ -43,6 +43,7 @@ fi
 
     echo "Changing ownership of '$TARGET' recursively to '$TARGET_USER:$TARGET_GROUP'"
     sudo chown -R "$TARGET_USER":"$TARGET_GROUP" "$TARGET"
+    chmod -R u+rwX "$TARGET"
 }
 
 sync && sudo sync
