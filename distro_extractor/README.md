@@ -33,6 +33,8 @@ Also, many distributions provide mirrors at different geographical places and UR
 - Devuan (https://www.devuan.org/)
   - vm: `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://packages.devuan.org/merged' make extract`
+- Fedora (https://getfedora.org/)
+  - vm: `DISTRO=fedora DISTRO_ISO=/path/to/Fedora-Server-netinst-x86_64-35-1.2.iso make extract`
 - Linux Mint (https://www.linuxmint.com/)
   - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
 - MX Linux (https://mxlinux.org/)
