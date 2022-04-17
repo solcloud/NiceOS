@@ -37,7 +37,7 @@ build:
 	./scripts/build.sh
 
 it:
-	make download && make extract && make build
+	make extract && make download && make build
 
 test:
 	./scripts/run_tests.sh
