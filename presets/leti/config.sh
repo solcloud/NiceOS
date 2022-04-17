@@ -1,1 +1,1 @@
-../ghost/build_env.sh
+../ghost/config.sh
