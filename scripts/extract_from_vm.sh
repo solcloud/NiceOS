@@ -10,9 +10,13 @@ source "$BASE/distro_extractor/$DISTRO/inc.sh" || dd "File '$BASE/distro_extract
 function ssh_install() {
     [ -r "$NICE_PRESET_PATH/packages.${PM}.txt" ] || dd "No packages list for your preset and $DISTRO found ($NICE_PRESET_PATH/packages.${PM}.txt)"
     echo "NICE_ARCH=$NICE_ARCH" > "$OPT/nice_os_settings.sh"
-    echo "For password prompt write $VM_PASS"
+    [ -n "$VM_PASS" ] && echo "For password prompt write $VM_PASS" || true
+    sudoCommand=''
+    if [ "$VM_USER" != "root" ]; then
+        sudoCommand='sudo --stdin'
+    fi
     scp -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P "$2" "$OPT/nice_os_settings.sh" "$BASE/distro_extractor/$DISTRO/install_vm.sh" "$NICE_PRESET_PATH/packages.${PM}.txt" "$VM_USER@$1:/tmp/"
-    echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$VM_USER@$1" -p "$2" 'sudo --stdin bash /tmp/install_vm.sh'
+    echo "${VM_PASS:-''}" | ssh -o LogLevel=Error -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "$VM_USER@$1" -p "$2" "$sudoCommand bash /tmp/install_vm.sh"
 }
 
 function host_shell_wait() {
