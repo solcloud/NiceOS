@@ -81,3 +81,15 @@ For debian based system you will probably need these packages:
 sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libssl-dev libncurses-dev # required
 sudo apt install qemu-system-gui qemu-utils # optional (for running and extracting in QEMU emulator)
 ```
+
+## Cross compiling
+
+NiceOS supports cross compiling using standard _Linux_ cross compile options using _ARCH_ and _CROSS_COMPILE_ environment variables. For example for arm64:
+
+```bash
+export ARCH=arm64
+export CROSS_COMPILE='aarch64-linux-gnu-'
+make build
+```
+
+[Here is example preset config](https://github.com/solcloud/nice-presets/blob/master/presets/raspi3b/config.sh) for Raspberry Pi 3 Model B.
