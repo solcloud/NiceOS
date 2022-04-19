@@ -32,9 +32,9 @@ function host_shell_wait() {
 
 function from_qemu() {
     qemu-img create -f raw "$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH" "${DISK_SIZE_GB}G"
-    qemu-system-x86_64 \
+    qemu-system-${NICE_QEMU_EXTRACT_ARCH:-x86_64} \
         -cdrom "$DISTRO_ISO" -drive file="$NICE_EXTRACT_DISTRO_HDD_IMAGE_PATH",format=raw,cache=unsafe -m "$QEMU_RAM" \
-        -net user,hostfwd=tcp::2201-:22 -net nic -enable-kvm -cpu host -smp "$QEMU_PROCESSOR_CORES" &
+        -net user,hostfwd=tcp::2201-:22 -net nic -smp "$QEMU_PROCESSOR_CORES" ${NICE_QEMU_EXTRACT_OPTS:--enable-kvm -cpu host} &
 
     boot_info
     echo "Press enter here"
