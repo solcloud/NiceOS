@@ -23,27 +23,27 @@ Also, many distributions provide mirrors at different geographical places and UR
 ---
 
 
-- Arch (https://archlinux.org/)
+- Arch (https://archlinux.org/) _arch_
   - vm: `DISTRO=arch DISTRO_ISO=/path/to/archlinux-2022.02.01-x86_64.iso make extract`
   - rfs: `DISTRO=arch DISTRO_ROOTFS=/path/to/archlinux-bootstrap-2022.02.01-x86_64.tar.gz make extract`
-- Artix (https://artixlinux.org/)
+- Artix (https://artixlinux.org/) _arch_
   - vm: `DISTRO=artix DISTRO_ISO=/path/to/artix-base-openrc-20220123-x86_64.iso make extract`
-- Debian (https://www.debian.org/)
+- Debian (https://www.debian.org/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://deb.debian.org/debian/' make extract`
-- Devuan (https://www.devuan.org/)
+- Devuan (https://www.devuan.org/) _deb_
   - vm: `DISTRO=devuan DISTRO_ISO=/path/to/devuan_chimaera_4.0.0_amd64_minimal-live.iso make extract`
   - deb: `DEBOOTSTRAP_SUITE=stable DEBOOTSTRAP_MIRROR='https://packages.devuan.org/merged' make extract`
-- Fedora (https://getfedora.org/)
+- Fedora (https://getfedora.org/) _dnf_
   - vm: `DISTRO=fedora DISTRO_ISO=/path/to/Fedora-Server-netinst-x86_64-35-1.2.iso make extract`
-- Linux Mint (https://www.linuxmint.com/)
+- Linux Mint (https://www.linuxmint.com/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
-- MX Linux (https://mxlinux.org/)
+- MX Linux (https://mxlinux.org/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=bullseye DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://mxrepo.com/mx/repo/' make extract`
-- Pop!_OS (https://system76.com/pop/)
+- Pop!_OS (https://system76.com/pop/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://apt.pop-os.org/release' make extract`
-- Ubuntu (https://ubuntu.com/)
+- Ubuntu (https://ubuntu.com/) _deb_
   - rfs: `DISTRO=debian-based DISTRO_ROOTFS=/path/to/ubuntu-base-21.10-base-amd64.tar.gz make extract`
   - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://archive.ubuntu.com/ubuntu' make extract`
-- Void (https://voidlinux.org/)
+- Void (https://voidlinux.org/) _xbps_
   - vm: `DISTRO=void DISTRO_ISO=/path/to/void-live-x86_64-20210930.iso make extract`
   - rfs: `DISTRO=void DISTRO_ROOTFS=/path/to/void-x86_64-ROOTFS-20210930.tar.xz make extract`
