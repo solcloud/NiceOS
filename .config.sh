@@ -82,6 +82,7 @@ function dd() {
 }
 
 if ! which sudo &> /dev/null; then
+    [ -e /usr/src/niceOS.hash ] || dd "Sudo not found in PATH"
     function sudo() {
         COM="$@"
         #( echo "Sudo command:" && echo "$COM" && sleep 10 ) > /dev/stderr
