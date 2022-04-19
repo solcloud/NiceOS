@@ -21,8 +21,11 @@ sudo mount --bind /sys "$VM_MOUNT_ROOT/sys"
 sudo mount --bind /proc "$VM_MOUNT_ROOT/proc"
 sudo mount --bind /dev "$VM_MOUNT_ROOT/dev"
 
+for envCandidate in /bin/env /sbin/env /usr/bin/env /where/is/env; do
+    [ -x "${VM_MOUNT_ROOT}${envCandidate}" ] && break || true
+done
 [[ $(type -t chroot_pre_hook) == 'function' ]] && chroot_pre_hook || true
-sudo chroot "$VM_MOUNT_ROOT" /bin/sh -c "/bin/env -i PATH=/bin sh -c '$command'"
+sudo chroot "$VM_MOUNT_ROOT" /bin/sh -c "$envCandidate -i PATH=/bin:/sbin:/usr/bin:/usr/sbin sh -c '$command'"
 
 sudo umount -l "$VM_MOUNT_ROOT/dev"
 sudo umount -l "$VM_MOUNT_ROOT/proc"
