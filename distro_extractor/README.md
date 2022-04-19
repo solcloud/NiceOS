@@ -39,6 +39,8 @@ Also, many distributions provide mirrors at different geographical places and UR
   - deb: `DEBOOTSTRAP_SUITE=una DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='https://mirrors.edge.kernel.org/linuxmint-packages/' make extract`
 - MX Linux (https://mxlinux.org/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=bullseye DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://mxrepo.com/mx/repo/' make extract`
+- openSUSE (https://www.opensuse.org/) _zypp_
+  - rfs: `DISTRO=openSUSE DISTRO_ROOTFS=/path/to/openSUSE-Leap-15.1-OpenStack-rootfs.x86_64.tar.xz make extract`
 - Pop!_OS (https://system76.com/pop/) _deb_
   - deb: `DEBOOTSTRAP_SUITE=jammy DEBOOTSTRAP_SCRIPT=stable DEBOOTSTRAP_MIRROR='http://apt.pop-os.org/release' make extract`
 - Ubuntu (https://ubuntu.com/) _deb_
