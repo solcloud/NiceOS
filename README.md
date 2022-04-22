@@ -12,7 +12,7 @@ Operating system with vanilla Linux kernel for advanced users who want to take f
 You can watch me building minimal preset on [YouTube](https://youtu.be/H09xbSGKjZw) ▶️
 
 ```bash
-mkdir -p /data/src/nice # recommend HDD folder with few spare gigs
+mkdir -p /data/src/nice # recommend folder with few spare gigs
 git clone 'https://github.com/solcloud/NiceOS' /data/src/nice
 cd /data/src/nice
 $EDITOR .config.sh # read carefully and make modifications inside config.sh
