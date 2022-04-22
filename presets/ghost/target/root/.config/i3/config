@@ -195,7 +195,7 @@ bar {
         separator_symbol "  "
 
         # Take a screenshot by right clicking on the bar
-        bindsym --release button3 exec --no-startup-id "import /tmp/screenshot.png"
+        bindsym --release button3 exec --no-startup-id "umask 002 ; import /tmp/screen_$(date +%Y-%m-%d-%H-%M-%S).png"
 
         colors {
             background #000000
