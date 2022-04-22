@@ -30,14 +30,13 @@ export MOUNT_PATH=$STORAGE/temp/mnt/nice_root
 export DISK_FILE="$STORAGE/sda.img"
 export NICE_HAS_PRIMARY_DISK="1"
 export NICE_HAS_SECONDARY_DISK="0"
-export LINUX_COPY_SRC_TO_TARGET="0"
 export INITRAMFS_BUILD=$BUILDS/initramfs
 export SUPPORT_BUILD=$BUILDS/support
 
 # Find out preset
 NICE_PRESET_ROOT=${NICE_PRESET_ROOT:-"$BASE/presets"}
 if [ -z $NICE_PRESET ]; then
-    echo "You need to specify preset from $NICE_PRESET_ROOT folder"
+    echo "You need to specify preset from '$NICE_PRESET_ROOT' folder"
     echo "use 'export NICE_PRESET=minimal' for example"
     exit 1
 fi

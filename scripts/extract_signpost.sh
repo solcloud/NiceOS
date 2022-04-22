@@ -5,7 +5,7 @@ source ./.config.sh || exit 1
 
 function requires_distro_variable() {
     if [ -z "$DISTRO" ]; then
-        echo "You need to specify extracting distribution from $BASE/distro_extractor, use one of"
+        echo "You need to specify extracting distribution from '$BASE/distro_extractor', use one of"
         ls -I 'README.md' "$BASE/distro_extractor"
         dd "use 'export DISTRO=artix' for example"
     fi
