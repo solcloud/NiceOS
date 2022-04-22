@@ -22,7 +22,6 @@ chmod -R o+rX,o-w "$TARGET/etc/"
 chmod -R o-r "$TARGET/etc/ssh/" 2> /dev/null || true
 chmod -R o+rX "$TARGET/usr/share/" 2> /dev/null || true
 chmod -R o-rwx "$TARGET/root/"
-chmod o+rx "$TARGET/usr/bin/busybox"
 
 
 # Replace some $TARGET/usr files with our own build support
