@@ -1,0 +1,1 @@
+../ghost/check.sh

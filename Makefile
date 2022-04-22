@@ -1,7 +1,7 @@
 .PHONY: target
 
 all:
-	@echo "make build|linux|busybox|initrd|target|ssh|sync|test|check|clean|download|up|extract|vbox|cmd|gui"
+	@echo "make build|linux|busybox|initrd|target|ssh|sync|test|clean|download|up|extract|vbox|cmd|gui"
 
 extract:
 	./scripts/extract_signpost.sh
@@ -17,9 +17,6 @@ gui:
 
 sync:
 	./scripts/sync.sh
-
-check:
-	./scripts/check.sh
 
 download:
 	./scripts/download.sh
