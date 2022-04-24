@@ -73,7 +73,7 @@ done
 
 # Desktop entries
 rm -rf /usr/local/share/*
-pushd /usr/share/applications
+pushd /usr/share/applications || exit 1
     rm -rf *
 
     printf '[Desktop Entry]
@@ -149,11 +149,12 @@ mkdir -p /home/code/src/
 chown code:code /home/code/src/
 chmod g+rwXs /home/code/src/
 ln -s /home/code/src/solcloud/dev-stack/bin/dev-stack-remote.sh /usr/bin/dev
+[ -x /bin/pacman ] && (cp libcrypt.a /lib/ && chmod o+r /lib/libcrypt.a)
 
 rm -rf /lib/udev/rules.d/
 rm -f /lib/udev/*.sh
-pushd /etc/udev/rules.d/
-rm $(grep -l '# Intentionally empty' * | xargs)
+pushd /etc/udev/rules.d/ || exit 1
+    rm $(grep -l '# Intentionally empty' * | xargs)
 popd
 
 echo "New password for daniel"
