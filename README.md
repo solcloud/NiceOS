@@ -82,6 +82,8 @@ sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wge
 sudo apt install qemu-system-gui qemu-utils # optional (for running and extracting in QEMU emulator)
 ```
 
+If you are on **Arch linux** and _BusyBox_ build failed with error `cannot find -lcrypt` than see [#8](https://github.com/solcloud/NiceOS/issues/8#issuecomment-1107801317) for solutions.
+
 ## Cross compiling
 
 NiceOS supports cross compiling using standard _Linux_ cross compile options using _ARCH_ and _CROSS_COMPILE_ environment variables. For example for arm64:
