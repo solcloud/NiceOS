@@ -18,7 +18,7 @@ fi
 {
     echo "Copying files from '$VM_MOUNT_ROOT' to '$TARGET'"
     notify 'We need sudo for copying'
-    if ! sudo ls "$VM_MOUNT_ROOT/usr/" 2> /dev/null; then
+    if ! sudo ls "$VM_MOUNT_ROOT/usr/" &> /dev/null; then
         dd "Cannot read '$VM_MOUNT_ROOT/usr/', extract failed?"
     fi
 
