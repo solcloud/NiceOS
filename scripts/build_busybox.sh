@@ -14,7 +14,9 @@ cd "$BUSYBOX_BUILD"
 }
 cd "$BUSYBOX_SRC"
 
-cp "$NICE_PRESET_PATH/busybox.config" '.config'
+configPath="$NICE_PRESET_PATH/busybox.config"
+[ -r $configPath ] || configPath="$BASE/presets/busybox.config"
+cp "$configPath" '.config'
 grep -q 'CONFIG_STATIC=y' '.config' || dd "CONFIG_STATIC=y is required for busybox"
 
 make $MAKEFLAGS busybox
