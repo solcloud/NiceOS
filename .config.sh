@@ -70,7 +70,7 @@ export BUSYBOX_SRC="$BUSYBOX_BUILD/busybox-$BUSYBOX_VERSION"
 function notify() {
     echo "$1"
     if which notify-send &> /dev/null; then
-        notify-send "${1:-'Alert'}"
+        notify-send "${1:-'Alert'}" || true
     fi
 }
 
