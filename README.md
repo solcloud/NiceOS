@@ -79,11 +79,11 @@ sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wge
 sudo apt install qemu-system-gui qemu-utils # optional (for running and extracting in QEMU emulator)
 ```
 
-If you are on **Arch linux** and _BusyBox_ build failed with error `cannot find -lcrypt` than see [#8](https://github.com/solcloud/NiceOS/issues/8#issuecomment-1107801317) for solutions.
+If you are on **Arch Linux** and _BusyBox_ build failed with error `cannot find -lcrypt` than see [#8](https://github.com/solcloud/NiceOS/issues/8#issuecomment-1107801317) for solutions.
 
 ## Cross compiling
 
-NiceOS supports cross compiling using standard _Linux_ cross compile options using _ARCH_ and _CROSS_COMPILE_ environment variables. For example for arm64:
+_NiceOS_ supports cross compiling using standard _Linux_ cross compile options using _ARCH_ and _CROSS_COMPILE_ environment variables. For example for arm64:
 
 ```bash
 export ARCH=arm64
@@ -91,4 +91,4 @@ export CROSS_COMPILE='aarch64-linux-gnu-'
 make build
 ```
 
-[Here is example preset config](https://github.com/solcloud/nice-presets/blob/master/presets/raspi3b/config.sh) for Raspberry Pi 3 Model B.
+[Here is example preset config](https://github.com/solcloud/nice-presets/blob/master/presets/raspi3b/config.sh) for _Raspberry Pi 3 Model B_.
