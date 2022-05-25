@@ -14,9 +14,13 @@ cd "$BUSYBOX_BUILD"
 }
 cd "$BUSYBOX_SRC"
 
-configPath="$NICE_PRESET_PATH/busybox.config"
-[ -r $configPath ] || configPath="$BASE/presets/busybox.config"
-cp "$configPath" '.config'
+configPresetPath="$NICE_PRESET_PATH/busybox.config"
+if [ -r $configPresetPath ]; then
+    cp "$configPresetPath" '.config'
+else
+    make defconfig > /dev/null
+    sed -i 's/# CONFIG_STATIC is not set/CONFIG_STATIC=y/' .config
+fi
 grep -q 'CONFIG_STATIC=y' '.config' || dd "CONFIG_STATIC=y is required for busybox"
 
 make $MAKEFLAGS busybox
