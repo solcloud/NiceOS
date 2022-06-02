@@ -19,6 +19,8 @@ export HISTSIZE=5123
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cd..='cd ..'
 
 alias v='vi'
 alias ls='ls -v --color=auto'
@@ -29,7 +31,12 @@ alias els='less'
 alias les='less'
 alias lel='less'
 alias grep='grep -i --color=auto'
+alias rgrep='grep -r'
 alias cp='cp -i'
+alias mv='mv -i'
+alias hd='hexdump -C'
+alias ffmpeg='ffmpeg -hide_banner'
+alias ffprobe='ffprobe -hide_banner'
 
 alias gco='git commit'
 alias ga='git add'
@@ -57,7 +64,8 @@ zipfile() {
 
 serve_file() {
     echo "Serving '$1' on localhost:8080"
-    while true; do { echo -ne "HTTP/1.1 200 OK\r\n\r\n" ; cat "$1" ; } | nc -lnp 8080 ; done
+    length=$(stat --format=%s "$1")
+    while true; do { echo -ne "HTTP/1.1 200 OK\r\nContent-Length: $length\r\n\r\n" ; cat "$1" ; } | nc -lnp 8080 ; done
 }
 
 ec() {
