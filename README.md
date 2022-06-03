@@ -1,6 +1,6 @@
 # NiceOS
 
-Operating system with vanilla Linux kernel for advanced users who want to take full control of their system. You can do it, try it and make NiceOS your last Linux distribution ever!
+Operating system with vanilla Linux kernel for advanced users who want to take full control of their system. Try it and make NiceOS your last Linux distribution ever!
 
 [![Tests](https://github.com/solcloud/NiceOS/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/solcloud/NiceOS/actions/workflows/test.yml) [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PL6McYun7ERj4ZfT3DPlDtbWWIUaYXphrh) [![Linux](https://img.shields.io/badge/Linux-ffd133?style=flat&logo=linux&logoColor=black)](https://www.kernel.org/) [![Bash](https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white)](scripts/)
 
