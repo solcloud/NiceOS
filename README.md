@@ -46,7 +46,7 @@ After successful `make build` you have a raw disk image file in `storage/sda.img
 
 ## User's config
 
-For overwriting default config variables you can use git ignored `config.sh` file at project root, eg:
+For overwriting default [`.config.sh`](.config.sh) variables you can use git ignored `config.sh` file at project root, eg:
 
 ```bash
 $ cat config.sh
@@ -72,7 +72,7 @@ If you publish your presets to _GitHub_, do not forget to use [niceos](https://g
 
 ## Build dependencies
 
-For debian based system you will probably need these packages:
+When building on debian based system you will probably need these packages:
 
 ```bash
 sudo apt install git make gcc rsync bison flex cpio bc libelf-dev gawk fdisk wget lbzip2 xz-utils dosfstools libssl-dev libncurses-dev # required
