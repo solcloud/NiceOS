@@ -4,6 +4,17 @@ echo "Starting installer"
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
+# 2022-06-16 artix-archlinux-support moved to universe
+printf '
+[universe]
+Server = https://universe.artixlinux.org/$arch
+Server = https://mirror1.artixlinux.org/universe/$arch
+Server = https://mirror.pascalpuffke.de/artix-universe/$arch
+Server = https://artixlinux.qontinuum.space/artixlinux/universe/os/$arch
+Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
+Server = https://ftp.crifo.org/artix-universe/
+' >> /etc/pacman.conf
+
 # Add archlinux mirrorlist 2021-06-09 https://wiki.artixlinux.org/Main/Repositories#Arch_repositories
 echo "Adding archlinux repositories"
 pacman -Sy --noconfirm artix-archlinux-support > /dev/null
