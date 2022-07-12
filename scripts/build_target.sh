@@ -8,7 +8,7 @@ mkdir -p "$TARGET"/{boot,dev,sys,home,mnt,proc,run,tmp,var} "$TARGET"/usr/{bin,l
 chmod 0760 "$TARGET/init"
 
 mkdir -p "$TARGET/usr/src"
-git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash"
+git rev-parse HEAD > "$TARGET/usr/src/niceOS.hash" || true
 
 # Provide some /bin programs
 pushd "$TARGET/bin/"
