@@ -1,14 +1,25 @@
 # NiceOS
 
-Operating system for advanced users who want to take full control of their system. Try it and make NiceOS your last Linux distribution ever!
+NiceOS is a Linux meta distribution that does not provide a package manager. It rather uses other distro's package managers for extracting files. It achieves this by using extraction methods. Such methods include virtualization, rootfs or debootstrap. For more information on how this works see the [extracting docs](distro_extractor/README.md).
+
+It is an operating system for advanced users who want to take full control of their system.
+
+Try it and make NiceOS your last Linux distribution ever!
 
 [![Tests](https://github.com/solcloud/NiceOS/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/solcloud/NiceOS/actions/workflows/test.yml) [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PL6McYun7ERj4ZfT3DPlDtbWWIUaYXphrh) [![Linux](https://img.shields.io/badge/Linux-ffd133?style=flat&logo=linux&logoColor=black)](https://www.kernel.org/) [![Bash](https://img.shields.io/badge/Shell_Script-121011?style=flat&logo=gnu-bash&logoColor=white)](scripts/)
 
 ---
 
-## Minimal example
+## Presets
 
-You can watch me building minimal preset on [YouTube](https://youtu.be/H09xbSGKjZw) ▶️
+NiceOS creates your desired system by following a user defined set of instructions. We called these instructions __presets__. For more information see [presets](presets/README.md) section.
+
+NiceOS project contains few pre-packed presets to give you inspiration for rolling your own presets.
+In this _Readme_ we will showcase the _Minimal_ and _Ghost_ presets.
+
+## Minimal Preset Example
+
+You can watch me build the Minimal preset on [YouTube](https://youtu.be/H09xbSGKjZw) ▶️.
 
 ```bash
 mkdir -p /data/src/nice # recommend folder with few spare gigs
@@ -21,19 +32,13 @@ make build # for multicore use MAKE_NUM_OF_THREADS for speedup
 make cmd # or make gui , qemu cmd quit shortcut 'Ctrl-a x'
 ```
 
-For more presets look at [presets](presets/) folder, there is _base_ as a starting template and few my personal presets
+For more bundled presets look at [presets](presets/) folder.
 
-## Promo
+## Ghost Preset Example
 
-Everybody likes screenshots right 🙂 here is my 👻
+Building **my** main desktop [preset](presets/ghost/) - _Ghost_ 👻 with binaries extracted from Artix (Pᗣᗧ•••MᗣN)
 
-![screenshot](https://user-images.githubusercontent.com/74121353/145203880-60802202-f278-46cc-bf20-7b0189b25b97.png)
-
-## Advance example
-
-Building _my_ main desktop [preset](presets/ghost/) - _Ghost_ 👻 with binaries extracted from Artix (Pᗣᗧ•••MᗣN)
-
-You can watch me building ghost preset on [YouTube](https://youtu.be/SNuNFt7kSIE) ▶️
+You can watch me building Ghost preset on [YouTube](https://youtu.be/SNuNFt7kSIE) ▶️
 
 ```bash
 export NICE_PRESET=ghost
