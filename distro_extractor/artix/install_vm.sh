@@ -4,6 +4,10 @@ echo "Starting installer"
 mkfs.ext4 -m 0 -F /dev/sda
 mount /dev/sda /mnt/
 
+# Fix artix/arch signing problems
+pacman -Scc --noconfirm
+pacman -Sy --noconfirm artix-keyring
+
 # 2022-06-16 artix-archlinux-support moved to universe
 printf '
 [universe]
