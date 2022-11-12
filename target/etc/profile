@@ -16,6 +16,7 @@ export MC_SKIN=julia256
 export HISTCONTROL=ignoreboth
 export NO_AT_BRIDGE=1
 export HISTSIZE=5123
+export HISTIGNORE='poweroff:reboot'
 
 alias ..='cd ..'
 alias ...='cd ../..'
