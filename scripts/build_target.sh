@@ -34,4 +34,6 @@ pushd "$SUPPORT_BUILD"
     done
 popd
 
-[ -x "$NICE_PRESET_PATH/check.sh" ] && "$NICE_PRESET_PATH/check.sh" || true
+if [ -x "$NICE_PRESET_PATH/check.sh" ]; then
+    "$NICE_PRESET_PATH/check.sh"
+fi
