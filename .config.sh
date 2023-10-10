@@ -56,7 +56,7 @@ fi
   echo "You need to specify LINUX_VERSION either globally ($BASE/config.sh) or in preset ($NICE_PRESET_PATH/config.sh)"
   exit 1
 }
-[ -z $BUSYBOX_VERSION ] && export BUSYBOX_VERSION='1.34.1'
+[ -z $BUSYBOX_VERSION ] && export BUSYBOX_VERSION='1.36.1'
 
 export LINUX=${NICE_LINUX_ARCHIVE_PATH:-"$OPT/linux-$LINUX_VERSION.tar.xz"}
 export LINUX_BUILD="$BUILDS/linux"
