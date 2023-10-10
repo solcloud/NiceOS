@@ -38,6 +38,7 @@ alias mv='mv -i'
 alias hd='hexdump -C'
 alias ffmpeg='ffmpeg -hide_banner'
 alias ffprobe='ffprobe -hide_banner'
+alias lszip='unzip -l'
 
 alias gco='git commit'
 alias ga='git add'
