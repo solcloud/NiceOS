@@ -28,8 +28,6 @@ printf '
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
 
-[community]
-Include = /etc/pacman.d/mirrorlist-arch
 ' >> /etc/pacman.conf
 echo "Populating keys from archlinux"
 pacman-key --populate archlinux
